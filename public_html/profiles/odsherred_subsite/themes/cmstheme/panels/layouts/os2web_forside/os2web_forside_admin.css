@@ -1,0 +1,16 @@
+
+.panel-region-top-left {
+  width: 60%;
+  float: left;
+}
+
+.panel-region-top-right {
+  width: 40%;
+  float: right;
+}
+.panel-region-bottom {
+  width: 100%;
+}
+.panel-top-container {
+  clear: both;
+}

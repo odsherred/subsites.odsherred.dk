@@ -1,0 +1,123 @@
+/*
+## grid-fix
+
+#region-content, #forside, #forside .container-12 .grid-12, #forside .grid-12 {margin: 0; width: 970px}
+#forside .grid-4 { width: 320px}
+
+#forside .grid-6 { width: 490px}
+
+#forside .grid-8 { width: 650px} */
+
+#forside .pane-rotating-image-view { margin-bottom: 3px}
+.billedrotator {
+	background-image: url(../images/billedkarusel-bg.png);
+	margin-top: 12px;
+	/*margin-left: 9px;  ## grid-fix
+	padding-left: 1px;*/
+	padding-top: 0px;
+	padding-bottom: 5px;
+	background-repeat: no-repeat}
+
+.view-id-newslist .view-content {
+    background: url("../images/aktueltBAG.png") repeat scroll 0 0 transparent;
+    height: 158px;
+    margin-left: 0px;
+    padding: 1px 0;
+    width: 308px;
+}
+#zone-content {padding-top: 0px}
+#zone-postscript-wrapper {display: none}
+.custom-slideshow {
+	float: left;
+	width: 631px;
+}
+
+#region-content {
+	background-image: url("../images/transwhite.png");
+	background-repeat: repeat;
+	margin: 0;
+	padding: 0 10px;
+	}
+
+.panels-flexible-row-last {border-radius: 3px; -moz-border-radius: 3px; -webkit-border-radius: 3px; padding-top: 0px}
+.panels-flexible-row-forside-1 {background-image: url(../images/skyggeINDHOLD.png); background-repeat: no-repeat; height: 468px; }
+.container-12 .grid-6 pane-spotboxe-panel-pane-3 {}
+
+
+.jcarousel-skin-default .jcarousel-item-horizontal {
+    margin: 0 4px 0 1px;
+}
+
+.view-kulturnaut-events-lister {
+    background-image: url("../images/detsker-bg.png");
+    height: 159px;
+}
+
+.panels-flexible-region .pane-kulturnaut-events-lister {
+    margin-left: 2px;
+}
+
+.panels-flexible-region .pane-kulturnaut-events-lister h2 {
+    font-weight: normal;
+    font-size: 14px;
+    margin-bottom: 1px ;
+    padding-left: 16px;
+    text-transform: uppercase;
+    background-image: url(../images/gaatilsyddjurslive.png);
+    background-repeat: no-repeat;
+    background-position: 80px 5px;
+}
+
+
+.panels-flexible-region .pane-kulturnaut-events-lister a {
+	color: #787878;
+}
+.panels-flexible-region .pane-newslist h2 {
+    padding-left: 17px;
+    color: #787878;
+    font-size: 14px;
+    font-weight: normal;
+    margin-bottom: 1px ;
+    text-transform: uppercase;
+
+}
+
+.region-inner.region-content-inner {
+	margin-left: 0px;
+}
+#forside .grid-6.custom-video { padding: 5px 1px 0; margin-left: 9px; width: 468px;}
+
+.spotbox-horisontal .views-row { width: 229px; float: left }
+.spotbox-horisontal {width: 490px}
+
+
+.spotbox-horisontal h2.pane-title { margin-bottom: 1px; padding-top: 2px}
+
+.spotbox-row-tall {
+    background-image: url("../images/spot2-424.png");
+    background-repeat: no-repeat;
+    margin-bottom: 10px;
+    padding: 1px 1px 0px;
+    background-position: 0 27px}
+
+.spotbox-tall-body {height: 290px; overflow: hidden; line-height: 1.1em; font-size: 12px; color: #A8A8A8; background-color: #fff; padding: 10px}
+
+.selvbetjening-block-forside { color: #B3B3B3; background-image: url(../images/selvbetjeningFORSIDE.png); padding: 5px 7px 51px 7px; margin-top: 13px; margin-left: 0px; font-size: 16px; text-transform: uppercase}
+.selvbetjening-block-forside p {padding-left: 25px; margin-bottom: 0px; color: #c386a8; }
+.selvbetjening-block-forside a { color: #fff; margin-bottom: 5px; font-weight: normal; font-size: 12px; text-transform: none}
+.selvbetjening-block-forside .item-list a {  }
+.selvbetjening-block-forside .item-list a:hover { }
+.selvbetjening-block-forside h3 { text-align: center; display: block; margin-bottom: 12px}
+.selvbetjening-block-forside h3 a { text-transform: uppercase; font-size: 20px; margin: 4px 10px; font-weight: normal; text-align: center; display: block; padding-bottom: 25px; background-image: url(../images/gaatilinfo.png); background-repeat: no-repeat; background-position: right bottom; color: #fff; }
+
+/*
+# grid-fix
+.spotbox-2-vertical .spotbox-row {
+    padding: 3px 1px 0px 1px;
+    margin-left: 10px
+}
+
+.spotbox-tall, .spotbox-video {
+margin-left: 8px;
+}
+*/

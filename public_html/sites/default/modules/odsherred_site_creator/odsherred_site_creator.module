@@ -1,0 +1,101 @@
+<?php
+/**
+ * @file
+ * This is the module file containing the logic for the creator.
+ */
+
+/**
+ * Implementation of hook_perm()
+ */
+function odsherred_site_creator_permission() {
+  return array('use site creator' => array(
+   'title' => t('Use site creator'),
+   'description' => t('Create new subsites')
+   )
+  );
+}
+
+/**
+ * Implements hook_menu().
+ */
+function odsherred_site_creator_menu() {
+  $items = array();
+  $items['admin/config/subsites'] = array(
+    'title' => 'Create subsites settings',
+    'description' => 'Site creator and other settings',
+    'position' => 'right',
+    'weight' => -10,
+    'page callback' => 'system_admin_menu_block_page',
+    'file' => 'system.admin.inc',
+    'file path' => drupal_get_path('module', 'system'),
+    'access arguments' => array('use site creator'),
+  );
+  $items['admin/config/subsites/sitecreate'] = array(
+    'title' => 'Site creator',
+    'access arguments' => array('use site creator'),
+    'page callback' => 'drupal_get_form',
+    'page arguments' => array('odsherred_site_creator_form'),
+  );
+  return $items;
+}
+
+/**
+ * Form callback for creator form.
+ */
+function odsherred_site_creator_form() {
+  $form = array(
+    'title' => array(
+      '#title' => t('Title'),
+      '#description' => t('Descriptive name for the site, for later reference.'),
+      '#type' => 'textfield',
+    ),
+    'url' => array(
+      '#title' => t('Url'),
+      '#description' => t('Subsite URL, without protocol prefix. ie. <strong>sub1.site.com</strong>'),
+      '#type' => 'textfield',
+    ),
+    'mail' => array(
+      '#title' => t('E-mail'),
+      '#description' => t('Contact e-mail for the site.'),
+      '#type' => 'textfield',
+    ),
+    'submit' => array(
+      '#type' => 'submit',
+      '#value' => t('Save'),
+    ),
+  );
+  return $form;
+}
+
+/**
+ * Implements hook_FORM_submit().
+ */
+function odsherred_site_creator_form_submit($form, &$form_state) {
+  $queue = 'public://odsherred-creator/queue';
+  $complete = 'public://odsherred-creator/complete';
+  $failed = 'public://odsherred-creator/failed';
+  if (file_prepare_directory($queue, FILE_CREATE_DIRECTORY || FILE_MODIFY_PERMISSIONS) &&
+      file_prepare_directory($complete, FILE_CREATE_DIRECTORY || FILE_MODIFY_PERMISSIONS) &&
+      file_prepare_directory($failed, FILE_CREATE_DIRECTORY || FILE_MODIFY_PERMISSIONS)) {
+        
+    $password = user_password();
+
+    $data = "TITLE=\"" . $form_state['values']['title'] . "\"\n";
+    $data .= "SITENAME=\"" . $form_state['values']['url'] . "\"\n";
+    $data .= "URL=\"" . $form_state['values']['url'] . "\"\n";
+    $data .= "PROFILE=\"odsherred_subsite\"\n";
+    $data .= "EMAIL=\"" . $form_state['values']['mail'] . "\"\n";
+    $data .= "ADMINPASS=\"" . $password . "\"\n";
+
+    $uniqid = uniqid();
+    if (file_unmanaged_save_data($data, $queue . '/' . $uniqid . '.txt')) {
+      drupal_set_message(t('Site @name ( @url )queue for creation. Here are your credentials:', array('@name' => $form_state['values']['title'], '@url' => $form_state['values']['url'])) .'<br />'. t('username: ') . 'admin <br />' . t('password: ') . $password, 'status');
+    }
+    else {
+      drupal_set_message('Failed to write file. Check temporary directory setup.', 'error');
+    }
+  }
+  else {
+    drupal_set_message('Failed to create site!, check public files directory.', 'error');
+  }
+}

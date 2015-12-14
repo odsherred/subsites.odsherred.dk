@@ -1,0 +1,148 @@
+.page-home #region-content, #forside, #forside .container-12 .grid-12, #forside .grid-12 {margin: 0; width: 970px}
+#forside .grid-4 { width: 320px}
+
+#forside .grid-6 { width: 490px}
+
+#forside .grid-8 { width: 650px}
+
+#forside .pane-rotating-image-view { margin-bottom: 3px}
+.page-home .billedrotator {
+	background-image: url(../images/billedkarusel-bg.png);
+	margin-top: 12px;
+	margin-left: 9px;
+	padding-left: 1px;
+	padding-top: 0px;
+	padding-bottom: 5px;
+	background-repeat: no-repeat}
+
+.page-home .view-id-newslist .view-content {
+    background: url("../images/aktueltBAG.png") repeat scroll 0 0 transparent;
+    height: 158px;
+    margin-left: 9px;
+    padding: 2px 0;
+    width: 308px;
+}
+.page-home #zone-content {padding-top: 0px}
+.page-home #zone-postscript-wrapper {display: none}
+.custom-slideshow {
+	float: left;
+	width: 631px;
+}
+
+.page-home #zone-content {background-image: url("../images/transwhite.png"); background-repeat: repeat}
+.page-home .panels-flexible-row-last {border-radius: 3px; -moz-border-radius: 3px; -webkit-border-radius: 3px; padding-top: 0px}
+.page-home .panels-flexible-row-forside-1 {background-image: url(../images/skyggeINDHOLD.png); background-repeat: no-repeat; height: 468px; }
+.page-home .container-12 .grid-6 pane-spotboxe-panel-pane-3 {}
+
+
+.page-home .jcarousel-skin-default .jcarousel-item-horizontal {
+    margin: 0 4px 0 1px;
+}
+
+.page-home .view-kulturnaut-events-lister {
+    background-image: url("../images/detsker-bg.png");
+    height: 159px;
+    margin-left: 6px;
+    width: 314px;
+}
+
+.page-home .panels-flexible-region .pane-kulturnaut-events-lister {
+    margin-left: 2px;
+}
+
+.page-home .panels-flexible-region .pane-kulturnaut-events-lister h2 {
+    font-weight: normal;
+    font-size: 14px;
+    margin-bottom: 1px ;
+    padding-left: 16px;
+    text-transform: uppercase;
+    background-image: url(http://dev.syddjurs.bellcom.dk/profiles/os2web/themes/cmstheme/images/gaatilsyddjurslive.png);
+    background-repeat: no-repeat;
+    background-position: 80px 5px;
+}
+
+
+.page-home .panels-flexible-region .pane-kulturnaut-events-lister a {
+	color: #787878;
+}
+.page-home .panels-flexible-region .pane-newslist h2 {
+    padding-left: 17px;
+    color: #787878;
+    font-size: 14px;
+    font-weight: normal;
+    margin-bottom: 1px ;
+    text-transform: uppercase;
+
+}
+
+.page-home .region-inner.region-content-inner {
+	margin-left: 0px;
+}
+
+
+.page-home .spotbox-2-vertical .spotbox-row {
+    padding: 5px 1px 0px 1px;
+    margin-left: 10px
+}
+
+.page-home .spotbox-tall, .spotbox-video {
+margin-left: 8px;
+}
+.page-node-edit #region-sidebar-second {display: none;}
+.page-node-edit #region-content { width: 707px}
+
+body {background-image: url("../images/bg.png")}
+#page {
+    background-image: url("../images/jobcenter_stor_bg.png");
+    background-position: center 90px;
+    background-repeat: no-repeat;
+}
+
+#zone-preface-wrapper {
+    background-image: url("../images/jobcenterWebstederBanner.png");
+}
+
+
+/* logo */
+.logo-img {
+    float: left;
+    margin-left: 30px;
+    margin-right: 20px;
+}
+
+.contextual-links a {font-size: 9px}
+
+#forside .grid-8 {
+    width: 645px;
+}
+
+#forside .grid-6 { width: 470px;}
+
+#forside .view-spotboxe .spotbox-row-video .video-text {
+    width: auto;
+    word-break: break-word;
+}
+#forside .view-spotboxe .spotbox-row-video h4 {
+    display: none;
+}
+#forside .view-spotboxe .spotbox-row {padding-left: 0px; background-image: url("../images/spot1b.png"); background-position: -1px 21px}
+
+.panels-flexible-row-forside-1 {
+    height: 480px;
+    }
+.panels-flexible-row-last {padding-top: 3px}
+
+#zone-menu .block-search-form { width: auto;}
+
+#main-menu li a,
+#zone-user-wrapper,
+#zone-header-wrapper { background-image: none;}
+
+.region-footer-first-inner, .region-footer-second-inner, .region-footer-third-inner { margin: 0; }
+
+#zone-footer {
+    min-height: 0;
+}
+.fb-like {
+    display: none;
+}

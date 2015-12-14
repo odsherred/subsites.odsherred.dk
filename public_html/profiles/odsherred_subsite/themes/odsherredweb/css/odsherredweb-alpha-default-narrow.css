@@ -1,0 +1,169 @@
+/* This file will hold styles that are loaded using the same media query as the narrow grid. */
+/* If you are using the default media queries provided by Omega, these styles will also
+ *  apply to the normal and widescreen layouts. You may override these styles in the normal 
+ *  and widescreen CSS files as appropriate. */
+ 
+ #zone-footer .pane-menu-block-8, #zone-footer .pane-menu-block-9, #zone-footer .pane-menu-block-10, #zone-footer .pane-selvbetjening { width: 160px !important;}
+ 
+ ul#main-menu { 
+	margin: 0;
+	padding: 0;
+	}
+	
+ul#main-menu li { 
+	margin-left: 10px;
+	margin-right: 10px;	
+	display: block; 
+	float: left;
+	width: 220px;
+	padding: 0;}
+
+ul#main-menu li.first {
+	margin-left: 0;
+	padding-left: 0; 
+	}
+	
+ul#main-menu li.last {
+	margin-right: 0;
+	padding-right: 0;
+	}
+
+ul#main-menu li a {  
+	display: block; 
+	font-size: 15px; 
+	color: #FFF; 
+	text-decoration: none;
+	padding: 16px 16px 16px 50px;
+	background-repeat: no-repeat;
+	}
+ 
+ul#main-menu li.menu-782 a, ul#main-menu li.menu-783 a, ul#main-menu li.menu-784 a  {
+	background-size: 100%;
+}
+
+.node-type-contentpage .field-slideshow-slide { width: 510px;}
+
+
+#search-block-form input[type="text"] {
+	width: 400px;
+	}
+	
+.qtip-cmstheme{ width: 700px !important}
+
+.front #search-block-form {
+	padding: 5px;
+	background: none repeat scroll 0 0 rgba(61, 142, 199, 0.8);
+}
+
+#search-block-form { 
+	height: 44px;
+	padding: 0 0 0 0;
+	background-repeat: no-repeat;
+	}
+
+#search-block-form input[type="submit"] {
+	overflow: visible;
+	padding: 0;
+	margin: 0;
+	width: 49px;
+	height: 45px;
+	outline: 0;
+	border: none;
+	-webkit-border-radius: 0;
+	-moz-border-radius: 0;
+	border-radius: 0;
+	background: transparent url(img/search.png) no-repeat;
+	color: #333;
+	text-shadow: none;
+	font: bold 12px/1.2 Arial, sans-serif;
+	cursor: pointer;
+	-webkit-appearance: none;
+	-moz-background-clip: padding;
+	-webkit-background-clip: padding;
+	}
+
+#search-block-form input[type="text"] {
+	height: 44px;
+	width: 411px;
+	font-size: 20px;
+	margin-right: 0;
+	padding-right: 0;
+	border: none;
+	background-image: url(img/search-bg.png);
+	border-top-left-radius: 5px;
+	border-bottom-left-radius: 5px;
+	padding-left: 10px;
+	float: left;
+	background-position: 0px 0px;
+	}
+.front #search-block-form input[type="text"] {
+	width: 320px}
+	
+.region-menu {
+	height: 41px;}
+
+
+.menu-minipanels .grid-3.panel-region-kol1 .inside {
+padding: 10px 5px 10px 15px;
+}
+
+.menu-minipanels .view-spotbox-megadd, .menu-minipanels .pane-tagadelic-view  { display: none}
+
+#mini-panel-odsherred_erhverv .inner-wrapper, #mini-panel-odsherred_borger .inner-wrapper, #mini-panel-odsherred_politik .inner-wrapper {
+	width: 690px;
+}
+
+.menu-minipanels .panel-region-kol1, .menu-minipanels .panel-region-kol4 {
+	width: 202px !important
+}
+.gaatilforside {
+	position: absolute;
+	width: 372px !important;
+	display: block; }
+	
+.responsive-layout-narrow .megamini .block-inner ul li { font-size: 10px; line-height: 10px; margin-bottom: 2px;}
+ .menu-minipanels .panel-region-kol3 {
+	width: 245px !important
+}
+.menu-minipanels .panel-region-kol2 { display: none} 
+.responsive-layout-narrow #toolbar { display: none; }
+/* Skjulte menupunkter*/
+
+.responsive-layout-narrow li.menu-mlid-881706 { display: none !important;}
+
+.pane-quicktabs-nyheder, .page-nyheder .panel-region-lead .relative-container {
+	display: none;
+    }
+.list-2-left, .list-3-right { width: 220px;}
+
+.responsive-layout-narrow .page-odherred-forside #search-block-form input[type="text"] {width: 100%; 
+margin-right: -49px}
+.responsive-layout-narrow #views_slideshow_cycle_main_aktuelt-panel_pane_3 .views-field-title .text-container{
+  font-size: 32px;
+}
+aside#region-sidebar-first.grid-3.region.region-sidebar-first { overflow: hidden;}
+
+.responsive-layout-narrow .spotbox .text {font-size: 11px;}
+.responsive-layout-narrow .spotwrapper { height: 177px;}
+.responsive-layout-narrow .spotwrapper h2.pane-title { font-size: 12px;}
+
+.responsive-layout-narrow #region-user-first a, .responsive-layout-narrow #region-header-second a {
+	padding-left: 5px; margin-left: 5px;
+}
+.responsive-layout-narrow .hovenyhed-portalside { height: 149px; padding: 5px 5px 5px 5px; }
+.responsive-layout-narrow .hovenyhed-portalside a { width: 240px;}
+.responsive-layout-narrow .hovenyhed-portalside .views-field-field-lead-image { width: 255px; height: auto;}
+.responsive-layout-narrow .hovenyhed-portalside .views-field-field-lead-image img { max-width: 100%; height: auto}
+.responsive-layout-narrow .hovenyhed-portalside .views-field-field-lead-image a { width: 100%;}
+
+.mobile-logo,
+.navbar-toggle,
+#block-menu-menu-mobil-footer,
+#block-menu-menu-mobil-forside,
+#block-menu-menu-mobil-top { display: none !important;}
+
+.responsive-layout-narrow .view-id-sitestuktur .views-field-name a { display: block; height: auto; width: auto; padding-left: 28px; padding-top: 3px; font-size: 14px;}
+
+.spotbox .text a{
+  font-size: 0.9em;
+}

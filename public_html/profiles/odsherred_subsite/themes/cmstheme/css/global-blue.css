@@ -1,0 +1,287 @@
+
+a:link, a:visited {
+    color: #004077;
+    text-decoration: none;
+}
+.spotbox .spotbox-subfront h3 {
+    color: #004077;
+    background-image: url(../images/joncenterPILspot.png);
+    background-repeat: no-repeat;
+}
+
+.block-multistep {
+    background-color: #004077;
+    color: #FFFFFF;
+    margin-bottom: 20px;
+}
+.block-multistep span.multistep-unsubmitted {
+    color: #004077;
+}
+#views_slideshow_cycle_main_rotating_image_view-block.hover {
+    border: 5px solid #004077;
+}
+#views_slideshow_cycle_main_rotating_image_view-block_1.hover {
+    border: 5px solid #004077;
+}
+.views-slideshow-pager-field-item.hover .views-field-title .views-content-title {
+    background-color: #004077;
+}
+.view-id-newslist .jcarousel-skin-default a.jcarousel-prev:hover {
+    background-image: url("../images/joncenterPILspot.png");
+}
+.view-id-newslist .jcarousel-skin-default a.jcarousel-next:hover {
+    background-image: url("../images/joncenterPILspot.png");
+}
+.view-id-newslist .jcarousel-skin-default .jcarousel-item-horizontal a:hover {
+    color: #004077;
+}
+.view-id-newslist .jcarousel-skin-default .jcarousel-item-horizontal .news-list-right a:hover {
+    color: #004077;
+}
+
+#zone-user-wrapper {
+    border-top: 3px solid #004077;
+}
+.vis-andre-sites a {
+}
+.skjul-andre-sites a {
+}
+
+/* billede slider forside plus under*/
+.custom-slideshow .views-field-body a {
+    /* billede slider forside plus under*/
+    background-image: url("../images/jobcenterMegamenuPil2.png");
+    color: #004077;
+    font-size: 21px;
+}
+.custom-slideshow .views-field-body a span {
+    color: #004077;
+}
+
+
+.view-borgerservices ul li.views-row-1 a {
+    background-image: url("../images/borger-grid-1.png");
+}
+.view-borgerservices ul li.views-row-2 a {
+    background-image: url("../images/borger-grid-2.png");
+}
+.view-borgerservices ul li.views-row-3 a {
+    background-image: url("../images/borger-grid-3.png");
+}
+.view-borgerservices ul li.views-row-4 a {
+    background-image: url("../images/borger-grid-4.png");
+}
+.view-borgerservices ul li.views-row-5 a {
+    background-image: url("../images/borger-grid-5.png");
+}
+.view-borgerservices ul li.views-row-6 a {
+    background-image: url("../images/borger-grid-6.png");
+}
+.view-borgerservices ul li.views-row-7 a {
+    background-image: url("../images/borger-grid-7.png");
+}
+.view-borgerservices ul li.views-row-8 a {
+    background-image: url("../images/borger-grid-8.png");
+}
+.view-borgerservices ul li.views-row-9 a {
+    background-image: url("../images/borger-grid-9.png");
+}
+.view-kulturnaut-events-lister .views-field-title a:hover {
+    background-image: url("../images/jobcenterMegamenuPil2.png");
+    color: #004077;
+}
+#region-sidebar-first ul.menu li ul li.active-trail {
+    background-color: #004077;
+    color: #FFFFFF;
+}
+
+/*selvbetjenings panal forside */
+.selvbetjening-block-forside {
+    background-image: url("../images/selvbetjening-bg-BLUE.png");
+    background-size: 100%;
+    height: 403px !important;
+    margin-top: 20px;
+    border-bottom-right-radius: 7px 10px;
+    -moz-border-radius-bottomright: 7px 10px;
+    -webkit-border-bottom-right-radius: 7px 10px;
+    padding: 10px 6px 40px 12px;
+}
+
+.selvbetjening-block-forside a {
+    color: #FFFFFF;
+}
+.selvbetjening-block-forside .knapper {
+    display: none;
+    height: 0;
+}
+
+.selvbetjening-block-forside .form-type-select {
+    background-image: url("../images/dropdownPILjobcenter.png");
+}
+.selvbetjening-block-forside .item-list {
+
+}
+
+/* menu */
+#main-menu li a.qtip-hover {
+    background-image: url("../images/dropdownPILjobcenter.png");
+    background-position: 95% 50%;
+    background-size: 13px auto;
+    color: #004077;
+}
+
+
+.qtip-wrapper .view-megadd-news a:hover {
+    color: #004077;
+}
+.qtip-wrapper ul.menu a:hover {
+    background-image: url("../images/jobcenterMegamenuPil2.png");
+    color: #004077;
+}
+
+/* selvbetjenings - megamenu */
+.selvbetjening-megamenu {
+    background-image: url("../images/jobcenterSelvbetjening.png");
+    color: #FFFFFF;
+    height: 281px;
+    padding: 20px;
+    background-size: cover !important;
+    background-size: 100%;
+}
+.selvbetjening-megamenu a {
+    color: #FFFFFF;
+}
+
+/* spotbox */
+
+.spotbox .views-row:hover a, .spotbox .views-row:hover h4 {
+    color: #004077;
+}
+.spotbox .views-row:hover h3 {
+    background-image: url("../images/jobcenterMegamenuPil2.png");
+    background-position: 98% 50%;
+}
+.spotbox .views-row:hover img {
+    box-shadow: 0 0 10px #004077 inset;
+}
+a.overlayclass span.zoom-icon {
+    border: 5px solid #004077;
+}
+a.overlayclass span.zoom-icon-tall {
+    border: 5px solid #004077;
+}
+.spotbox .views-row:hover img {
+    box-shadow: 0 0 10px #004077 inset;
+    z-index: 999;
+}
+
+
+/* sidebar */
+#region-sidebar-first ul.menu li ul li.active-trail {
+    background-image: url("../images/menu-bg-ul-li-ul-li-active-trail.png");
+    color: #FFFFFF;
+}
+
+/*
+** global-menu.css
+** 2012
+*/
+
+#region-sidebar-first ul.menuActive {
+    border-bottom: 1px solid #004077 !important;
+}
+#region-sidebar-first ul.menu li ul li.active-trail {
+    /* skal være grafisk til sidebar */
+    background-color: #004077;
+}
+
+#region-sidebar-first ul.menu li.active-trail.active.expanded a.active,
+#region-sidebar-first ul.menu li.active-trail.active a.active, #region-sidebar-first ul.menu li a:hover,
+#block-menu-block-12 h2.menuActive {
+	background-color: #004077;
+}
+/*#region-sidebar-first h2.menuActive, #region-sidebar-first ul.menu li.active-trail.active, #region-sidebar-first ul.menu li.active-trail li.active-trail.active, #region-sidebar-first ul.menu li.active-trail li.active-trail li.active-trail.active, #region-sidebar-first ul.menu li.active-trail li.active-trail li.active-trail li.active-trail.active, #region-sidebar-first ul.menu li.active-trail li.active-trail li.active-trail li.active-trail li.active-trail li.active-trail.active {
+    background-color: #004077;
+    background-image: none !important;
+    /* skal være grafisk til sidebar */
+/*}
+*/
+
+#region-sidebar-first ul.menu li.active-trail.active.expanded a:hover, #region-sidebar-first ul.menu li a:hover {
+    /* til at ændre farven i side baren / menuen til blå når musem er aktiv ovenpå - andre indstillinger i global-menu.css */
+    background: url("../images/v-arrow-default-on.png") no-repeat scroll right 50% #004077 !important;
+}
+
+/* underside sidebar til højre*/
+.block-views-selvbetjening-block-6 {
+    background-image: url("../images/jobcenterSelvbetjening.png");
+    background-size: 100%;
+}
+.selvbetjening-indholdsside .blanketter a {
+    /*link overskrift i boksen*/
+    color: #ffffff;
+}
+.selvbetjening-indholdsside views-row a{
+    /*selve linksene*/
+    color: #ffffff;
+}
+.selvbetjening-indholdsside .se-flere a{
+    /*selve linksene*/
+    color: #ffffff;
+}
+
+#zone-preface ul.nice-menu-down li.menuparent { background-color: transparent}
+
+#zone-preface ul.nice-menu li {background-color: #102C51}
+
+.selvbetjening-block-forside .view-content .yaselect-anchor {background-image: url(../images/dropdown1SELVBETJENING.png)}
+.selvbetjening-block-forside .view-footer .yaselect-anchor {background-image: url(../images/dropdown2SELVBETJENING.png)}
+
+.selbetjening-bund .nemid, .selbetjening-bund .borgerdk, .selbetjening-bund .virkdk {
+    margin-top: 19px;
+}
+
+#region-footer-first .footer-off-links .nemid, #region-footer-first .footer-off-links .virkdk, #region-footer-first .footer-off-links .borgerdk, .selbetjening-bund a {
+
+    height: 38px;
+}
+
+.panels-flexible-row {
+    margin: 0 0 0 0;
+    padding: 0 0 0 0;
+}
+
+#forside .spotbox-horisontal .spotbox-row {padding-top: 0px}
+#forside .spotbox-horisontal h2.pane-title {padding-top: 0px ; padding-bottom: 7px}
+#forside .spotbox-video .spotbox-row {padding-top: 0px}
+#forside .spotbox-video h2.pane-title {padding-top: 0px ; padding-bottom: 5px; margin-left: 3px;}
+
+.spotbox-row-video {
+    background-position: 0 22px;
+    background-repeat: no-repeat;
+    height: 212px;
+    margin-bottom: 5px;
+    padding: 0 5px 0 2px;
+}
+
+.node-type-contentpage .field-items li { list-style-image: url(../images/v-arrow-default-flat.png)}
+
+#region-sidebar-first ul.menu li.expanded.active {
+    border-bottom: 1px solid #004077;
+}
+
+.field-name-field-resume-long {
+    color: #4A4A4A;
+    font-size: 16px;
+    margin: 0 0 20px 20px;
+    font-family: "myriad-pro",Arial,Helvetica,sans-serif;
+    font-weight: 300;
+    letter-spacing: normal;
+}
+
+#region-sidebar-first ul.menu li.expanded ul li, #region-sidebar-first ul.menu li.expanded ul li.expanded {
+  background: none;
+}
+#region-sidebar-first ul.menu li.expanded ul.menu li.expanded ul.menu li, #region-sidebar-first ul.menu li.expanded ul.menu li.expanded li.expanded ul.menu li.expanded {
+  background-image: none;
+}

@@ -1,0 +1,215 @@
+
+/***************/
+#region-sidebar-first ul.menu ul {background-image: url(../images/menu-bg-ul.png); background-repeat: repeat; }
+#region-sidebar-first ul.menu li a {padding-left: 20px;}
+#region-sidebar-first ul.menu li { line-height: 1.2;list-style: none; margin: 0; padding-left: 0px; display: block; vertical-align: middle; list-style: url() inside !important;}
+/*#region-sidebar-first ul.menu li:hover,
+#region-sidebar-first h2.menuActive,
+#region-sidebar-first ul.menu li.active-trail.active, 
+#region-sidebar-first ul.menu li.active-trail li.active-trail.active,
+#region-sidebar-first ul.menu li.active-trail li.active-trail li.active-trail.active,
+#region-sidebar-first ul.menu li.active-trail li.active-trail li.active-trail li.active-trail.active,
+#region-sidebar-first ul.menu li.active-trail li.active-trail li.active-trail li.active-trail li.active-trail li.active-trail.active {
+  background-image: url(../images/v-menu-bg-dp.png) !important; background-repeat: repeat; background-position: top left;
+}*/
+
+#region-sidebar-first ul.menu li ul li {padding-left: 0px; border-bottom: 1px solid #CECECE; }
+
+#region-sidebar-first h2.menuActive a {color: #FFF; background-image: url(../images/menu-markeret-expanded.png);background-repeat: no-repeat; background-position: right; display: block; width: 97%; text-transform: none}
+#region-sidebar-first h2.menuActive a,
+#region-sidebar-first ul.menu li ul li a.active { color: #FFF; background-image: url(../images/menu-markeret-expanded.png);background-repeat: no-repeat; background-position: right; text-transform: none}
+
+
+#region-sidebar-first li.expanded, #region-sidebar-first li.collapsed, #region-sidebar-first li.leaf {padding: 0; margin: 0}
+/*#region-sidebar-first ul {background-image: url(../images/menu-bg-ul.png); }*/
+#region-sidebar-first ul.menu li a {padding-left: 20px}
+#region-sidebar-first ul.menu li { line-height: 1.2;list-style: none; background-image: url(../images/v-menu-bg.png); background-position: right center;margin: 0; padding-left: 0px; display: block; vertical-align: middle; background-repeat: no-repeat;}
+#region-sidebar-first ul.menu li.expanded {line-height: 1.2/*50px*/; /*background-image: url(../images/menu-bg-ul-li-expanded.png);*/background-position: 0 -10px; border-bottom: 0;}
+
+/*#region-sidebar-first ul.menu li.active ul {background-color: #E2E2E2; background-image: url(../images/menu-bg-ul-li-ul.png); background-repeat: no-repeat}*/
+#region-sidebar-first ul.menu li ul li {padding-left: 0px; /*background-image: url(../images/menu-bg-ul-li-ul-lii.png);border-bottom: 1px solid #CECECE; */}
+
+
+#region-sidebar-first ul.menu li ul li a.active { color: #FFF; background-image: url(../images/menu-markeret-expanded.png);background-repeat: no-repeat; background-position: right; display: block; line-height: 50px;}
+#region-sidebar-first ul.menu li ul li.expanded  { color: #FFF; background-image: url(../images/menu-markeret-expandedd.png);background-repeat: no-repeat; background-position: right}
+#region-sidebar-first ul.menu li ul li.expanded a {color: #000; }
+#region-sidebar-first ul.menu li a { display: inline; line-height: 20px; color: #333}
+
+/*#region-sidebar-first ul.menu {background-image: url(../images/menu-bg-ul.png); }*/
+#region-sidebar-first ul.menu li a {padding-left: 20px;}
+#region-sidebar-first ul.menu li { line-height: 1.2;list-style: none; background: transparent; margin: 0; padding-left: 0px; display: block; vertical-align: middle; background-repeat: no-repeat; list-style: none /*url()*/ inside !important;}
+/*#region-sidebar-first ul.menu li:hover,*/
+/*#region-sidebar-first ul.menu li.active-trail.active, 
+#region-sidebar-first ul.menu li.active-trail li.active-trail.active,
+#region-sidebar-first ul.menu li.active-trail li.active-trail li.active-trail.active,
+#region-sidebar-first ul.menu li.active-trail li.active-trail li.active-trail li.active-trail.active,
+#region-sidebar-first ul.menu li.active-trail li.active-trail li.active-trail li.active-trail li.active-trail li.active-trail.active {
+  background-image: url(../images/v-menu-bg-dp.png) !important; background-repeat: repeat; background-position: top left;
+}
+*/
+
+#region-sidebar-first ul.menu li.leaf.last { border-bottm: 1px solid #CECECE}
+
+
+#region-sidebar-first ul.menu li ul.menu li {padding-left: 0px; /*background-image: url(../images/menu-bg-ul-li-ul-li.png);*/ background-repeat: no-repeat}
+
+#region-sidebar-first ul.menu li ul.menu li.expanded ul.menu li.expanded { }
+#region-sidebar-first ul.menu li ul.menu li.expanded ul.menu li.expanded ul.menu li { background-color: transparent}
+
+
+#region-sidebar-first ul.menu li ul.menu li ul.menu li ul.menu {}
+#region-sidebar-first ul.menu li ul.menu li ul.menu li.expanded {background-image: url(../images/menu-bg-ul-li-ul-li-ul-li-ul.png); background-repeat: no-repeat}
+#region-sidebar-first ul.menu li ul.menu li ul.menu li.expanded ul.menu li {}
+#region-sidebar-first ul.menu li ul.menu li ul.menu li.expanded ul.menu li.expanded { }
+#region-sidebar-first ul.menu li ul.menu li ul.menu li.expanded ul.menu li.expanded ul.menu li { background-color: transparent}
+
+#region-sidebar-first ul.menu li ul.menu li ul.menu li ul.menu li ul.menu {}
+#region-sidebar-first ul.menu li ul.menu li ul.menu li ul.menu li.expanded ul.menu { background-image: url(../images/menu-bg-ul-li-ul-li-ul-li-ul-li-ul.png); background-repeat: no-repeat}
+
+#region-sidebar-first ul.menu li ul.menu li ul.menu li ul.menu li ul.menu li ul.menu{}
+#region-sidebar-first ul.menu li ul.menu li ul.menu li ul.menu li ul.menu li.expanded ul.menu {background-image: url(../images/menu-bg-ul-li-ul-li-ul-li-ul-li-ul-li-ul.png); background-repeat: no-repeat}
+#region-sidebar-first ul.menu li ul.menu li ul.menu li ul.menu li ul.menu li ul.menu li.expanded {}
+
+#region-sidebar-first ul.menu li ul.menu li ul.menu li ul.menu li ul.menu li ul.menu li ul.menu { }
+#region-sidebar-first ul.menu li ul.menu li ul.menu li ul.menu li ul.menu li ul.menu li.expanded ul.menu {background-image: url(../images/menu-bg-ul-li-ul-li-ul-li-ul-li-ul-li-ul-li-ul.png); background-repeat: no-repeat}
+
+#region-sidebar-first ul.menuActive {
+  border-bottom: solid 1px #8b0053 !important;
+  background-image: url("../images/active-ul.png") !important;
+  /*background-image: url(../images/left-menu-shadow.png) !important; /* DROP SHADOW FOR MENU LEVELS */;
+ /* background-repeat: repeat-x !important;
+  background-position: top left !important;*/
+}
+
+#region-sidebar-first ul.menu li ul li a.active { color: #FFF; background-image: url(../images/menu-markeret-expanded.png);background-repeat: no-repeat; background-position: right}
+
+#region-sidebar-first ul.menu li {
+  border-left-width: 0;
+  background-image: url(../images/menu-bg-ul.png);
+  background-repeat: repeat;
+}
+
+#region-sidebar-first ul.menu li.expanded, #region-sidebar-first ul.menu li.expanded ul  {
+  border-left-width: 0;
+  background-image: url(../images/menu-bg-ul.png);
+  background-repeat: repeat;
+}
+
+#region-sidebar-first ul.menu li.expanded ul li, #region-sidebar-first ul.menu li.expanded ul li.expanded {
+  border-left-width: 0;
+  background-image: url(../images/menu-bg-ul.png);
+  background-repeat: repeat;
+}
+
+#region-sidebar-first ul.menu li.expanded ul.menu li.expanded ul.menu li, #region-sidebar-first ul.menu li.expanded ul.menu li.expanded li.expanded ul.menu li.expanded {
+  border-left-width: 0;
+  background-image: url(../images/menu-bg-ul26.png);
+  background-repeat: repeat;
+}
+
+
+#region-sidebar-first ul.menu li ul li a.active,
+#region-sidebar-first ul.menu li a,
+#region-sidebar-first ul.menu li ul a {
+ display: inline-block; 
+ vertical-align: middle;
+ line-height: 1.2;
+ width: 180px; 
+ padding: 20px 40px 20px 20px;
+ background: url(../images/v-arrow-default.png) no-repeat right 50%;
+ border-bottom: 1px solid #E6E6E6;
+}
+
+#region-sidebar-first ul.menu li ul li li a.active,
+#region-sidebar-first ul.menu li li ul a {
+ padding: 10px 40px 10px 20px;
+}
+
+/*
+
+#region-sidebar-first ul.menu li.expanded,
+#region-sidebar-first ul.menu li.active-trail {
+  background: #d7d7d7;
+}
+
+#region-sidebar-first ul.menu li.expanded li.expanded,
+#region-sidebar-first ul.menu li.active-trail li.active-trail {
+  background: #c7c7c7;
+}
+
+#region-sidebar-first ul.menu li.expanded li.expanded li.expanded,
+#region-sidebar-first ul.menu li.active-trail li.active-trail li.active-trail {
+  background: #b7b7b7;
+}
+
+#region-sidebar-first ul.menu li.expanded li.expanded li.expanded li.expanded,
+#region-sidebar-first ul.menu li.active-trail li.active-trail li.active-trail li.active-trail {
+  background: #989898;
+}*/
+
+#region-sidebar-first ul.menu li.expanded.active {
+  border-bottom: #8b0053 solid 1px;
+}
+
+#region-sidebar-first ul.menu li.active-trail.active a.active,
+#region-sidebar-first ul.menu li a:hover {
+ background-image: url(../images/v-arrow-default-on.png);
+ background-color: #8b0053;
+ color: #fff;
+}
+
+#region-sidebar-first ul.menu li.expanded a.active-trail {
+ background: url(../images/v-arrow-expanded-dark.png) no-repeat right 50%;
+}
+
+#region-sidebar-first ul.menu li.active-trail.active.expanded a.active {
+ background-image: url(../images/v-arrow-expanded-on.png);
+ background-color: #8b0053;
+ color: #fff;
+}
+
+#node_kontaktblok_form_group_aabningstider .field-type-text { width: 40%; float:left }
+
+#region-sidebar-first ul.menu li.active-trail.active.expanded a:hover,
+#region-sidebar-first ul.menu li a:hover {
+ background: url(../images/v-arrow-default-on.png) #8b0053 no-repeat right 50% !important;
+ color: #fff !important;
+ text-decoration: underline;
+}
+
+/* IE7 specific hack, move to ie.css if created -TC bellcom */
+* + html #region-sidebar-first ul.menu li a {
+  position: relative;
+  left: -16px;
+}
+/* END */
+
+
+#block-menu-block-5, #block-menu-block-7 { margin-top: 20px !important}
+#block-menu-block-5 ul, #block-menu-block-7 ul, #block-menu-block-5 li ,#block-menu-block-7 li , #block-menu-block-5 a, #block-menu-block-7 a, #block-menu-block-5 a:hover, #block-menu-block-7 a:hover, #block-menu-block-5 ul.menuActive, #block-menu-block-7 ul.menuActive, #block-menu-block-5 .menu-block-wrapper, #block-menu-block-7 .menu-block-wrapper { background-color: transparent; background-image: none !important; background: none !important; font-size: 11px !important  }
+
+#block-menu-block-5 a, #block-menu-block-7 a { padding: 10px 40px 10px 20px !important;}
+
+#block-menu-block-12 { background-color: #F1F1F1}
+#block-menu-block-12 .content { background-image: url(../images/activ-menu-content-bg.png); background-repeat: no-repeat}
+
+#block-menu-block-12 h2.block-title a.active-trail { background-image: url(../images/menugraapilned.png); background-repeat: no-repeat; background-position: right; display: block; color: #333333}
+
+#block-menu-block-12 h2.menuActive { background-color: #8B0053}
+#block-menu-block-12 h2.menuActive a.active { color: #FFF ; background-image: url(../images/menu-markeret-expanded.png)}
+
+
+
+
+/*
+
+
+
+#region-sidebar-first ul.menu li ul {background-color: #E2E2E2; background-image: url(../images/menu-bg-ul-li-ul.png); background-repeat: no-repeat}
+#region-sidebar-first ul.menu li ul li {padding-left: 0px; /*background-image: url(../images/menu-bg-ul-li-ul-lii.png)*//*;border-bottom: 1px solid #CECECE; background-repeat: no-repeat}
+
+#region-sidebar-first ul.menu li ul li.active-trail { background-image: url(../images/menu-bg-ul-li-ul-li-active-trail.png); color: #FFF}
+#region-sidebar-first ul.menu li ul li a.active { color: #FFF; background-image: url(../images/menu-markeret-expanded.png);background-repeat: no-repeat; background-position: right; display: block; line-height: 50px;}
+#region-sidebar-first ul.menu li ul li.expanded  { color: #FFF; background-image: url(../images/menu-markeret-expandedd.png);background-repeat: no-repeat; background-position: right}
+#region-sidebar-first ul.menu li ul li.expanded a {color: #000; background-repeat: no-repeat; background-position: right}
+#region-sidebar-first ul.menu li a { display: inline; line-height: 20px; color: #333}*/

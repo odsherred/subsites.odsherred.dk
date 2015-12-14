@@ -1,0 +1,27 @@
+/* This file will hold styles that are loaded using the same media query as the normal grid. */
+/* If you are using the default media queries provided by Omega, these styles will also
+ *  apply to the widescreen layout unless they are overridden by the widescreen styles. */
+ 
+/*#page {background-image: url(../images/byvaaben-transp.png); background-position: center top; background-repeat: no-repeat}
+
+#zone-content-wrapper {background-image: url(../images/page-bg-top.png); background-repeat: no-repeat}
+.zone-content-wrapper, #zone-postscript-wrapper {background-image: url(../images/page-bg-bg.png); background-position: center; background-position-x: top; background-position-y: center; background-repeat: repeat-y}
+
+
+#zone-footer-wrapper {background-image: url(..images/page-bg-bund.png)}
+#zone-content { background-image: url(../images/cw-bg-top.png); background-position: center; background-repeat: repeat-y; min-height: 350px;}
+ 
+
+#zone-menu { background-image: url(../images/menu-bg.png)}
+
+*/
+
+.right-links-block {
+
+	color:#333333;
+
+}
+
+
+#feedback-status-message {background-color: #970065;}
+
