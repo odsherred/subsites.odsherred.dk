@@ -1,0 +1,12 @@
+/* Fix overlapping Previous Next buttons on calendar */
+.view .date-nav-wrapper .pager .date-prev {
+  right: 82px;
+}
+
+.node-type-od-event .field-name-body {
+  margin-top: 20px;
+}
+
+.node-type-od-event .pane-node-content h1 {
+  display: none;
+}

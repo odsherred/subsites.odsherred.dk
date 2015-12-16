@@ -10,39 +10,29 @@
  * Perform actions to set up the site for this profile.
  */
 function odsherred_subsite_install() {
-  include_once DRUPAL_ROOT . '/profiles/standard/standard.install';
   odsherred_subsite_standard_install();
 
   theme_enable(array('seven', 'omega', 'cmstheme', 'odsherredweb', 'odsherredsub'));
   theme_disable(array('bartik', 'rubik'));
   variable_set('theme_default', 'odsherredsub');
-  variable_set('file_temporary_path', '/var/www/subsites.odsherred.dk/tmp');
+  variable_set('file_temporary_path', '../tmp');
 
-  //$odsherredsub_settings = variable_get('theme_odsherredsub_settings', array());
-  //$odsherredsub_settings['theme_color'] = 'blue';
-  //variable_set('theme_odsherredsub_settings', $odsherredsub_settings);
-
-  // Disable all default modules.
+  // Disable all default blocks.
   db_update('block')
     ->fields(array(
       'status' => 0,
     ))
     ->execute();
 
-  // Set admin theme to Rubik.
-  variable_set('admin_theme', 'seven');
   // Set admin theme on node/edit and node/add
   module_disable(array('update'));
   // Set default TZ.
-  variable_set('date_default_timezone', "Europe/Berlin");
+  variable_set('date_default_timezone', "Europe/Copenhagen");
   variable_set('date_first_day', "1");
   variable_set('configurable_timezones', "0");
 
   // Set collation for node table, utf8_general_ci thinks that A = Å
   db_query('ALTER TABLE `node` CONVERT TO CHARACTER SET utf8 COLLATE utf8_danish_ci');
-
-  // Run the 'fix-subsites' script
-  require_once(drupal_get_path('profile', 'odsherred_subsite') . '/fix-subsites.php');
 }
 
 function odsherred_subsite_install_tasks($install_state) {
@@ -61,6 +51,12 @@ function odsherred_subsite_setup_after() {
 
   $super_user_rid = 4;
   user_role_grant_permissions($super_user_rid, array('view the administration theme', 'access overlay', 'administer menu'));
+
+  // For some weird reason the 'subsite_grundindstillinger' feature gets overridden on install. Force a feature-revert
+  features_revert_module('subsite_grundindstillinger');
+
+  // Run the 'fix-subsites' script
+  require_once(drupal_get_path('profile', 'odsherred_subsite') . '/fix-subsites.php');
 }
 
 function odsherred_subsite_standard_install() {

@@ -14,6 +14,7 @@ function subsite_permissions_user_default_permissions() {
   $permissions['access administration pages'] = array(
     'name' => 'access administration pages',
     'roles' => array(
+      'administrator' => 'administrator',
       'let bruger' => 'let bruger',
       'super bruger' => 'super bruger',
     ),
@@ -24,6 +25,7 @@ function subsite_permissions_user_default_permissions() {
   $permissions['access all views'] = array(
     'name' => 'access all views',
     'roles' => array(
+      'administrator' => 'administrator',
       'super bruger' => 'super bruger',
     ),
     'module' => 'views',
@@ -33,7 +35,7 @@ function subsite_permissions_user_default_permissions() {
   $permissions['access content'] = array(
     'name' => 'access content',
     'roles' => array(
-      'Administrator' => 'Administrator',
+      'administrator' => 'administrator',
       'anonymous user' => 'anonymous user',
       'authenticated user' => 'authenticated user',
       'let bruger' => 'let bruger',
@@ -45,6 +47,7 @@ function subsite_permissions_user_default_permissions() {
   $permissions['access content overview'] = array(
     'name' => 'access content overview',
     'roles' => array(
+      'administrator' => 'administrator',
       'let bruger' => 'let bruger',
       'super bruger' => 'super bruger',
     ),
@@ -55,6 +58,7 @@ function subsite_permissions_user_default_permissions() {
   $permissions['access site in maintenance mode'] = array(
     'name' => 'access site in maintenance mode',
     'roles' => array(
+      'administrator' => 'administrator',
       'let bruger' => 'let bruger',
       'super bruger' => 'super bruger',
     ),
@@ -65,6 +69,7 @@ function subsite_permissions_user_default_permissions() {
   $permissions['access toolbar'] = array(
     'name' => 'access toolbar',
     'roles' => array(
+      'administrator' => 'administrator',
       'let bruger' => 'let bruger',
       'super bruger' => 'super bruger',
     ),
@@ -75,6 +80,7 @@ function subsite_permissions_user_default_permissions() {
   $permissions['access user profiles'] = array(
     'name' => 'access user profiles',
     'roles' => array(
+      'administrator' => 'administrator',
       'let bruger' => 'let bruger',
       'super bruger' => 'super bruger',
     ),
@@ -85,6 +91,7 @@ function subsite_permissions_user_default_permissions() {
   $permissions['administer blocks'] = array(
     'name' => 'administer blocks',
     'roles' => array(
+      'administrator' => 'administrator',
       'super bruger' => 'super bruger',
     ),
     'module' => 'block',
@@ -94,6 +101,7 @@ function subsite_permissions_user_default_permissions() {
   $permissions['administer nodes'] = array(
     'name' => 'administer nodes',
     'roles' => array(
+      'administrator' => 'administrator',
       'super bruger' => 'super bruger',
     ),
     'module' => 'node',
@@ -103,6 +111,7 @@ function subsite_permissions_user_default_permissions() {
   $permissions['administer taxonomy'] = array(
     'name' => 'administer taxonomy',
     'roles' => array(
+      'administrator' => 'administrator',
       'super bruger' => 'super bruger',
     ),
     'module' => 'taxonomy',
@@ -112,6 +121,7 @@ function subsite_permissions_user_default_permissions() {
   $permissions['administer users'] = array(
     'name' => 'administer users',
     'roles' => array(
+      'administrator' => 'administrator',
       'super bruger' => 'super bruger',
     ),
     'module' => 'user',
@@ -121,6 +131,7 @@ function subsite_permissions_user_default_permissions() {
   $permissions['bypass file access'] = array(
     'name' => 'bypass file access',
     'roles' => array(
+      'administrator' => 'administrator',
       'super bruger' => 'super bruger',
     ),
     'module' => 'file_entity',
@@ -130,16 +141,7 @@ function subsite_permissions_user_default_permissions() {
   $permissions['bypass node access'] = array(
     'name' => 'bypass node access',
     'roles' => array(
-      'super bruger' => 'super bruger',
-    ),
-    'module' => 'node',
-  );
-
-  // Exported permission: 'create article content'.
-  $permissions['create article content'] = array(
-    'name' => 'create article content',
-    'roles' => array(
-      'Administrator' => 'Administrator',
+      'administrator' => 'administrator',
       'super bruger' => 'super bruger',
     ),
     'module' => 'node',
@@ -149,8 +151,7 @@ function subsite_permissions_user_default_permissions() {
   $permissions['create banner content'] = array(
     'name' => 'create banner content',
     'roles' => array(
-      'let bruger' => 'let bruger',
-      'super bruger' => 'super bruger',
+      'administrator' => 'administrator',
     ),
     'module' => 'node',
   );
@@ -159,7 +160,7 @@ function subsite_permissions_user_default_permissions() {
   $permissions['create kontaktinfo content'] = array(
     'name' => 'create kontaktinfo content',
     'roles' => array(
-      'Administrator' => 'Administrator',
+      'administrator' => 'administrator',
       'let bruger' => 'let bruger',
       'super bruger' => 'super bruger',
     ),
@@ -170,8 +171,7 @@ function subsite_permissions_user_default_permissions() {
   $permissions['create page content'] = array(
     'name' => 'create page content',
     'roles' => array(
-      'let bruger' => 'let bruger',
-      'super bruger' => 'super bruger',
+      'administrator' => 'administrator',
     ),
     'module' => 'node',
   );
@@ -180,6 +180,7 @@ function subsite_permissions_user_default_permissions() {
   $permissions['create selv content'] = array(
     'name' => 'create selv content',
     'roles' => array(
+      'administrator' => 'administrator',
       'let bruger' => 'let bruger',
       'super bruger' => 'super bruger',
     ),
@@ -190,7 +191,7 @@ function subsite_permissions_user_default_permissions() {
   $permissions['create spotboks content'] = array(
     'name' => 'create spotboks content',
     'roles' => array(
-      'Administrator' => 'Administrator',
+      'administrator' => 'administrator',
       'let bruger' => 'let bruger',
       'super bruger' => 'super bruger',
     ),
@@ -201,8 +202,7 @@ function subsite_permissions_user_default_permissions() {
   $permissions['create subsite_nyhed content'] = array(
     'name' => 'create subsite_nyhed content',
     'roles' => array(
-      'let bruger' => 'let bruger',
-      'super bruger' => 'super bruger',
+      'administrator' => 'administrator',
     ),
     'module' => 'node',
   );
@@ -211,18 +211,7 @@ function subsite_permissions_user_default_permissions() {
   $permissions['create velkomst content'] = array(
     'name' => 'create velkomst content',
     'roles' => array(
-      'let bruger' => 'let bruger',
-      'super bruger' => 'super bruger',
-    ),
-    'module' => 'node',
-  );
-
-  // Exported permission: 'delete any article content'.
-  $permissions['delete any article content'] = array(
-    'name' => 'delete any article content',
-    'roles' => array(
-      'Administrator' => 'Administrator',
-      'super bruger' => 'super bruger',
+      'administrator' => 'administrator',
     ),
     'module' => 'node',
   );
@@ -231,7 +220,7 @@ function subsite_permissions_user_default_permissions() {
   $permissions['delete any banner content'] = array(
     'name' => 'delete any banner content',
     'roles' => array(
-      'super bruger' => 'super bruger',
+      'administrator' => 'administrator',
     ),
     'module' => 'node',
   );
@@ -240,6 +229,7 @@ function subsite_permissions_user_default_permissions() {
   $permissions['delete any files'] = array(
     'name' => 'delete any files',
     'roles' => array(
+      'administrator' => 'administrator',
       'super bruger' => 'super bruger',
     ),
     'module' => 'file_entity',
@@ -249,7 +239,7 @@ function subsite_permissions_user_default_permissions() {
   $permissions['delete any kontaktinfo content'] = array(
     'name' => 'delete any kontaktinfo content',
     'roles' => array(
-      'Administrator' => 'Administrator',
+      'administrator' => 'administrator',
       'super bruger' => 'super bruger',
     ),
     'module' => 'node',
@@ -259,7 +249,7 @@ function subsite_permissions_user_default_permissions() {
   $permissions['delete any page content'] = array(
     'name' => 'delete any page content',
     'roles' => array(
-      'super bruger' => 'super bruger',
+      'administrator' => 'administrator',
     ),
     'module' => 'node',
   );
@@ -268,6 +258,7 @@ function subsite_permissions_user_default_permissions() {
   $permissions['delete any selv content'] = array(
     'name' => 'delete any selv content',
     'roles' => array(
+      'administrator' => 'administrator',
       'super bruger' => 'super bruger',
     ),
     'module' => 'node',
@@ -277,7 +268,7 @@ function subsite_permissions_user_default_permissions() {
   $permissions['delete any spotboks content'] = array(
     'name' => 'delete any spotboks content',
     'roles' => array(
-      'Administrator' => 'Administrator',
+      'administrator' => 'administrator',
       'super bruger' => 'super bruger',
     ),
     'module' => 'node',
@@ -287,7 +278,7 @@ function subsite_permissions_user_default_permissions() {
   $permissions['delete any subsite_nyhed content'] = array(
     'name' => 'delete any subsite_nyhed content',
     'roles' => array(
-      'super bruger' => 'super bruger',
+      'administrator' => 'administrator',
     ),
     'module' => 'node',
   );
@@ -296,17 +287,7 @@ function subsite_permissions_user_default_permissions() {
   $permissions['delete any velkomst content'] = array(
     'name' => 'delete any velkomst content',
     'roles' => array(
-      'super bruger' => 'super bruger',
-    ),
-    'module' => 'node',
-  );
-
-  // Exported permission: 'delete own article content'.
-  $permissions['delete own article content'] = array(
-    'name' => 'delete own article content',
-    'roles' => array(
-      'Administrator' => 'Administrator',
-      'super bruger' => 'super bruger',
+      'administrator' => 'administrator',
     ),
     'module' => 'node',
   );
@@ -315,8 +296,7 @@ function subsite_permissions_user_default_permissions() {
   $permissions['delete own banner content'] = array(
     'name' => 'delete own banner content',
     'roles' => array(
-      'let bruger' => 'let bruger',
-      'super bruger' => 'super bruger',
+      'administrator' => 'administrator',
     ),
     'module' => 'node',
   );
@@ -325,6 +305,7 @@ function subsite_permissions_user_default_permissions() {
   $permissions['delete own files'] = array(
     'name' => 'delete own files',
     'roles' => array(
+      'administrator' => 'administrator',
       'let bruger' => 'let bruger',
     ),
     'module' => 'file_entity',
@@ -334,7 +315,7 @@ function subsite_permissions_user_default_permissions() {
   $permissions['delete own kontaktinfo content'] = array(
     'name' => 'delete own kontaktinfo content',
     'roles' => array(
-      'Administrator' => 'Administrator',
+      'administrator' => 'administrator',
       'let bruger' => 'let bruger',
       'super bruger' => 'super bruger',
     ),
@@ -345,8 +326,7 @@ function subsite_permissions_user_default_permissions() {
   $permissions['delete own page content'] = array(
     'name' => 'delete own page content',
     'roles' => array(
-      'let bruger' => 'let bruger',
-      'super bruger' => 'super bruger',
+      'administrator' => 'administrator',
     ),
     'module' => 'node',
   );
@@ -355,6 +335,7 @@ function subsite_permissions_user_default_permissions() {
   $permissions['delete own selv content'] = array(
     'name' => 'delete own selv content',
     'roles' => array(
+      'administrator' => 'administrator',
       'let bruger' => 'let bruger',
       'super bruger' => 'super bruger',
     ),
@@ -365,7 +346,7 @@ function subsite_permissions_user_default_permissions() {
   $permissions['delete own spotboks content'] = array(
     'name' => 'delete own spotboks content',
     'roles' => array(
-      'Administrator' => 'Administrator',
+      'administrator' => 'administrator',
       'let bruger' => 'let bruger',
       'super bruger' => 'super bruger',
     ),
@@ -376,8 +357,7 @@ function subsite_permissions_user_default_permissions() {
   $permissions['delete own subsite_nyhed content'] = array(
     'name' => 'delete own subsite_nyhed content',
     'roles' => array(
-      'let bruger' => 'let bruger',
-      'super bruger' => 'super bruger',
+      'administrator' => 'administrator',
     ),
     'module' => 'node',
   );
@@ -386,18 +366,7 @@ function subsite_permissions_user_default_permissions() {
   $permissions['delete own velkomst content'] = array(
     'name' => 'delete own velkomst content',
     'roles' => array(
-      'let bruger' => 'let bruger',
-      'super bruger' => 'super bruger',
-    ),
-    'module' => 'node',
-  );
-
-  // Exported permission: 'edit any article content'.
-  $permissions['edit any article content'] = array(
-    'name' => 'edit any article content',
-    'roles' => array(
-      'Administrator' => 'Administrator',
-      'super bruger' => 'super bruger',
+      'administrator' => 'administrator',
     ),
     'module' => 'node',
   );
@@ -406,7 +375,7 @@ function subsite_permissions_user_default_permissions() {
   $permissions['edit any banner content'] = array(
     'name' => 'edit any banner content',
     'roles' => array(
-      'super bruger' => 'super bruger',
+      'administrator' => 'administrator',
     ),
     'module' => 'node',
   );
@@ -415,6 +384,7 @@ function subsite_permissions_user_default_permissions() {
   $permissions['edit any files'] = array(
     'name' => 'edit any files',
     'roles' => array(
+      'administrator' => 'administrator',
       'super bruger' => 'super bruger',
     ),
     'module' => 'file_entity',
@@ -424,7 +394,7 @@ function subsite_permissions_user_default_permissions() {
   $permissions['edit any kontaktinfo content'] = array(
     'name' => 'edit any kontaktinfo content',
     'roles' => array(
-      'Administrator' => 'Administrator',
+      'administrator' => 'administrator',
       'super bruger' => 'super bruger',
     ),
     'module' => 'node',
@@ -434,7 +404,7 @@ function subsite_permissions_user_default_permissions() {
   $permissions['edit any page content'] = array(
     'name' => 'edit any page content',
     'roles' => array(
-      'super bruger' => 'super bruger',
+      'administrator' => 'administrator',
     ),
     'module' => 'node',
   );
@@ -443,6 +413,7 @@ function subsite_permissions_user_default_permissions() {
   $permissions['edit any selv content'] = array(
     'name' => 'edit any selv content',
     'roles' => array(
+      'administrator' => 'administrator',
       'super bruger' => 'super bruger',
     ),
     'module' => 'node',
@@ -452,7 +423,7 @@ function subsite_permissions_user_default_permissions() {
   $permissions['edit any spotboks content'] = array(
     'name' => 'edit any spotboks content',
     'roles' => array(
-      'Administrator' => 'Administrator',
+      'administrator' => 'administrator',
       'super bruger' => 'super bruger',
     ),
     'module' => 'node',
@@ -462,7 +433,7 @@ function subsite_permissions_user_default_permissions() {
   $permissions['edit any subsite_nyhed content'] = array(
     'name' => 'edit any subsite_nyhed content',
     'roles' => array(
-      'super bruger' => 'super bruger',
+      'administrator' => 'administrator',
     ),
     'module' => 'node',
   );
@@ -471,17 +442,7 @@ function subsite_permissions_user_default_permissions() {
   $permissions['edit any velkomst content'] = array(
     'name' => 'edit any velkomst content',
     'roles' => array(
-      'super bruger' => 'super bruger',
-    ),
-    'module' => 'node',
-  );
-
-  // Exported permission: 'edit own article content'.
-  $permissions['edit own article content'] = array(
-    'name' => 'edit own article content',
-    'roles' => array(
-      'Administrator' => 'Administrator',
-      'super bruger' => 'super bruger',
+      'administrator' => 'administrator',
     ),
     'module' => 'node',
   );
@@ -490,8 +451,7 @@ function subsite_permissions_user_default_permissions() {
   $permissions['edit own banner content'] = array(
     'name' => 'edit own banner content',
     'roles' => array(
-      'let bruger' => 'let bruger',
-      'super bruger' => 'super bruger',
+      'administrator' => 'administrator',
     ),
     'module' => 'node',
   );
@@ -500,6 +460,7 @@ function subsite_permissions_user_default_permissions() {
   $permissions['edit own files'] = array(
     'name' => 'edit own files',
     'roles' => array(
+      'administrator' => 'administrator',
       'authenticated user' => 'authenticated user',
     ),
     'module' => 'file_entity',
@@ -509,7 +470,7 @@ function subsite_permissions_user_default_permissions() {
   $permissions['edit own kontaktinfo content'] = array(
     'name' => 'edit own kontaktinfo content',
     'roles' => array(
-      'Administrator' => 'Administrator',
+      'administrator' => 'administrator',
       'let bruger' => 'let bruger',
       'super bruger' => 'super bruger',
     ),
@@ -520,8 +481,7 @@ function subsite_permissions_user_default_permissions() {
   $permissions['edit own page content'] = array(
     'name' => 'edit own page content',
     'roles' => array(
-      'let bruger' => 'let bruger',
-      'super bruger' => 'super bruger',
+      'administrator' => 'administrator',
     ),
     'module' => 'node',
   );
@@ -530,6 +490,7 @@ function subsite_permissions_user_default_permissions() {
   $permissions['edit own selv content'] = array(
     'name' => 'edit own selv content',
     'roles' => array(
+      'administrator' => 'administrator',
       'let bruger' => 'let bruger',
       'super bruger' => 'super bruger',
     ),
@@ -540,7 +501,7 @@ function subsite_permissions_user_default_permissions() {
   $permissions['edit own spotboks content'] = array(
     'name' => 'edit own spotboks content',
     'roles' => array(
-      'Administrator' => 'Administrator',
+      'administrator' => 'administrator',
       'let bruger' => 'let bruger',
       'super bruger' => 'super bruger',
     ),
@@ -551,8 +512,7 @@ function subsite_permissions_user_default_permissions() {
   $permissions['edit own subsite_nyhed content'] = array(
     'name' => 'edit own subsite_nyhed content',
     'roles' => array(
-      'let bruger' => 'let bruger',
-      'super bruger' => 'super bruger',
+      'administrator' => 'administrator',
     ),
     'module' => 'node',
   );
@@ -561,8 +521,7 @@ function subsite_permissions_user_default_permissions() {
   $permissions['edit own velkomst content'] = array(
     'name' => 'edit own velkomst content',
     'roles' => array(
-      'let bruger' => 'let bruger',
-      'super bruger' => 'super bruger',
+      'administrator' => 'administrator',
     ),
     'module' => 'node',
   );
@@ -571,28 +530,18 @@ function subsite_permissions_user_default_permissions() {
   $permissions['import media'] = array(
     'name' => 'import media',
     'roles' => array(
+      'administrator' => 'administrator',
       'let bruger' => 'let bruger',
       'super bruger' => 'super bruger',
     ),
     'module' => 'media',
   );
 
-  // Exported permission: 'publish any article content'.
-  $permissions['publish any article content'] = array(
-    'name' => 'publish any article content',
-    'roles' => array(
-      'Administrator' => 'Administrator',
-      'super bruger' => 'super bruger',
-    ),
-    'module' => 'publishcontent',
-  );
-
   // Exported permission: 'publish any banner content'.
   $permissions['publish any banner content'] = array(
     'name' => 'publish any banner content',
     'roles' => array(
-      'Administrator' => 'Administrator',
-      'super bruger' => 'super bruger',
+      'administrator' => 'administrator',
     ),
     'module' => 'publishcontent',
   );
@@ -601,7 +550,7 @@ function subsite_permissions_user_default_permissions() {
   $permissions['publish any content'] = array(
     'name' => 'publish any content',
     'roles' => array(
-      'Administrator' => 'Administrator',
+      'administrator' => 'administrator',
       'super bruger' => 'super bruger',
     ),
     'module' => 'publishcontent',
@@ -611,7 +560,7 @@ function subsite_permissions_user_default_permissions() {
   $permissions['publish any kontaktinfo content'] = array(
     'name' => 'publish any kontaktinfo content',
     'roles' => array(
-      'Administrator' => 'Administrator',
+      'administrator' => 'administrator',
       'super bruger' => 'super bruger',
     ),
     'module' => 'publishcontent',
@@ -621,8 +570,7 @@ function subsite_permissions_user_default_permissions() {
   $permissions['publish any page content'] = array(
     'name' => 'publish any page content',
     'roles' => array(
-      'Administrator' => 'Administrator',
-      'super bruger' => 'super bruger',
+      'administrator' => 'administrator',
     ),
     'module' => 'publishcontent',
   );
@@ -631,6 +579,7 @@ function subsite_permissions_user_default_permissions() {
   $permissions['publish any selv content'] = array(
     'name' => 'publish any selv content',
     'roles' => array(
+      'administrator' => 'administrator',
       'super bruger' => 'super bruger',
     ),
     'module' => 'publishcontent',
@@ -640,7 +589,7 @@ function subsite_permissions_user_default_permissions() {
   $permissions['publish any spotboks content'] = array(
     'name' => 'publish any spotboks content',
     'roles' => array(
-      'Administrator' => 'Administrator',
+      'administrator' => 'administrator',
       'super bruger' => 'super bruger',
     ),
     'module' => 'publishcontent',
@@ -650,8 +599,7 @@ function subsite_permissions_user_default_permissions() {
   $permissions['publish any subsite_nyhed content'] = array(
     'name' => 'publish any subsite_nyhed content',
     'roles' => array(
-      'Administrator' => 'Administrator',
-      'super bruger' => 'super bruger',
+      'administrator' => 'administrator',
     ),
     'module' => 'publishcontent',
   );
@@ -660,18 +608,7 @@ function subsite_permissions_user_default_permissions() {
   $permissions['publish any velkomst content'] = array(
     'name' => 'publish any velkomst content',
     'roles' => array(
-      'Administrator' => 'Administrator',
-      'super bruger' => 'super bruger',
-    ),
-    'module' => 'publishcontent',
-  );
-
-  // Exported permission: 'publish editable article content'.
-  $permissions['publish editable article content'] = array(
-    'name' => 'publish editable article content',
-    'roles' => array(
-      'Administrator' => 'Administrator',
-      'super bruger' => 'super bruger',
+      'administrator' => 'administrator',
     ),
     'module' => 'publishcontent',
   );
@@ -680,8 +617,7 @@ function subsite_permissions_user_default_permissions() {
   $permissions['publish editable banner content'] = array(
     'name' => 'publish editable banner content',
     'roles' => array(
-      'Administrator' => 'Administrator',
-      'super bruger' => 'super bruger',
+      'administrator' => 'administrator',
     ),
     'module' => 'publishcontent',
   );
@@ -690,7 +626,7 @@ function subsite_permissions_user_default_permissions() {
   $permissions['publish editable content'] = array(
     'name' => 'publish editable content',
     'roles' => array(
-      'Administrator' => 'Administrator',
+      'administrator' => 'administrator',
       'super bruger' => 'super bruger',
     ),
     'module' => 'publishcontent',
@@ -700,7 +636,7 @@ function subsite_permissions_user_default_permissions() {
   $permissions['publish editable kontaktinfo content'] = array(
     'name' => 'publish editable kontaktinfo content',
     'roles' => array(
-      'Administrator' => 'Administrator',
+      'administrator' => 'administrator',
       'super bruger' => 'super bruger',
     ),
     'module' => 'publishcontent',
@@ -710,8 +646,7 @@ function subsite_permissions_user_default_permissions() {
   $permissions['publish editable page content'] = array(
     'name' => 'publish editable page content',
     'roles' => array(
-      'Administrator' => 'Administrator',
-      'super bruger' => 'super bruger',
+      'administrator' => 'administrator',
     ),
     'module' => 'publishcontent',
   );
@@ -720,6 +655,7 @@ function subsite_permissions_user_default_permissions() {
   $permissions['publish editable selv content'] = array(
     'name' => 'publish editable selv content',
     'roles' => array(
+      'administrator' => 'administrator',
       'super bruger' => 'super bruger',
     ),
     'module' => 'publishcontent',
@@ -729,7 +665,7 @@ function subsite_permissions_user_default_permissions() {
   $permissions['publish editable spotboks content'] = array(
     'name' => 'publish editable spotboks content',
     'roles' => array(
-      'Administrator' => 'Administrator',
+      'administrator' => 'administrator',
       'super bruger' => 'super bruger',
     ),
     'module' => 'publishcontent',
@@ -739,8 +675,7 @@ function subsite_permissions_user_default_permissions() {
   $permissions['publish editable subsite_nyhed content'] = array(
     'name' => 'publish editable subsite_nyhed content',
     'roles' => array(
-      'Administrator' => 'Administrator',
-      'super bruger' => 'super bruger',
+      'administrator' => 'administrator',
     ),
     'module' => 'publishcontent',
   );
@@ -749,18 +684,7 @@ function subsite_permissions_user_default_permissions() {
   $permissions['publish editable velkomst content'] = array(
     'name' => 'publish editable velkomst content',
     'roles' => array(
-      'Administrator' => 'Administrator',
-      'super bruger' => 'super bruger',
-    ),
-    'module' => 'publishcontent',
-  );
-
-  // Exported permission: 'publish own article content'.
-  $permissions['publish own article content'] = array(
-    'name' => 'publish own article content',
-    'roles' => array(
-      'Administrator' => 'Administrator',
-      'super bruger' => 'super bruger',
+      'administrator' => 'administrator',
     ),
     'module' => 'publishcontent',
   );
@@ -769,9 +693,7 @@ function subsite_permissions_user_default_permissions() {
   $permissions['publish own banner content'] = array(
     'name' => 'publish own banner content',
     'roles' => array(
-      'Administrator' => 'Administrator',
-      'let bruger' => 'let bruger',
-      'super bruger' => 'super bruger',
+      'administrator' => 'administrator',
     ),
     'module' => 'publishcontent',
   );
@@ -780,7 +702,7 @@ function subsite_permissions_user_default_permissions() {
   $permissions['publish own kontaktinfo content'] = array(
     'name' => 'publish own kontaktinfo content',
     'roles' => array(
-      'Administrator' => 'Administrator',
+      'administrator' => 'administrator',
       'let bruger' => 'let bruger',
       'super bruger' => 'super bruger',
     ),
@@ -791,9 +713,7 @@ function subsite_permissions_user_default_permissions() {
   $permissions['publish own page content'] = array(
     'name' => 'publish own page content',
     'roles' => array(
-      'Administrator' => 'Administrator',
-      'let bruger' => 'let bruger',
-      'super bruger' => 'super bruger',
+      'administrator' => 'administrator',
     ),
     'module' => 'publishcontent',
   );
@@ -802,6 +722,7 @@ function subsite_permissions_user_default_permissions() {
   $permissions['publish own selv content'] = array(
     'name' => 'publish own selv content',
     'roles' => array(
+      'administrator' => 'administrator',
       'let bruger' => 'let bruger',
       'super bruger' => 'super bruger',
     ),
@@ -812,7 +733,7 @@ function subsite_permissions_user_default_permissions() {
   $permissions['publish own spotboks content'] = array(
     'name' => 'publish own spotboks content',
     'roles' => array(
-      'Administrator' => 'Administrator',
+      'administrator' => 'administrator',
       'let bruger' => 'let bruger',
       'super bruger' => 'super bruger',
     ),
@@ -823,9 +744,7 @@ function subsite_permissions_user_default_permissions() {
   $permissions['publish own subsite_nyhed content'] = array(
     'name' => 'publish own subsite_nyhed content',
     'roles' => array(
-      'Administrator' => 'Administrator',
-      'let bruger' => 'let bruger',
-      'super bruger' => 'super bruger',
+      'administrator' => 'administrator',
     ),
     'module' => 'publishcontent',
   );
@@ -834,9 +753,7 @@ function subsite_permissions_user_default_permissions() {
   $permissions['publish own velkomst content'] = array(
     'name' => 'publish own velkomst content',
     'roles' => array(
-      'Administrator' => 'Administrator',
-      'let bruger' => 'let bruger',
-      'super bruger' => 'super bruger',
+      'administrator' => 'administrator',
     ),
     'module' => 'publishcontent',
   );
@@ -845,28 +762,18 @@ function subsite_permissions_user_default_permissions() {
   $permissions['search content'] = array(
     'name' => 'search content',
     'roles' => array(
+      'administrator' => 'administrator',
       'anonymous user' => 'anonymous user',
       'authenticated user' => 'authenticated user',
     ),
     'module' => 'search',
   );
 
-  // Exported permission: 'unpublish any article content'.
-  $permissions['unpublish any article content'] = array(
-    'name' => 'unpublish any article content',
-    'roles' => array(
-      'Administrator' => 'Administrator',
-      'super bruger' => 'super bruger',
-    ),
-    'module' => 'publishcontent',
-  );
-
   // Exported permission: 'unpublish any banner content'.
   $permissions['unpublish any banner content'] = array(
     'name' => 'unpublish any banner content',
     'roles' => array(
-      'Administrator' => 'Administrator',
-      'super bruger' => 'super bruger',
+      'administrator' => 'administrator',
     ),
     'module' => 'publishcontent',
   );
@@ -875,7 +782,7 @@ function subsite_permissions_user_default_permissions() {
   $permissions['unpublish any content'] = array(
     'name' => 'unpublish any content',
     'roles' => array(
-      'Administrator' => 'Administrator',
+      'administrator' => 'administrator',
       'super bruger' => 'super bruger',
     ),
     'module' => 'publishcontent',
@@ -885,7 +792,7 @@ function subsite_permissions_user_default_permissions() {
   $permissions['unpublish any kontaktinfo content'] = array(
     'name' => 'unpublish any kontaktinfo content',
     'roles' => array(
-      'Administrator' => 'Administrator',
+      'administrator' => 'administrator',
       'super bruger' => 'super bruger',
     ),
     'module' => 'publishcontent',
@@ -895,8 +802,7 @@ function subsite_permissions_user_default_permissions() {
   $permissions['unpublish any page content'] = array(
     'name' => 'unpublish any page content',
     'roles' => array(
-      'Administrator' => 'Administrator',
-      'super bruger' => 'super bruger',
+      'administrator' => 'administrator',
     ),
     'module' => 'publishcontent',
   );
@@ -905,6 +811,7 @@ function subsite_permissions_user_default_permissions() {
   $permissions['unpublish any selv content'] = array(
     'name' => 'unpublish any selv content',
     'roles' => array(
+      'administrator' => 'administrator',
       'super bruger' => 'super bruger',
     ),
     'module' => 'publishcontent',
@@ -914,7 +821,7 @@ function subsite_permissions_user_default_permissions() {
   $permissions['unpublish any spotboks content'] = array(
     'name' => 'unpublish any spotboks content',
     'roles' => array(
-      'Administrator' => 'Administrator',
+      'administrator' => 'administrator',
       'super bruger' => 'super bruger',
     ),
     'module' => 'publishcontent',
@@ -924,8 +831,7 @@ function subsite_permissions_user_default_permissions() {
   $permissions['unpublish any subsite_nyhed content'] = array(
     'name' => 'unpublish any subsite_nyhed content',
     'roles' => array(
-      'Administrator' => 'Administrator',
-      'super bruger' => 'super bruger',
+      'administrator' => 'administrator',
     ),
     'module' => 'publishcontent',
   );
@@ -934,18 +840,7 @@ function subsite_permissions_user_default_permissions() {
   $permissions['unpublish any velkomst content'] = array(
     'name' => 'unpublish any velkomst content',
     'roles' => array(
-      'Administrator' => 'Administrator',
-      'super bruger' => 'super bruger',
-    ),
-    'module' => 'publishcontent',
-  );
-
-  // Exported permission: 'unpublish editable article content'.
-  $permissions['unpublish editable article content'] = array(
-    'name' => 'unpublish editable article content',
-    'roles' => array(
-      'Administrator' => 'Administrator',
-      'super bruger' => 'super bruger',
+      'administrator' => 'administrator',
     ),
     'module' => 'publishcontent',
   );
@@ -954,8 +849,7 @@ function subsite_permissions_user_default_permissions() {
   $permissions['unpublish editable banner content'] = array(
     'name' => 'unpublish editable banner content',
     'roles' => array(
-      'Administrator' => 'Administrator',
-      'super bruger' => 'super bruger',
+      'administrator' => 'administrator',
     ),
     'module' => 'publishcontent',
   );
@@ -964,7 +858,7 @@ function subsite_permissions_user_default_permissions() {
   $permissions['unpublish editable content'] = array(
     'name' => 'unpublish editable content',
     'roles' => array(
-      'Administrator' => 'Administrator',
+      'administrator' => 'administrator',
       'super bruger' => 'super bruger',
     ),
     'module' => 'publishcontent',
@@ -974,7 +868,7 @@ function subsite_permissions_user_default_permissions() {
   $permissions['unpublish editable kontaktinfo content'] = array(
     'name' => 'unpublish editable kontaktinfo content',
     'roles' => array(
-      'Administrator' => 'Administrator',
+      'administrator' => 'administrator',
       'super bruger' => 'super bruger',
     ),
     'module' => 'publishcontent',
@@ -984,8 +878,7 @@ function subsite_permissions_user_default_permissions() {
   $permissions['unpublish editable page content'] = array(
     'name' => 'unpublish editable page content',
     'roles' => array(
-      'Administrator' => 'Administrator',
-      'super bruger' => 'super bruger',
+      'administrator' => 'administrator',
     ),
     'module' => 'publishcontent',
   );
@@ -994,6 +887,7 @@ function subsite_permissions_user_default_permissions() {
   $permissions['unpublish editable selv content'] = array(
     'name' => 'unpublish editable selv content',
     'roles' => array(
+      'administrator' => 'administrator',
       'super bruger' => 'super bruger',
     ),
     'module' => 'publishcontent',
@@ -1003,7 +897,7 @@ function subsite_permissions_user_default_permissions() {
   $permissions['unpublish editable spotboks content'] = array(
     'name' => 'unpublish editable spotboks content',
     'roles' => array(
-      'Administrator' => 'Administrator',
+      'administrator' => 'administrator',
       'super bruger' => 'super bruger',
     ),
     'module' => 'publishcontent',
@@ -1013,8 +907,7 @@ function subsite_permissions_user_default_permissions() {
   $permissions['unpublish editable subsite_nyhed content'] = array(
     'name' => 'unpublish editable subsite_nyhed content',
     'roles' => array(
-      'Administrator' => 'Administrator',
-      'super bruger' => 'super bruger',
+      'administrator' => 'administrator',
     ),
     'module' => 'publishcontent',
   );
@@ -1023,18 +916,7 @@ function subsite_permissions_user_default_permissions() {
   $permissions['unpublish editable velkomst content'] = array(
     'name' => 'unpublish editable velkomst content',
     'roles' => array(
-      'Administrator' => 'Administrator',
-      'super bruger' => 'super bruger',
-    ),
-    'module' => 'publishcontent',
-  );
-
-  // Exported permission: 'unpublish own article content'.
-  $permissions['unpublish own article content'] = array(
-    'name' => 'unpublish own article content',
-    'roles' => array(
-      'Administrator' => 'Administrator',
-      'super bruger' => 'super bruger',
+      'administrator' => 'administrator',
     ),
     'module' => 'publishcontent',
   );
@@ -1043,9 +925,7 @@ function subsite_permissions_user_default_permissions() {
   $permissions['unpublish own banner content'] = array(
     'name' => 'unpublish own banner content',
     'roles' => array(
-      'Administrator' => 'Administrator',
-      'let bruger' => 'let bruger',
-      'super bruger' => 'super bruger',
+      'administrator' => 'administrator',
     ),
     'module' => 'publishcontent',
   );
@@ -1054,7 +934,7 @@ function subsite_permissions_user_default_permissions() {
   $permissions['unpublish own kontaktinfo content'] = array(
     'name' => 'unpublish own kontaktinfo content',
     'roles' => array(
-      'Administrator' => 'Administrator',
+      'administrator' => 'administrator',
       'let bruger' => 'let bruger',
       'super bruger' => 'super bruger',
     ),
@@ -1065,9 +945,7 @@ function subsite_permissions_user_default_permissions() {
   $permissions['unpublish own page content'] = array(
     'name' => 'unpublish own page content',
     'roles' => array(
-      'Administrator' => 'Administrator',
-      'let bruger' => 'let bruger',
-      'super bruger' => 'super bruger',
+      'administrator' => 'administrator',
     ),
     'module' => 'publishcontent',
   );
@@ -1076,6 +954,7 @@ function subsite_permissions_user_default_permissions() {
   $permissions['unpublish own selv content'] = array(
     'name' => 'unpublish own selv content',
     'roles' => array(
+      'administrator' => 'administrator',
       'let bruger' => 'let bruger',
       'super bruger' => 'super bruger',
     ),
@@ -1086,7 +965,7 @@ function subsite_permissions_user_default_permissions() {
   $permissions['unpublish own spotboks content'] = array(
     'name' => 'unpublish own spotboks content',
     'roles' => array(
-      'Administrator' => 'Administrator',
+      'administrator' => 'administrator',
       'let bruger' => 'let bruger',
       'super bruger' => 'super bruger',
     ),
@@ -1097,9 +976,7 @@ function subsite_permissions_user_default_permissions() {
   $permissions['unpublish own subsite_nyhed content'] = array(
     'name' => 'unpublish own subsite_nyhed content',
     'roles' => array(
-      'Administrator' => 'Administrator',
-      'let bruger' => 'let bruger',
-      'super bruger' => 'super bruger',
+      'administrator' => 'administrator',
     ),
     'module' => 'publishcontent',
   );
@@ -1108,9 +985,7 @@ function subsite_permissions_user_default_permissions() {
   $permissions['unpublish own velkomst content'] = array(
     'name' => 'unpublish own velkomst content',
     'roles' => array(
-      'Administrator' => 'Administrator',
-      'let bruger' => 'let bruger',
-      'super bruger' => 'super bruger',
+      'administrator' => 'administrator',
     ),
     'module' => 'publishcontent',
   );
@@ -1119,6 +994,7 @@ function subsite_permissions_user_default_permissions() {
   $permissions['use advanced search'] = array(
     'name' => 'use advanced search',
     'roles' => array(
+      'administrator' => 'administrator',
       'let bruger' => 'let bruger',
       'super bruger' => 'super bruger',
     ),
@@ -1129,7 +1005,7 @@ function subsite_permissions_user_default_permissions() {
   $permissions['view own files'] = array(
     'name' => 'view own files',
     'roles' => array(
-      'Administrator' => 'Administrator',
+      'administrator' => 'administrator',
     ),
     'module' => 'file_entity',
   );
@@ -1138,6 +1014,7 @@ function subsite_permissions_user_default_permissions() {
   $permissions['view own unpublished content'] = array(
     'name' => 'view own unpublished content',
     'roles' => array(
+      'administrator' => 'administrator',
       'let bruger' => 'let bruger',
       'super bruger' => 'super bruger',
     ),

@@ -72,7 +72,7 @@ function subsite_grundindstillinger_wysiwyg_default_profiles() {
       'verify_html' => 1,
       'preformatted' => 0,
       'convert_fonts_to_spans' => 1,
-      'remove_linebreaks' => 1,
+      'remove_linebreaks' => 0,
       'apply_source_formatting' => 0,
       'paste_auto_cleanup_on_paste' => 1,
       'block_formats' => 'p,h2,h3,div',
@@ -80,7 +80,6 @@ function subsite_grundindstillinger_wysiwyg_default_profiles() {
       'css_path' => '',
       'css_classes' => '',
     ),
-    'rdf_mapping' => array(),
   );
 
   // Exported profile: full_html
@@ -150,7 +149,7 @@ function subsite_grundindstillinger_wysiwyg_default_profiles() {
       'verify_html' => 1,
       'preformatted' => 0,
       'convert_fonts_to_spans' => 1,
-      'remove_linebreaks' => 1,
+      'remove_linebreaks' => 0,
       'apply_source_formatting' => 0,
       'paste_auto_cleanup_on_paste' => 1,
       'block_formats' => 'p,h2,h3,div',
@@ -158,7 +157,6 @@ function subsite_grundindstillinger_wysiwyg_default_profiles() {
       'css_path' => '',
       'css_classes' => '',
     ),
-    'rdf_mapping' => array(),
   );
 
   return $profiles;

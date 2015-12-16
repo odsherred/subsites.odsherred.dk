@@ -1,0 +1,30 @@
+<?php
+/**
+ * @file
+ * Code for the Subsite Event Calendar feature.
+ */
+
+include_once 'subsite_event_calendar.features.inc';
+
+/**
+ * Implements hook_date_formats().
+ */
+function subsite_event_calendar_date_formats() {
+  return array(
+    array(
+      'type' => 'subsite_activity_calendar',
+      'format' => 'l, j. F Y - H:i',
+      'locales' => array(),
+    ),
+  );
+}
+
+
+/**
+ * Implements hook_date_format_types().
+ */
+function subsite_event_calendar_date_format_types() {
+  return array(
+    'subsite_activity_calendar' => t('Activity date format'),
+  );
+}

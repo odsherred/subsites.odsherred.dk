@@ -10,26 +10,8 @@
 function subsite_grundindstillinger_menu_default_menu_links() {
   $menu_links = array();
 
-  // Exported menu link: user-menu:a-aa-index
-  $menu_links['user-menu:a-aa-index'] = array(
-    'menu_name' => 'user-menu',
-    'link_path' => 'a-aa-index',
-    'router_path' => 'a-aa-index',
-    'link_title' => 'A-Å Indeks',
-    'options' => array(
-      'attributes' => array(
-        'title' => '',
-      ),
-    ),
-    'module' => 'menu',
-    'hidden' => '0',
-    'external' => '0',
-    'has_children' => '0',
-    'expanded' => '0',
-    'weight' => '0',
-  );
-  // Exported menu link: user-menu:http://www.adgangforalle.dk/
-  $menu_links['user-menu:http://www.adgangforalle.dk/'] = array(
+  // Exported menu link: user-menu_ls-hjt:http://www.adgangforalle.dk/
+  $menu_links['user-menu_ls-hjt:http://www.adgangforalle.dk/'] = array(
     'menu_name' => 'user-menu',
     'link_path' => 'http://www.adgangforalle.dk/',
     'router_path' => '',
@@ -38,16 +20,18 @@ function subsite_grundindstillinger_menu_default_menu_links() {
       'attributes' => array(
         'title' => '',
       ),
+      'identifier' => 'user-menu_ls-hjt:http://www.adgangforalle.dk/',
     ),
     'module' => 'menu',
-    'hidden' => '0',
-    'external' => '1',
-    'has_children' => '0',
-    'expanded' => '0',
-    'weight' => '0',
+    'hidden' => 0,
+    'external' => 1,
+    'has_children' => 0,
+    'expanded' => 0,
+    'weight' => 0,
+    'customized' => 0,
   );
-  // Exported menu link: user-menu:sitemap
-  $menu_links['user-menu:sitemap'] = array(
+  // Exported menu link: user-menu_sitemap:sitemap
+  $menu_links['user-menu_sitemap:sitemap'] = array(
     'menu_name' => 'user-menu',
     'link_path' => 'sitemap',
     'router_path' => 'sitemap',
@@ -56,17 +40,18 @@ function subsite_grundindstillinger_menu_default_menu_links() {
       'attributes' => array(
         'title' => '',
       ),
+      'identifier' => 'user-menu_sitemap:sitemap',
     ),
     'module' => 'menu',
-    'hidden' => '0',
-    'external' => '0',
-    'has_children' => '0',
-    'expanded' => '0',
-    'weight' => '0',
+    'hidden' => 0,
+    'external' => 0,
+    'has_children' => 0,
+    'expanded' => 0,
+    'weight' => 0,
+    'customized' => 0,
   );
   // Translatables
   // Included for use with string extractors like potx.
-  t('A-Å Indeks');
   t('Læs højt');
   t('Sitemap');
 
