@@ -13,7 +13,7 @@ function subsite_event_calendar_date_formats() {
   return array(
     array(
       'type' => 'subsite_activity_calendar',
-      'format' => 'l, j. F Y - H:i',
+      'format' => 'l \d\e\\n j. F Y - H:i',
       'locales' => array(),
     ),
   );
