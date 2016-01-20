@@ -36,6 +36,7 @@ features[variable][] = comment_form_location_od_event
 features[variable][] = comment_od_event
 features[variable][] = comment_preview_od_event
 features[variable][] = comment_subject_field_od_event
+features[variable][] = date_format_aktivitestkalender_datoformat
 features[variable][] = date_format_subsite_activity_calendar
 features[variable][] = field_bundle_settings_node__od_event
 features[variable][] = language_content_type_od_event
