@@ -63,7 +63,7 @@ function subsite_event_calendar_strongarm() {
   $strongarm->disabled = FALSE; /* Edit this to true to make a default strongarm disabled initially */
   $strongarm->api_version = 1;
   $strongarm->name = 'date_format_subsite_activity_calendar';
-  $strongarm->value = 'l, j. F Y - H:i';
+  $strongarm->value = 'l \\d\\e\\n j. F Y - H:i';
   $export['date_format_subsite_activity_calendar'] = $strongarm;
 
   $strongarm = new stdClass();
