@@ -154,6 +154,7 @@ function subsite_grundindstillinger_views_default_views() {
     t('Faldende'),
     t('[title]'),
     t('Block'),
+    t('more'),
   );
   $export['banner'] = $view;
 
@@ -234,6 +235,7 @@ function subsite_grundindstillinger_views_default_views() {
     t('Stigende'),
     t('Faldende'),
     t('Block'),
+    t('more'),
   );
   $export['os2web_velkomst'] = $view;
 
@@ -337,6 +339,7 @@ function subsite_grundindstillinger_views_default_views() {
     t('Stigende'),
     t('Faldende'),
     t('Block'),
+    t('more'),
   );
   $export['seneste_ny'] = $view;
 

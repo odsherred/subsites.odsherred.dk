@@ -177,10 +177,6 @@ function subsite_grundindstillinger_image_default_styles() {
   return $styles;
 }
 
-
-
-
-
 /**
  * Implements hook_node_info().
  */

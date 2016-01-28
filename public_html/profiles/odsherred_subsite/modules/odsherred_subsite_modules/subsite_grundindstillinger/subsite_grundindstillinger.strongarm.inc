@@ -217,7 +217,7 @@ function subsite_grundindstillinger_strongarm() {
   $strongarm->disabled = FALSE; /* Edit this to true to make a default strongarm disabled initially */
   $strongarm->api_version = 1;
   $strongarm->name = 'date_format_short';
-  $strongarm->value = 'Y/m/d - H:i';
+  $strongarm->value = 'd/m/Y - H:i';
   $export['date_format_short'] = $strongarm;
 
   $strongarm = new stdClass();
@@ -412,7 +412,7 @@ function subsite_grundindstillinger_strongarm() {
     'domain' => '',
     'prefix' => 'da',
     'weight' => '0',
-    'javascript' => 'vnIZZxze0ie6bQaSPs4egdOupfthd-OP_Bi7rEz4TUw',
+    'javascript' => '5ZypAKN2ufiCaxAvkNAJbDGaz6kRMxGKN_U_FE07SUY',
   );
   $export['language_default'] = $strongarm;
 

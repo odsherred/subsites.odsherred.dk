@@ -26,6 +26,5 @@ function subsite_event_calendar_date_formats() {
 function subsite_event_calendar_date_format_types() {
   return array(
     'subsite_activity_calendar' => t('Activity date format'),
-    'date_format_aktivitestkalender_datoformat' => 'Activity calendar date format',
   );
 }
