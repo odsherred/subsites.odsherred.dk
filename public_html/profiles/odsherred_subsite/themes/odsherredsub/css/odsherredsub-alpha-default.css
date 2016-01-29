@@ -43,7 +43,7 @@ h2 { font-size: 20px;}
 }
 #section-content { background-image: url(img/section-content-bg.png); background-position: center 12px; background-repeat: no-repeat}
 .logo-img { margin-top: 0px !important;}
-#region-branding { height: 85px !important;}
+#region-branding { height: auto;}
 
 #region-preface-first { margin-bottom: 10px;}
 .view-banner { border: 5px solid #FFF; position: relative; background-color: #FFF;}
