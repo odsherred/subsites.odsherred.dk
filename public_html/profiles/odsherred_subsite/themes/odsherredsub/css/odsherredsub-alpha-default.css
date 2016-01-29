@@ -28,6 +28,10 @@ h2 { font-size: 20px;}
 .pad10 { padding: 10px}
 .pad5 { padding: 5px}
 
+.pad10 ul {
+  margin-left: 20px;
+}
+
 .margin-bund-20 { margin-bottom: 20px}
 
 .front .view-seneste-ny .views-row { clear: both; margin-bottom: 10px; min-height: 90px; border-bottom: 1px solid #dcdcdc; padding-bottom: 10px;}
