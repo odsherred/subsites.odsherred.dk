@@ -16,7 +16,7 @@ function subsite_grundindstillinger_filter_default_formats() {
     'name' => 'Filtered HTML',
     'cache' => 1,
     'status' => 1,
-    'weight' => 0,
+    'weight' => -9,
     'filters' => array(
       'filter_url' => array(
         'weight' => 0,
@@ -53,7 +53,7 @@ function subsite_grundindstillinger_filter_default_formats() {
     'name' => 'Full HTML',
     'cache' => 1,
     'status' => 1,
-    'weight' => 1,
+    'weight' => -10,
     'filters' => array(
       'filter_url' => array(
         'weight' => 0,
@@ -81,7 +81,7 @@ function subsite_grundindstillinger_filter_default_formats() {
     'name' => 'Kun tekst',
     'cache' => 1,
     'status' => 1,
-    'weight' => 0,
+    'weight' => -8,
     'filters' => array(
       'filter_html' => array(
         'weight' => -10,
