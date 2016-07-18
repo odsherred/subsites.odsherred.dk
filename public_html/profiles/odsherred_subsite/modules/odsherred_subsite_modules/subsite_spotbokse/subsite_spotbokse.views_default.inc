@@ -45,6 +45,8 @@ function subsite_spotbokse_views_default_views() {
   $handler->display->display_options['fields']['field_link_til_side']['field'] = 'field_link_til_side';
   $handler->display->display_options['fields']['field_link_til_side']['label'] = 'URL';
   $handler->display->display_options['fields']['field_link_til_side']['exclude'] = TRUE;
+  $handler->display->display_options['fields']['field_link_til_side']['alter']['alter_text'] = TRUE;
+  $handler->display->display_options['fields']['field_link_til_side']['alter']['text'] = '[field_link_til_side-url]';
   $handler->display->display_options['fields']['field_link_til_side']['element_label_colon'] = FALSE;
   $handler->display->display_options['fields']['field_link_til_side']['click_sort_column'] = 'url';
   $handler->display->display_options['fields']['field_link_til_side']['type'] = 'link_plain';
@@ -126,6 +128,82 @@ function subsite_spotbokse_views_default_views() {
   $handler = $view->new_display('block', 'Block', 'block');
   $handler->display->display_options['defaults']['hide_admin_links'] = FALSE;
   $handler->display->display_options['defaults']['relationships'] = FALSE;
+  $handler->display->display_options['defaults']['fields'] = FALSE;
+  /* Felt: Indhold: Link til side */
+  $handler->display->display_options['fields']['field_link_til_side']['id'] = 'field_link_til_side';
+  $handler->display->display_options['fields']['field_link_til_side']['table'] = 'field_data_field_link_til_side';
+  $handler->display->display_options['fields']['field_link_til_side']['field'] = 'field_link_til_side';
+  $handler->display->display_options['fields']['field_link_til_side']['label'] = 'URL';
+  $handler->display->display_options['fields']['field_link_til_side']['exclude'] = TRUE;
+  $handler->display->display_options['fields']['field_link_til_side']['alter']['text'] = '[field_link_til_side-url]';
+  $handler->display->display_options['fields']['field_link_til_side']['element_label_colon'] = FALSE;
+  $handler->display->display_options['fields']['field_link_til_side']['click_sort_column'] = 'url';
+  $handler->display->display_options['fields']['field_link_til_side']['type'] = 'link_plain';
+  /* Felt: Indhold: Link til side */
+  $handler->display->display_options['fields']['field_link_til_side_1']['id'] = 'field_link_til_side_1';
+  $handler->display->display_options['fields']['field_link_til_side_1']['table'] = 'field_data_field_link_til_side';
+  $handler->display->display_options['fields']['field_link_til_side_1']['field'] = 'field_link_til_side';
+  $handler->display->display_options['fields']['field_link_til_side_1']['label'] = 'Titel';
+  $handler->display->display_options['fields']['field_link_til_side_1']['exclude'] = TRUE;
+  $handler->display->display_options['fields']['field_link_til_side_1']['element_label_colon'] = FALSE;
+  $handler->display->display_options['fields']['field_link_til_side_1']['click_sort_column'] = 'url';
+  $handler->display->display_options['fields']['field_link_til_side_1']['type'] = 'link_title_plain';
+  /* Felt: Indhold: Link til side */
+  $handler->display->display_options['fields']['field_link_til_side_2']['id'] = 'field_link_til_side_2';
+  $handler->display->display_options['fields']['field_link_til_side_2']['table'] = 'field_data_field_link_til_side';
+  $handler->display->display_options['fields']['field_link_til_side_2']['field'] = 'field_link_til_side';
+  $handler->display->display_options['fields']['field_link_til_side_2']['label'] = '';
+  $handler->display->display_options['fields']['field_link_til_side_2']['exclude'] = TRUE;
+  $handler->display->display_options['fields']['field_link_til_side_2']['alter']['alter_text'] = TRUE;
+  $handler->display->display_options['fields']['field_link_til_side_2']['alter']['text'] = '[field_link_til_side_2-url]';
+  $handler->display->display_options['fields']['field_link_til_side_2']['element_label_colon'] = FALSE;
+  $handler->display->display_options['fields']['field_link_til_side_2']['click_sort_column'] = 'url';
+  $handler->display->display_options['fields']['field_link_til_side_2']['type'] = 'link_plain';
+  /* Felt: Indhold: Spotbillede */
+  $handler->display->display_options['fields']['field_spotbillede']['id'] = 'field_spotbillede';
+  $handler->display->display_options['fields']['field_spotbillede']['table'] = 'field_data_field_spotbillede';
+  $handler->display->display_options['fields']['field_spotbillede']['field'] = 'field_spotbillede';
+  $handler->display->display_options['fields']['field_spotbillede']['label'] = '';
+  $handler->display->display_options['fields']['field_spotbillede']['alter']['make_link'] = TRUE;
+  $handler->display->display_options['fields']['field_spotbillede']['alter']['path'] = '[field_link_til_side_2]';
+  $handler->display->display_options['fields']['field_spotbillede']['alter']['absolute'] = TRUE;
+  $handler->display->display_options['fields']['field_spotbillede']['alter']['alt'] = '[field_link_til_side_1]';
+  $handler->display->display_options['fields']['field_spotbillede']['element_type'] = 'span';
+  $handler->display->display_options['fields']['field_spotbillede']['element_class'] = 'billede';
+  $handler->display->display_options['fields']['field_spotbillede']['element_label_colon'] = FALSE;
+  $handler->display->display_options['fields']['field_spotbillede']['element_default_classes'] = FALSE;
+  $handler->display->display_options['fields']['field_spotbillede']['click_sort_column'] = 'fid';
+  $handler->display->display_options['fields']['field_spotbillede']['settings'] = array(
+    'image_style' => 'spotboks',
+    'image_link' => '',
+  );
+  /* Felt: Indhold: Titel */
+  $handler->display->display_options['fields']['title']['id'] = 'title';
+  $handler->display->display_options['fields']['title']['table'] = 'node';
+  $handler->display->display_options['fields']['title']['field'] = 'title';
+  $handler->display->display_options['fields']['title']['label'] = '';
+  $handler->display->display_options['fields']['title']['exclude'] = TRUE;
+  $handler->display->display_options['fields']['title']['alter']['word_boundary'] = FALSE;
+  $handler->display->display_options['fields']['title']['alter']['ellipsis'] = FALSE;
+  $handler->display->display_options['fields']['title']['element_type'] = 'span';
+  $handler->display->display_options['fields']['title']['element_class'] = 'titel';
+  $handler->display->display_options['fields']['title']['element_label_colon'] = FALSE;
+  $handler->display->display_options['fields']['title']['element_default_classes'] = FALSE;
+  $handler->display->display_options['fields']['title']['link_to_node'] = FALSE;
+  /* Felt: Indhold: Ekstra tekst */
+  $handler->display->display_options['fields']['field_ekstra_tekst']['id'] = 'field_ekstra_tekst';
+  $handler->display->display_options['fields']['field_ekstra_tekst']['table'] = 'field_data_field_ekstra_tekst';
+  $handler->display->display_options['fields']['field_ekstra_tekst']['field'] = 'field_ekstra_tekst';
+  $handler->display->display_options['fields']['field_ekstra_tekst']['label'] = '';
+  $handler->display->display_options['fields']['field_ekstra_tekst']['alter']['alter_text'] = TRUE;
+  $handler->display->display_options['fields']['field_ekstra_tekst']['alter']['text'] = '<span class="titel"><a href="[field_link_til_side]">[title]</a></span>
+<span class="resten"><a href="[field_link_til_side]">[field_ekstra_tekst]</a></span>';
+  $handler->display->display_options['fields']['field_ekstra_tekst']['alter']['absolute'] = TRUE;
+  $handler->display->display_options['fields']['field_ekstra_tekst']['alter']['alt'] = '[field_link_til_side_1]';
+  $handler->display->display_options['fields']['field_ekstra_tekst']['element_type'] = 'span';
+  $handler->display->display_options['fields']['field_ekstra_tekst']['element_class'] = 'ekstratekst';
+  $handler->display->display_options['fields']['field_ekstra_tekst']['element_label_colon'] = FALSE;
+  $handler->display->display_options['fields']['field_ekstra_tekst']['element_default_classes'] = FALSE;
   $handler->display->display_options['defaults']['filter_groups'] = FALSE;
   $handler->display->display_options['defaults']['filters'] = FALSE;
   /* Filterkriterie: Indhold: Udgivet */
@@ -157,7 +235,7 @@ function subsite_spotbokse_views_default_views() {
   $handler->display->display_options['pager']['options']['offset'] = '0';
   $handler->display->display_options['defaults']['footer'] = FALSE;
   $handler->display->display_options['defaults']['relationships'] = FALSE;
-  /* Forbindelse: Entity Reference: Referencing entity */
+  /* Forbindelse: Entity Reference: Refererende entity */
   $handler->display->display_options['relationships']['reverse_field_spotbokse_node']['id'] = 'reverse_field_spotbokse_node';
   $handler->display->display_options['relationships']['reverse_field_spotbokse_node']['table'] = 'node';
   $handler->display->display_options['relationships']['reverse_field_spotbokse_node']['field'] = 'reverse_field_spotbokse_node';
@@ -279,13 +357,15 @@ function subsite_spotbokse_views_default_views() {
     t('Stigende'),
     t('Faldende'),
     t('URL'),
+    t('[field_link_til_side-url]'),
     t('Titel'),
     t('[field_link_til_side_1]'),
     t('<span class="titel"><a href="[field_link_til_side]">[title]</a></span>
 <span class="resten"><a href="[field_link_til_side]">[field_ekstra_tekst]</a></span>'),
     t('Block'),
+    t('[field_link_til_side_2-url]'),
     t('Content pane'),
-    t('Indhold referencing Indhold from field_spotbokse'),
+    t('Indhold refererer til Indhold fra field_spotbokse'),
     t('<a title="[field_link_til_side_1]" href="[field_link_til_side]">[field_spotbillede]</a>'),
     t('Alle'),
     t('View panes'),
