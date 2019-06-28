@@ -39,7 +39,7 @@ function eim_form_field_ui_field_edit_form_alter(&$form, &$form_state, $form_id)
   $instance = $form['#instance'];
   $settings = $form['#instance']['settings'];
 
-  if ($instance['entity_type'] == 'node' || $instance['entity_type'] == 'comment' || $instance['entity_type'] == 'taxonomy_term' || $instance['entity_type'] == 'field_collection_item') {
+  if ($instance['entity_type']) {
     $form['instance']['settings']['alt_field_required'] = array(
       '#type' => 'checkbox',
       '#title' => t('<em>Alt</em> field required'),
@@ -90,14 +90,57 @@ function eim_field_widget_image_image_form_alter(&$element, &$form_state, $conte
 function eim_imagefield_widget_process($element, &$form_state, $form) {
   $instance = field_info_instance($element['#entity_type'], $element['#field_name'], $element['#bundle']);
 
+  // Additional functions to validate field before inserting.
+  if (module_exists('insert')) {
+    // Expose module settings to Javascript.
+    drupal_add_js(array('eim' => array('altRequired' => $instance['settings']['alt_field_required'])), 'setting');
+    drupal_add_js(array('eim' => array('titleRequired' => $instance['settings']['title_field_required'])), 'setting');
+
+    if (($instance['settings']['alt_field_required'] || $instance['settings']['title_field_required'])) {
+      // If either the ALT or TITLE field are required, add the Insert validation.
+      drupal_add_js(drupal_get_path('module', 'eim') . '/js/eim.insert.validation.js');
+    }
+  }
+
   if ($instance['settings']['alt_field_required'] == 1) {
-    $element['alt']['#required'] = TRUE;
+    $element['alt']['#title'] .= ' <span class="form-required" title="This field is required.">*</span>';
+    $element['alt']['#element_validate'] = array('_eim_required_fields_validate');
   }
   if ($instance['settings']['title_field_required'] == 1) {
-    $element['title']['#required'] = TRUE;
+    $element['title']['#title'] .= ' <span class="form-required" title="This field is required.">*</span>';
+    $element['title']['#element_validate'] = array('_eim_required_fields_validate');
   }
 
   $element['alt']['#maxlength'] = 128;
 
   return $element;
+}
+
+/**
+ * Validate callback for alt and title field, if the user wants them required.
+ *
+ * This is separated in a validate function instead of a #required flag to avoid
+ * being validated on the process callback.
+ *
+ * @see http://drupal.org/node/815144
+ */
+function _eim_required_fields_validate($element, &$form_state) {
+  // Only do validation if the function is triggered from other places than
+  // the image process form.
+  if (!in_array('file_managed_file_submit', $form_state['triggering_element']['#submit'])) {
+    // If the image is not there, we do not check for empty values.
+    $parents = $element['#parents'];
+    $field = array_pop($parents);
+    $image_field = drupal_array_get_nested_value($form_state['input'], $parents);
+    // We check for the array key, so that it can be NULL (like if the user
+    // submits the form without using the "upload" button).
+    if (!array_key_exists($field, $image_field)) {
+      return;
+    }
+    // Check if field is left emtpy.
+    elseif (empty($image_field[$field])) {
+      form_error($element, t('The !title field is required', array('!title' => ucwords($field))));
+      return;
+    }
+  }
 }
