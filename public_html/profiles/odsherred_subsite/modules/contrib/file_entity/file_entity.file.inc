@@ -31,6 +31,9 @@ function file_entity_file_presave($file) {
   }
 
   field_attach_presave('file', $file);
+
+  // Fetch image dimensions.
+  file_entity_metadata_fetch_image_dimensions($file);
 }
 
 /**
@@ -39,7 +42,7 @@ function file_entity_file_presave($file) {
 function file_entity_file_type($file) {
   $types = array();
   foreach (file_type_get_enabled_types() as $type) {
-    if (in_array($file->filemime, $type->mimetypes)) {
+    if (file_entity_match_mimetypes($type->mimetypes, $file->filemime)) {
       $types[] = $type->type;
     }
   }
@@ -54,47 +57,82 @@ function file_entity_file_insert($file) {
   // Ensure field data is saved since file_save() does not in Drupal 7.
   field_attach_insert('file', $file);
 
+  // Save file metadata.
+  if (!empty($file->metadata)) {
+    $query = db_insert('file_metadata')->fields(array('fid', 'name', 'value'));
+    foreach ($file->metadata as $name => $value) {
+      $query->values(array(
+        'fid' => $file->fid,
+        'name' => $name,
+        'value' => serialize($value),
+      ));
+    }
+    $query->execute();
+  }
+
   // Clear any related field caches.
   file_entity_invalidate_field_caches($file);
-
-  // Clear the page and block caches.
-  cache_clear_all();
-
-  // Get and store image dimensions.
-  // @todo We should fetch image dimensions in file_entity_file_presave and
-  // then save them in this hook.
-  file_entity_image_dimensions($file, TRUE);
 }
 
 /**
- * Implement hook_file_update().
+ * Implements hook_file_update().
  */
 function file_entity_file_update($file) {
   // Ensure field data is saved since file_save() does not in Drupal 7.
   field_attach_update('file', $file);
 
-  // Clear any related field caches.
-  file_entity_invalidate_field_caches($file);
+  // Save file metadata.
+  db_delete('file_metadata')->condition('fid', $file->fid)->execute();
+  if (!empty($file->metadata)) {
+    $query = db_insert('file_metadata')->fields(array('fid', 'name', 'value'));
+    foreach ($file->metadata as $name => $value) {
+      $query->values(array(
+        'fid' => $file->fid,
+        'name' => $name,
+        'value' => serialize($value),
+      ));
+    }
+    $query->execute();
+  }
 
-  // Clear the page and block caches.
-  cache_clear_all();
+  if (module_exists('image') && file_entity_file_get_mimetype_type($file) == 'image' && $file->filesize && isset($file->original)) {
+    if (!isset($file->metadata)) {
+      $file->metadata = array();
+    }
 
-  // Reset the image dimensions for a file.
-  // @todo We should fetch image dimensions in file_entity_file_presave and
-  // then save them in this hook.
-  file_entity_image_dimensions($file, TRUE);
+    if (!isset($file->original->metadata)) {
+      if (!is_object($file->original)) {
+        $file->original = new stdClass();
+      }
+      $file->original->metadata = array();
+    }
 
-  if ($file->type == 'image' && module_exists('image')) {
-    // If the image dimensions have changed, update any image field references
-    // to this file and flush image style derivatives.
-    if ($file->image_dimensions != $file->original->image_dimensions) {
+    // If the file has changed dimensions or a new file has been uploaded,
+    // update any image field reference to this file and flush image style
+    // derivatives.
+    $file->metadata += array('width' => NULL, 'height' => NULL);
+    $file->original->metadata += array('width' => NULL, 'height' => NULL);
+    if ($file->filesize != $file->original->filesize || $file->metadata['width'] != $file->original->metadata['width'] || $file->metadata['height'] != $file->original->metadata['height']) {
       _file_entity_update_image_field_dimensions($file);
     }
 
-    // Flush image style derivatives whenever an image is updated.
-    image_path_flush($file->uri);
+    // Flush image style derivatives whenever an image is replaced.
+    if (empty($file->file_entity_skip_image_flush) && file_entity_has_file_changed($file)) {
+      image_path_flush($file->uri);
+    }
   }
+
+  // Clear any related field caches.
+  file_entity_invalidate_field_caches($file);
 }
+
+/**
+ * Returns whether the file has changed
+ */
+function file_entity_has_file_changed($file) {
+  return empty($file->is_new) || empty($file->original) || $file->filesize != $file->original->filesize || $file->uri != $file->original->uri;
+}
+
 
 /**
  * Implements hook_file_delete().
@@ -106,35 +144,28 @@ function file_entity_file_delete($file) {
   // not yet been deleted.
   file_entity_invalidate_field_caches($file);
 
-  // Clear the page and block caches.
-  cache_clear_all();
+  // Remove file metadata.
+  db_delete('file_metadata')->condition('fid', $file->fid)->execute();
 
-  // Delete image dimensions from the {image_dimensions} table
-  db_query('DELETE FROM {image_dimensions} WHERE fid = :fid', array(':fid' => $file->fid));
+  // Remove this file from the search index if needed.
+  // This code is implemented in file entity module rather than in search
+  // module because file entity is implementing search module's API, not the
+  // other way around.
+  if (module_exists('search')) {
+    search_reindex($file->fid, 'file');
+  }
 }
 
 /**
  * Implements hook_file_mimetype_mapping_alter().
  */
 function file_entity_file_mimetype_mapping_alter(&$mapping) {
-  // Fix the mime type mapping for ogg.
-  // @todo Remove when http://drupal.org/node/1239376 is fixed in core (7.8).
-  $new_mappings['ogg'] = 'audio/ogg';
+  // For info on adding new mime-types to core: http://drupal.org/node/1443070.
 
-  // Add support for m4v.
-  // @todo Remove when http://drupal.org/node/1290486 is fixed in core (7.9).
-  $new_mappings['m4v'] = 'video/x-m4v';
-
-  // Add support for mka and mkv.
-  // @todo Remove when http://drupal.org/node/1293140 is fixed in core.
-  $new_mappings['mka'] = 'audio/x-matroska';
-  $new_mappings['mkv'] = 'video/x-matroska';
-
-  // Add support for weba, webm, and webp.
-  // @todo Remove when http://drupal.org/node/1347624 is fixed in core.
-  $new_mappings['weba'] = 'audio/webm';
-  $new_mappings['webm'] = 'video/webm';
-  $new_mappings['webp'] = 'image/webp';
+  // @todo. Remove after fixing this in core http://drupal.org/node/2912875.
+  // Add support for autocad drawings.
+  $new_mappings['dwg'] = 'application/acad';
+  // For info on adding new mime-types to file_entity: drupal.org/node/2900830.
 
   foreach ($new_mappings as $extension => $mime_type) {
     if (!in_array($mime_type, $mapping['mimetypes'])) {
@@ -149,54 +180,140 @@ function file_entity_file_mimetype_mapping_alter(&$mapping) {
 }
 
 /**
- * Implements hook_file_operation_info().
- */
-function file_entity_file_operation_info() {
-  $info['delete'] = array(
-    'label' => t('Delete selected files'),
-    'callback' => 'file_entity_multiple_delete_confirm_operation',
-    'confirm' => TRUE,
-  );
-
-  return $info;
-}
-
-/**
  * Implements hook_file_load().
  */
 function file_entity_file_load($files) {
-  // Load images dimensions already in the {image_dimensions} table.
-  $result = db_query('SELECT * FROM {image_dimensions} id WHERE id.fid IN (:fids)', array(':fids' => array_keys($files)));
-  foreach ($result as $record) {
-    $files[$record->fid]->image_dimensions = array(
-      'width' => $record->width,
-      'height' => $record->height,
-    );
-  }
-  // Retrieve any missing images dimensions.
+  // Add alt and title text to images.
+  file_entity_set_title_alt_properties($files);
+
+  // Add metadata to each file.
   foreach ($files as $file) {
-    file_entity_image_dimensions($file, FALSE);
+    $file->metadata = array();
+  }
+  $results = db_query("SELECT * FROM {file_metadata} WHERE fid IN (:fids)", array(':fids' => array_keys($files)));
+
+  foreach ($results as $result) {
+    $name = $result->name;
+
+    // image.module required height and width to be properties of the file.
+    if ($name == 'height' || $name == 'width') {
+      $files[$result->fid]->$name = unserialize($result->value);
+    }
+
+    $files[$result->fid]->metadata[$name] = unserialize($result->value);
   }
 }
 
 /**
- * Retrieve the dimensions of an image file and store them in the
- * {image dimensions} table.
- *
- * @param $file
- *   A file object.
- *
- * @param $force
- *   TRUE if the image dimensions should always be loaded from the actual file
- *   even if $file->image_dimensions is already set.
- *
- * @return
- *   The image dimensions as an array with the 'width' and 'height' properties.
- *   The array is also added to $file as its image_dimensions property. If the
- *   image dimensions cannot be read, the 'width' and 'height' properties will
- *   be NULL. If $file is either empty or not an image file, FALSE is returned.
+ * Implements hook_entitycache_ENTITY_TYPE_load().
  */
-function file_entity_image_dimensions($file, $force = FALSE) {
+function file_entity_entitycache_file_load($files) {
+  // Integrates with entitycache - ensures the alt and title text on images is
+  // localized.
+  file_entity_set_title_alt_properties($files);
+}
+
+/**
+ * Implements hook_entity_load().
+ */
+function file_entity_entity_load($entities, $entity_type) {
+  file_entity_set_title_alt_properties_on_file_fields($entities, $entity_type);
+}
+
+/**
+ * Sets the title / alt properties on file fields attached to entities.
+ *
+ * Files attached to a file or image field can be stored in the field cache or
+ * entity cache for whichever entity that the field is attached to. Because
+ * $file->alt and $file->title are set in file_entity_file_load() based on the
+ * current page language, they will go into the cache with that language as
+ * well. To ensure that the correct language is used when the entity is later
+ * loaded and displayed in a different language, the alt and title properties
+ * can be set again using this function.
+ *
+ * @param array $entities
+ *   An array of entity objects of the same type.
+ * @param string $entity_type
+ *   The type of entity.
+ *
+ * @see file_entity_entity_load()
+ * @see file_entity_entitycache_load()
+ */
+function file_entity_set_title_alt_properties_on_file_fields($entities, $entity_type) {
+  foreach ($entities as $entity) {
+    list(, , $bundle) = entity_extract_ids($entity_type, $entity);
+    foreach (field_info_instances($entity_type, $bundle) as $instance) {
+      if (!empty($entity->{$instance['field_name']})) {
+        foreach ($entity->{$instance['field_name']} as &$items) {
+          foreach ($items as &$item) {
+            // We need to detect any field items that passed through
+            // file_field_load(), whether they are files, images, or something
+            // else. There is no direct way to do that, but checking for a few
+            // expected file properties on the field item should be sufficient.
+            if (is_array($item) && !empty($item['fid']) && isset($item['uri']) && isset($item['filename'])) {
+              $file = (object) $item;
+              file_entity_set_title_alt_properties(array($file));
+              $item = (array) $file;
+            }
+          }
+        }
+      }
+    }
+  }
+}
+
+/**
+ * Set the title / alt properties of file objects.
+ *
+ * @param array $files
+ *   List of file entities.
+ * @param stdClass $language
+ *   (optional) A language object to use for translating the title and alt
+ *   properties. Defaults to the language of the current request.
+ */
+function file_entity_set_title_alt_properties($files, $language = NULL) {
+  if (!isset($language)) {
+    $language = $GLOBALS['language'];
+  }
+
+  $alt = variable_get('file_entity_alt', '[file:field_file_image_alt_text]');
+  $title = variable_get('file_entity_title', '[file:field_file_image_title_text]');
+
+  $replace_options = array(
+    'clear' => TRUE,
+    'sanitize' => FALSE,
+    'language' => $language,
+  );
+
+  foreach ($files as $file) {
+    // Load alt and title text from fields.
+    if (!empty($alt)) {
+      $output = token_replace($alt, array('file' => $file), $replace_options);
+
+      if (!empty($output)) {
+        // @todo Remove once https://www.drupal.org/node/1713164 is fixed.
+        // There is currently no way to get the raw alt text returned from the
+        // token so we revert the encoding done during tokenization.
+        $file->alt = decode_entities($output);
+      }
+    }
+    if (!empty($title)) {
+      $output = token_replace($title, array('file' => $file), $replace_options);
+
+      if (!empty($output)) {
+        // @todo Remove once https://www.drupal.org/node/1713164 is fixed.
+        // There is currently no way to get the raw title text returned from the
+        // token so we revert the encoding done during tokenization.
+        $file->title = decode_entities($output);
+      }
+    }
+  }
+}
+
+/**
+ * Fetch the dimensions of an image and store them in the file metadata array.
+ */
+function file_entity_metadata_fetch_image_dimensions($file) {
   // Prevent PHP notices when trying to read empty files.
   // @see http://drupal.org/node/681042
   if (!$file->filesize) {
@@ -204,36 +321,20 @@ function file_entity_image_dimensions($file, $force = FALSE) {
   }
 
   // Do not bother proceeding if this file does not have an image mime type.
-  if (strpos($file->filemime, 'image/') !== 0) {
+  if (file_entity_file_get_mimetype_type($file) != 'image') {
     return;
-  }
-
-  // Return the existing $file->image_dimensions unless a reload is forced.
-  if (!$force && isset($file->image_dimensions)) {
-    return $file->image_dimensions;
   }
 
   // We have a non-empty image file.
   $image_info = image_get_info($file->uri);
   if ($image_info) {
-    $file->image_dimensions = array(
-      'width' => $image_info['width'],
-      'height' => $image_info['height'],
-    );
-    db_merge('image_dimensions')
-      ->key(array('fid' => $file->fid))
-      ->fields(array(
-        'width' => $file->image_dimensions['width'],
-        'height' => $file->image_dimensions['height'],
-      ))
-      ->execute();
+    $file->metadata['width'] = $image_info['width'];
+    $file->metadata['height'] = $image_info['height'];
   }
   else {
     // Fallback to NULL values.
-    $file->image_dimensions = array(
-      'width' => NULL,
-      'height' => NULL,
-    );
+    $file->metadata['width'] = NULL;
+    $file->metadata['height'] = NULL;
   }
 }
 
@@ -246,13 +347,19 @@ function file_entity_image_dimensions($file, $force = FALSE) {
  * @see http://drupal.org/node/1448124
  */
 function _file_entity_update_image_field_dimensions($file) {
-  // Find all image field enabled on the site.
-  $image_fields = array();
-  foreach (field_info_fields() as $field) {
-    if ($field['type'] == 'image') {
-      $image_fields[] = $field['field_name'];
-    }
+  // Prevent PHP notices when trying to read empty files.
+  // @see http://drupal.org/node/681042
+  if (!$file->filesize) {
+    return;
   }
+
+  // Do not bother proceeding if this file does not have an image mime type.
+  if (file_entity_file_get_mimetype_type($file) != 'image') {
+    return;
+  }
+
+  // Find all image field enabled on the site.
+  $image_fields = _file_entity_get_fields_by_type('image');
 
   foreach ($image_fields as $image_field) {
     $query = new EntityFieldQuery();
@@ -265,16 +372,49 @@ function _file_entity_update_image_field_dimensions($file) {
         foreach ($entity->{$image_field} as $langcode => $items) {
           foreach ($items as $delta => $item) {
             if ($item['fid'] == $file->fid) {
-              $entity->{$image_field}[$langcode][$delta]['width'] = $file->image_dimensions['width'];
-              $entity->{$image_field}[$langcode][$delta]['height'] = $file->image_dimensions['height'];
+              $entity->{$image_field}[$langcode][$delta]['width'] = $file->metadata['width'];
+              $entity->{$image_field}[$langcode][$delta]['height'] = $file->metadata['height'];
             }
           }
         }
 
-        // Ensure that file_field_update() will not trigger additional usage.
-        unset($entity->revision);
-        field_attach_update($entity_type, $entity);
+        // Save the updated field column values.
+        _file_entity_entity_fields_update($entity_type, $entity);
       }
     }
   }
+}
+
+/**
+ * Update an entity's field values without changing anything on the entity.
+ */
+function _file_entity_entity_fields_update($entity_type, $entity) {
+  list($id) = entity_extract_ids($entity_type, $entity);
+  if (empty($id)) {
+    throw new Exception(t('Cannot call _file_entity_update_entity_fields() on a new entity.'));
+  }
+
+  // Some modules use the original property.
+  if (!isset($entity->original)) {
+    $entity->original = $entity;
+  }
+
+  // Ensure that file_field_update() will not trigger additional usage.
+  unset($entity->revision);
+
+  // Invoke the field presave and update hooks.
+  field_attach_presave($entity_type, $entity);
+  field_attach_update($entity_type, $entity);
+
+  // Clear the cache for this entity now.
+  entity_get_controller($entity_type)->resetCache(array($id));
+}
+
+/**
+ * Implements hook_file_metadata_info().
+ */
+function file_entity_file_metadata_info() {
+  $info['width'] = array('label' => t('Width'), 'type' => 'integer');
+  $info['height'] = array('label' => t('Height'), 'type' => 'integer');
+  return $info;
 }

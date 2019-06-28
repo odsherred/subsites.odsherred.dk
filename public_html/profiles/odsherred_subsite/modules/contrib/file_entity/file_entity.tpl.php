@@ -64,15 +64,17 @@
  * @see template_preprocess()
  * @see template_preprocess_file_entity()
  * @see template_process()
+ *
+ * @ingroup themeable
  */
 ?>
-<div id="file-<?php print $file->fid ?>" class="<?php print $classes ?>"<?php print $attributes; ?>>
+<div id="<?php print $id; ?>" class="<?php print $classes ?>"<?php print $attributes; ?>>
 
+  <?php print render($title_prefix); ?>
   <?php if (!$page): ?>
-    <?php print render($title_prefix); ?>
     <h2<?php print $title_attributes; ?>><a href="<?php print $file_url; ?>"><?php print $label; ?></a></h2>
-    <?php print render($title_suffix); ?>
   <?php endif; ?>
+  <?php print render($title_suffix); ?>
 
   <?php if ($display_submitted): ?>
     <div class="submitted">
@@ -82,9 +84,15 @@
 
   <div class="content"<?php print $content_attributes; ?>>
     <?php
-      // We hide the links now so that we can render them later.
-      hide($content['links']);
+    // We hide the links now so that we can render them later.
+    hide($content['links']);
+    // Check to see if the file has an external url for linking.
+    if(!empty($content['file']['#file']->external_url)) {;?>
+      <a href="<?php print render($content['file']['#file']->external_url);?>"><?php print render($content);?></a>
+      <?php
+    } else {
       print render($content);
+    }
     ?>
   </div>
 
