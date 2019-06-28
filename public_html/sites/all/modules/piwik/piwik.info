@@ -5,10 +5,9 @@ package = Statistics
 configure = admin/config/system/piwik
 files[] = piwik.test
 test_dependencies[] = token
-dependencies[] = matomo
-
-; Information added by Drupal.org packaging script on 2018-06-08
-version = "7.x-2.12"
+; Information added by Drupal.org packaging script on 2016-08-09
+version = "7.x-2.9"
 core = "7.x"
 project = "piwik"
-datestamp = "1528483689"
+datestamp = "1470779970"
+
