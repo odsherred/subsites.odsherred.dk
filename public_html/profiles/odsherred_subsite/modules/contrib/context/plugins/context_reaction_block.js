@@ -68,8 +68,8 @@ DrupalContextBlockForm = function(blockForm) {
 
     // Hide enabled blocks from selector that are used
     $('table.context-blockform-region tr').each(function() {
-      var bid = $(this).attr('id');
-      $('div.context-blockform-selector input[value='+bid+']').parents('div.form-item').eq(0).hide();
+      var bid = Drupal.checkPlain($(this).attr('id'));
+      $('div.context-blockform-selector input[value="'+bid+'"]').parents('div.form-item').eq(0).hide();
     });
     // Show blocks in selector that are unused
     $('div.context-blockform-selector input').each(function() {
@@ -159,7 +159,7 @@ DrupalContextBlockForm = function(blockForm) {
           $(this).removeAttr('checked');
         });
         if (weight_warn) {
-          alert(Drupal.t('Desired block weight exceeds available weight options, please check weights for blocks before saving'));
+          alert(Drupal.t('Desired block weight exceeds available weight options, please check weights for blocks before saving.'));
         }
       }
       return false;
@@ -327,11 +327,6 @@ DrupalContextBlockEditor.prototype = {
       // Construct query params for our AJAX block request.
       var params = Drupal.settings.contextBlockEditor.params;
       params.context_block = bid + ',' + context;
-      if (!Drupal.settings.contextBlockEditor.block_tokens || !Drupal.settings.contextBlockEditor.block_tokens[bid]) {
-        alert(Drupal.t('An error occurred trying to retrieve block content. Please contact a site administer.'));
-        return;
-     }
-     params.context_token = Drupal.settings.contextBlockEditor.block_tokens[bid];
 
       // Replace item with loading block.
       //ui.sender.append(ui.item);
@@ -431,9 +426,8 @@ DrupalContextBlockEditor.prototype = {
 
     $('.editing-context-label').remove();
     var label = $('#context-editable-trigger-'+context+' .label').text();
-    label = Drupal.t('Now Editing: ') + label;
-    editor.parent().parent()
-      .prepend('<div class="editing-context-label">'+ label + '</div>');
+    label = Drupal.t('Now editing: @label', {'@label': label});
+    editor.parent().parent().prepend('<div class="editing-context-label">' + label + '</div>');
 
     // First pass, enable sortables on all regions.
     $(this.regions).each(function() {
@@ -443,7 +437,7 @@ DrupalContextBlockEditor.prototype = {
         dropOnEmpty: true,
         placeholder: 'draggable-placeholder',
         forcePlaceholderSize: true,
-        items: '> .block:has(a.context-block.editable)',
+        items: '> *:has(a.context-block.editable)',
         handle: 'a.context-block-handle',
         start: function(event, ui) { self.scriptFix(event, ui, editor, context); },
         stop: function(event, ui) { self.addBlock(event, ui, editor, context); },
