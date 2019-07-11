@@ -57,6 +57,11 @@ function context_theme() {
     'path' => drupal_get_path('module', 'context') . '/theme',
     'file' => 'context_reaction_block.theme.inc',
   );
+  $items['context_block_edit_wrap'] = array(
+    'render element' => 'element',
+    'path' => drupal_get_path('module', 'context') . '/theme',
+    'file' => 'context_reaction_block.theme.inc',
+  );
   return $items;
 }
 
@@ -89,11 +94,27 @@ function context_theme_registry_alter(&$theme_registry) {
  */
 function context_ctools_render_alter($info, $page, $data) {
   extract($data);
-  if ($page && in_array($task['name'], array('node_view', 'node_edit'), TRUE)) {
-    foreach ($contexts as $ctools_context) {
-      if (in_array('node', $ctools_context->type) && !empty($ctools_context->data)) {
-        context_node_condition($ctools_context->data, $task['name'] === 'node_view' ? 'view' : 'form');
-        break;
+
+  // Check for page handlers.
+  if ($page) {
+    // Check for node page handler.
+    if (in_array($task['name'], array('node_view', 'node_edit'), TRUE)) {
+      foreach ($contexts as $ctools_context) {
+        if (in_array('node', $ctools_context->type) && !empty($ctools_context->data)) {
+          context_node_condition($ctools_context->data, $task['name'] === 'node_view' ? 'view' : 'form');
+          break;
+        }
+      }
+    }
+    // Check for taxonomy term page handler.
+    elseif (in_array($task['name'], array('term_view', 'term_edit'), TRUE)) {
+      foreach ($contexts as $ctools_context) {
+        if (in_array('taxonomy_term', $ctools_context->type) && !empty($ctools_context->data)) {
+          if ($plugin = context_get_plugin('condition', 'taxonomy_term')) {
+            $plugin->execute($ctools_context->data, $task['name'] === 'term_view' ? 'view' : 'form');
+          }
+          break;
+        }
       }
     }
   }
@@ -105,7 +126,8 @@ function context_ctools_render_alter($info, $page, $data) {
 function context_entity_prepare_view($prepare, $entity_type) {
   if ($entity_type === 'taxonomy_term' && count($prepare) === 1) {
     $term = reset($prepare);
-    if ($term === menu_get_object('taxonomy_term', 2) && $plugin = context_get_plugin('condition', 'taxonomy_term')) {
+    $menu = menu_get_object('taxonomy_term', 2);
+    if ($menu && $term->tid == $menu->tid && $plugin = context_get_plugin('condition', 'taxonomy_term')) {
       $plugin->execute($term, 'view');
     }
   }
@@ -115,11 +137,9 @@ function context_entity_prepare_view($prepare, $entity_type) {
  * Implementation of hook_node_view().
  */
 function context_node_view($node, $view_mode) {
-  if ($view_mode === 'full') {
-    $object = menu_get_object();
-    if (isset($object->nid) && $object->nid === $node->nid) {
-      context_node_condition($node, 'view');
-    }
+  $object = menu_get_object();
+  if (isset($object->nid) && $object->nid === $node->nid) {
+    context_node_condition($node, 'view');
   }
 }
 
@@ -315,10 +335,13 @@ function context_context_page_condition() {
   if ($plugin = context_get_plugin('condition', 'menu')) {
     $plugin->execute();
   }
-  if ($plugin = context_get_plugin('condition', 'sitewide')) {
+  if ($plugin = context_get_plugin('condition', 'default')) {
     $plugin->execute(1);
   }
   if ($plugin = context_get_plugin('condition', 'context')) {
+    $plugin->execute();
+  }
+  if ($plugin = context_get_plugin('condition', 'context_all')) {
     $plugin->execute();
   }
 }
@@ -327,9 +350,6 @@ function context_context_page_condition() {
  * Implementation of hook_context_page_reaction().
  */
 function context_context_page_reaction() {
-  if ($plugin = context_get_plugin('reaction', 'breadcrumb')) {
-    $plugin->execute();
-  }
   if ($plugin = context_get_plugin('reaction', 'css_injector')) {
     $plugin->execute();
   }
@@ -339,13 +359,13 @@ function context_context_page_reaction() {
 }
 
 /**
- * Implementation of hook_page_alter().
+ * Implementation of hook_preprocess_page().
  */
 function context_preprocess_page(&$vars) {
-  if ($plugin = context_get_plugin('reaction', 'menu')) {
+  if ($plugin = context_get_plugin('reaction', 'theme')) {
     $plugin->execute($vars);
   }
-  if ($plugin = context_get_plugin('reaction', 'theme')) {
+  if ($plugin = context_get_plugin('reaction', 'template_suggestions')) {
     $plugin->execute($vars);
   }
   /*
@@ -356,6 +376,19 @@ function context_preprocess_page(&$vars) {
     $vars['context_links'] = '';
   }
   */
+}
+
+/**
+* Implementation of hook_delivery_callback_alter().
+* Based on menu_position's and menu_trail_by_path's implementations.
+*/
+function context_page_delivery_callback_alter() {
+  if ($plugin = context_get_plugin('reaction', 'menu')) {
+    $plugin->execute();
+  }
+  if ($plugin = context_get_plugin('reaction', 'breadcrumb')) {
+    $plugin->execute();
+  }
 }
 
 /**
