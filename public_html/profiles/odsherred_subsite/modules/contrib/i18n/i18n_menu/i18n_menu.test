@@ -99,7 +99,7 @@ class i18nMenuTestCase extends Drupali18nTestCase {
     // Create content type 'page', translation enabled, login as translator
     parent::setUpContentTranslation();
     $settings = array(
-      'menu_options[' . $menu['menu_name'] .']' => TRUE,
+      'menu_options[' . $menu['menu_name'] . ']' => TRUE,
       'menu_parent' => $menu_parent,
       'node_options[promote]' => FALSE,
     );
@@ -130,6 +130,8 @@ class i18nMenuTestCase extends Drupali18nTestCase {
       $this->drupalGet('admin/structure/menu/item/' . $node->menu['mlid'] . '/edit');
       $this->assertText(t('This menu item belongs to a node, so it will have the same language as the node and cannot be localized.'));
       $this->assertNoField('language', 'We cannot edit language for menu items that belong to nodes.');
+      // Edit the node and submit it to see if the menu link stays enabled.
+      $this->drupalPost('node/' . $node->nid . '/edit', array(), t('Save'));
     }
     // Check menu items show up for the right language.
     $this->drupalGet('<front>');
@@ -168,7 +170,7 @@ class i18nMenuTestCase extends Drupali18nTestCase {
     // Check if the overview works
     $this->drupalGet('admin/structure/menu/manage/translation');
     $link = $this->xpath('//*/a[contains(@href,"admin/structure/menu/manage/translation/edit/' . $translation_set->tsid . '")]');
-    $this->assertTrue(!empty($link),'Created translation-set found.');
+    $this->assertTrue(!empty($link), 'Created translation-set found.');
 
     // Check if the edit mode works
     $this->drupalGet('admin/structure/menu/manage/translation/edit/' . $translation_set->tsid);
