@@ -16,6 +16,9 @@ regions[content] = Content
 
 ; END REQUIRED CORE REGIONS
 
+regions[header_first] = Header First
+regions[header_second] = Header Second
+
 regions[user_first] = User Bar First
 regions[user_second] = User Bar Second
 
@@ -24,9 +27,6 @@ regions[menu] = Menu
 
 regions[sidebar_first] = Sidebar First
 regions[sidebar_second] = Sidebar Second
-
-regions[header_first] = Header First
-regions[header_second] = Header Second
 
 regions[preface_first] = Preface First
 regions[preface_second] = Preface Second
