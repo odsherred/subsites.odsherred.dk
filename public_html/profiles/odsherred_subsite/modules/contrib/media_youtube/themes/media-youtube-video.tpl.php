@@ -1,7 +1,7 @@
 <?php
 
 /**
- * @file media_youtube/includes/themes/media-youtube-video.tpl.php
+ * @file media_youtube/themes/media-youtube-video.tpl.php
  *
  * Template file for theme('media_youtube_video').
  *
@@ -23,5 +23,5 @@
 
 ?>
 <div class="<?php print $classes; ?> media-youtube-<?php print $id; ?>">
-  <iframe class="media-youtube-player" <?php print $api_id_attribute; ?>width="<?php print $width; ?>" height="<?php print $height; ?>" title="<?php print $title; ?>" src="<?php print $url; ?>" frameborder="0" allowfullscreen><?php print $alternative_content; ?></iframe>
+  <iframe class="media-youtube-player" <?php print $api_id_attribute; ?>width="<?php print $width; ?>" height="<?php print $height; ?>" title="<?php print $title; ?>" src="<?php print $url; ?>" name="<?php print $title; ?>" frameborder="0" allowfullscreen><?php print $alternative_content; ?></iframe>
 </div>
