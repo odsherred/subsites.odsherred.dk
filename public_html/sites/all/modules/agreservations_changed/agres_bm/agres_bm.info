@@ -5,8 +5,9 @@ core = 7.x
 
 dependencies[] = list
 dependencies[] = agreservations
-dependencies[] = agres_bookings
+;dependencies[] = agres_bookings
 dependencies[] = agres_categories
+
 dependencies[] = i18n
 
 files[] = agres_bm.install
@@ -15,9 +16,23 @@ files[] = includes/agres_bm.inc
 files[] = includes/agres_bm_3.inc
 files[] = includes/agres_bm_4.inc
 
-; Information added by Drupal.org packaging script on 2014-06-28
-version = "7.x-3.x-dev"
+; Information added by Drupal.org packaging script on 2015-01-24
+version = "7.x-3.0-beta4+5-dev"
 core = "7.x"
 project = "agreservations"
-datestamp = "1403984329"
+datestamp = "1422061402"
+
+
+; Information added by Drupal.org packaging script on 2015-02-16
+version = "7.x-3.0-beta4+11-dev"
+core = "7.x"
+project = "agreservations"
+datestamp = "1424049801"
+
+
+; Information added by Drupal.org packaging script on 2015-11-06
+version = "7.x-3.0-beta4+14-dev"
+core = "7.x"
+project = "agreservations"
+datestamp = "1446808455"
 

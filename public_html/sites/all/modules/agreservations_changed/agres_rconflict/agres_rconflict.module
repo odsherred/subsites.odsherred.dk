@@ -106,15 +106,15 @@ function _agres_rconflict_display_conflict_errors($node, $conflicting_nodes) {
 //           $date_start_timezone->modify($offset . 'seconds');
           
           $startobj = new DateObject($conflicting_node->{$date_field}[$lang][0]['value'],variable_get('date_default_timezone', date_default_timezone_get()));
-          $offset = $startobj->getOffset();
-          $offset = $offset * 1;
-          $startobj->modify($offset . 'seconds');
-          $start = $startobj->format('d.m.Y H:i');
+           $offset = $startobj->getOffset();
+           $offset = $offset * 1;
+           $startobj->modify($offset . 'seconds');          
+          $start = $startobj->format('Y-m-d H:i');
           $endobj = new DateObject($conflicting_node->{$date_field}[$lang][0]['value2'],variable_get('date_default_timezone', date_default_timezone_get()));
-          $offset = $endobj->getOffset();
-          $offset = $offset * 1;
-          $endobj->modify($offset . 'seconds');
-          $end = $endobj->format('d.m.Y H:i');
+           $offset = $endobj->getOffset();
+           $offset = $offset * 1;
+           $endobj->modify($offset . 'seconds');          
+          $end = $endobj->format('Y-m-d H:i');
 //           $offset = $date_start_timezone->getOffset();
 //           $offset = $offset * 1;
 //           $date_start_timezone->modify($offset . 'seconds');   //variable_get('date_default_timezone', date_default_timezone_get())
@@ -270,14 +270,14 @@ function _agres_rconflict_get_overlaps($start, $end) {
     $date_table = '{' . 'field_data_' . $date_field . '}';
     $start_field_name = $date_field . '_value';
     $end_field_name = $date_field . '_value2';
-    $query = "SELECT DISTINCT {node}.nid FROM {node} INNER JOIN $date_table date_table ON {node}.vid = date_table.revision_id
-       WHERE ({node}.status = 1) AND ((:date_start >= date_table.$start_field_name AND :date_start < date_table.$end_field_name )
-       OR(:date_end > date_table.$start_field_name AND :date_end <= date_table.$end_field_name)
-       OR(:date_start <= date_table.$start_field_name AND :date_end >= date_table.$end_field_name))";    
 //    $query = "SELECT DISTINCT {node}.nid FROM {node} INNER JOIN $date_table date_table ON {node}.vid = date_table.revision_id
-//       WHERE(:date_start >= date_table.$start_field_name AND :date_start < date_table.$end_field_name)
+//       WHERE ({node}.status = 1) AND ((:date_start >= date_table.$start_field_name AND :date_start < date_table.$end_field_name )
 //       OR(:date_end > date_table.$start_field_name AND :date_end <= date_table.$end_field_name)
-//       OR(:date_start <= date_table.$start_field_name AND :date_end >= date_table.$end_field_name) AND {node}.status = 1";
+//       OR(:date_start <= date_table.$start_field_name AND :date_end >= date_table.$end_field_name))";    
+    $query = "SELECT DISTINCT {node}.nid FROM {node} INNER JOIN $date_table date_table ON {node}.vid = date_table.revision_id
+       WHERE(:date_start >= date_table.$start_field_name AND :date_start < date_table.$end_field_name)
+       OR(:date_end > date_table.$start_field_name AND :date_end <= date_table.$end_field_name)
+       OR(:date_start <= date_table.$start_field_name AND :date_end >= date_table.$end_field_name) AND {node}.status = 1";
     $result = db_query($query, array(':date_start' => $date_start, ':date_end' => $date_end));
 
     // Create an array of all of the results
@@ -290,7 +290,56 @@ function _agres_rconflict_get_overlaps($start, $end) {
   
   return array_unique($rows);
 }
+//also get overlaps from unpublished nodes:
+function _agres_rconflict_get_overlaps_all($start, $end) {
+  $date_start = $start->format(DATE_FORMAT_DATETIME);
+  $date_end = $end->format(DATE_FORMAT_DATETIME);  
+           $dateTimezone1 = new DateTimeZone(variable_get('date_default_timezone', date_default_timezone_get()));
+           $date_start_timezone = new DateTime($date_start, $dateTimezone1);
+           $offset = $date_start_timezone->getOffset();
+           if(is_numeric(variable_get('agr_min_gap', '0'))){
+             $minutes = intval(variable_get('agr_min_gap', '0'));
+             $date_start_timezone->modify('-'.$minutes.' minutes');
+           }
+        
+  $date_start =  $date_start_timezone->format(DATE_FORMAT_DATETIME);  
+ 
+           $date_end_timezone = new DateTime($date_end, $dateTimezone1);
+           $offset = $date_end_timezone->getOffset();
+           if(is_numeric(variable_get('agr_min_gap', '0'))){
+             $minutes = intval(variable_get('agr_min_gap', '0'));
+             $date_end_timezone->modify('+'.$minutes.' minutes');
+           }
+           
+  $date_end =  $date_end_timezone->format(DATE_FORMAT_DATETIME);
 
+  $rows = array();
+  $type = 'agreservation';
+  $date_field = 'field_agres_rdate';
+  if (strpos($date_field, 'field_', 0) === 0) {
+    $date_table = '{' . 'field_data_' . $date_field . '}';
+    $start_field_name = $date_field . '_value';
+    $end_field_name = $date_field . '_value2';
+//    $query = "SELECT DISTINCT {node}.nid FROM {node} INNER JOIN $date_table date_table ON {node}.vid = date_table.revision_id
+//       WHERE ({node}.status = 1) AND ((:date_start >= date_table.$start_field_name AND :date_start < date_table.$end_field_name )
+//       OR(:date_end > date_table.$start_field_name AND :date_end <= date_table.$end_field_name)
+//       OR(:date_start <= date_table.$start_field_name AND :date_end >= date_table.$end_field_name))";    
+    $query = "SELECT DISTINCT {node}.nid FROM {node} INNER JOIN $date_table date_table ON {node}.vid = date_table.revision_id
+       WHERE(:date_start >= date_table.$start_field_name AND :date_start < date_table.$end_field_name)
+       OR(:date_end > date_table.$start_field_name AND :date_end <= date_table.$end_field_name)
+       OR(:date_start <= date_table.$start_field_name AND :date_end >= date_table.$end_field_name)";
+    $result = db_query($query, array(':date_start' => $date_start, ':date_end' => $date_end));
+
+    // Create an array of all of the results
+    while ($row = $result->fetchAssoc()) {
+      $rows[] = $row['nid'];
+//      drupal_set_message('<pre>'.print_r(,true).'</pre>');
+    }
+  }
+//  drupal_set_message('<pre>aASDADS'.print_r($rows,true).'</pre>');
+  
+  return array_unique($rows);
+}
 if (!function_exists('date_show_value')) {
 
   /**

@@ -189,85 +189,85 @@ function _agres_category_fields() {
       ),
     ),
   );
-  // Exported field: 'node-agres_category-field_agres_asknightcount'
-  $fields['node-agres_category-field_agres_asknightcount'] = array(
-    'field_config' => array(
-      'active' => '1',
-      'cardinality' => '1',
-      'deleted' => '0',
-      'entity_types' => array(),
-      'field_name' => 'field_agres_asknightcount',
-      'foreign keys' => array(),
-      'indexes' => array(
-        'value' => array(
-          0 => 'value',
-        ),
-      ),
-      'module' => 'list',
-      'settings' => array(
-        'allowed_values' => array(
-          1 => 'yes ask for number of nights,days,hours depending on setting of measurementunit (for hotels, use nights)',
-          2 => ' don´t display entryfield for entering number of nights, use date2 instead',
-        ),
-        'allowed_values_function' => '',
-        'allowed_values_php' => '',
-        'field_permissions' => array(
-          'create' => 0,
-          'edit' => 0,
-          'edit own' => 0,
-          'view' => 0,
-          'view own' => 0,
-        ),
-      ),
-      'translatable' => '1',
-      'type' => 'list_text',
-    ),
-    'field_instance' => array(
-      'bundle' => 'agres_category',
-      'default_value' => array(
-        0 => array(
-          'value' => '1',
-        ),
-      ),
-      'deleted' => '0',
-      'description' => '',
-      'display' => array(
-        'default' => array(
-          'label' => 'above',
-          'module' => 'list',
-          'settings' => array(),
-          'type' => 'list_default',
-          'weight' => 5,
-        ),
-        'teaser' => array(
-          'label' => 'above',
-          'settings' => array(),
-          'type' => 'hidden',
-          'weight' => 0,
-        ),
-        'ubercart' => array(
-          'label' => 'above',
-          'settings' => array(),
-          'type' => 'hidden',
-          'weight' => 0,
-        ),
-      ),
-      'entity_type' => 'node',
-      'field_name' => 'field_agres_asknightcount',
-      'label' => 'Ask for number of nights,days,hours...',
-      'required' => 1,
-      'settings' => array(
-        'user_register_form' => FALSE,
-      ),
-      'widget' => array(
-        'active' => 1,
-        'module' => 'options',
-        'settings' => array(),
-        'type' => 'options_select',
-        'weight' => '100',
-      ),
-    ),
-  );
+//  // Exported field: 'node-agres_category-field_agres_asknightcount'
+//  $fields['node-agres_category-field_agres_asknightcount'] = array(
+//    'field_config' => array(
+//      'active' => '1',
+//      'cardinality' => '1',
+//      'deleted' => '0',
+//      'entity_types' => array(),
+//      'field_name' => 'field_agres_asknightcount',
+//      'foreign keys' => array(),
+//      'indexes' => array(
+//        'value' => array(
+//          0 => 'value',
+//        ),
+//      ),
+//      'module' => 'list',
+//      'settings' => array(
+//        'allowed_values' => array(
+//          1 => 'yes ask for number of nights,days,hours depending on setting of measurementunit (for hotels, use nights)',
+//          2 => ' don´t display entryfield for entering number of nights, use date2 instead',
+//        ),
+//        'allowed_values_function' => '',
+//        'allowed_values_php' => '',
+//        'field_permissions' => array(
+//          'create' => 0,
+//          'edit' => 0,
+//          'edit own' => 0,
+//          'view' => 0,
+//          'view own' => 0,
+//        ),
+//      ),
+//      'translatable' => '1',
+//      'type' => 'list_text',
+//    ),
+//    'field_instance' => array(
+//      'bundle' => 'agres_category',
+//      'default_value' => array(
+//        0 => array(
+//          'value' => '1',
+//        ),
+//      ),
+//      'deleted' => '0',
+//      'description' => '',
+//      'display' => array(
+//        'default' => array(
+//          'label' => 'above',
+//          'module' => 'list',
+//          'settings' => array(),
+//          'type' => 'list_default',
+//          'weight' => 5,
+//        ),
+//        'teaser' => array(
+//          'label' => 'above',
+//          'settings' => array(),
+//          'type' => 'hidden',
+//          'weight' => 0,
+//        ),
+//        'ubercart' => array(
+//          'label' => 'above',
+//          'settings' => array(),
+//          'type' => 'hidden',
+//          'weight' => 0,
+//        ),
+//      ),
+//      'entity_type' => 'node',
+//      'field_name' => 'field_agres_asknightcount',
+//      'label' => 'Ask for number of nights,days,hours...',
+//      'required' => 1,
+//      'settings' => array(
+//        'user_register_form' => FALSE,
+//      ),
+//      'widget' => array(
+//        'active' => 1,
+//        'module' => 'options',
+//        'settings' => array(),
+//        'type' => 'options_select',
+//        'weight' => '100',
+//      ),
+//    ),
+//  );
 
   // Exported field: 'node-agres_category-field_agres_askpersons'
   $fields['node-agres_category-field_agres_askpersons'] = array(

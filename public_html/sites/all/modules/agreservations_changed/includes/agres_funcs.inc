@@ -5,7 +5,24 @@
  * helper functions. not only usefull for agreservations
  */
 
-
+/**
+ * agr_overlapping: simple function to return if 2 dateranges are overlapping
+ * @param $von1 format: Y-m-d H:i:s
+ * @param $bis1
+ * @param $von2
+ * @param $bis2
+ * @return boolean
+ */
+function agr_overlapping($von1,$bis1,$von2,$bis2){
+   //        WHERE(:date_start >= date_table.$start_field_name AND :date_start < date_table.$end_field_name)
+//       OR(:date_end > date_table.$start_field_name AND :date_end <= date_table.$end_field_name)
+//       OR(:date_start <= date_table.$start_field_name AND :date_end >= date_table.$end_field_name) AND {node}.status = 1";      
+    if(($von1 >= $von2 && $von1 < $bis2)||($bis1 > $von2 && $bis1 <= $bis2)||($von1 <= $von2 && $bis1 >= $bis2)){
+        return true;
+    } else {
+        return false;
+    }
+}
 
 function agr_get_base_node($nodeid) {
 // Get the field meta data for the field_id.
@@ -190,11 +207,9 @@ function _agreservations_create_date_range($date_from, $date_to) {
       array_push($range, date('Y-m-d', $temp_date_from));
     }
   }
-//  drupal_set_message('<pre>eeeeeeeehhheeeee ' . print_r($range, true) . '</pre>');
   return $range;
 }
 function _agreservations_create_datehour_range($date_from, $date_to) {
-//    drupal_set_message('<pre>eeeeeeeehhheeeee ' . print_r(intval(substr($date_to, 14, 2)), true) . '</pre>');
   $range = array();
  
   $temp_date_from = mktime(intval(substr($date_from, 11, 2)), intval(substr($date_from, 14, 2)), 0, intval(substr($date_from, 5, 2)), intval(drupal_substr($date_from, 8, 2)), intval(substr($date_from, 0, 4)));

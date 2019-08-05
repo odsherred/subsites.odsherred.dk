@@ -22,6 +22,8 @@ function agres_rate_views_api() {
  * @param      $data   all info about the booking are here.($unittypenid, &$data)
  */
 function _agres_get_products_for_reservation($unittypenid, $data, $arraypop=true) {
+    
+//    drupal_set_message('<pre>_agres_get_products_for_reservation__:'.print_r($data,true).'</pre>');
   //First check if unittype has rates:
   $rates = array();
   $unitnode = node_load($unittypenid);

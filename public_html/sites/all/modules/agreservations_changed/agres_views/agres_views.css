@@ -22,7 +22,7 @@
   background-color:#fff;
 }
 div.agres_item a{
-  color: #fff !important;
+  color: #1ff;
   text-decoration: none;
 }
 
@@ -81,7 +81,7 @@ div.agres_item a{
   text-align: center;
   padding: 0px;
   margin: 3em;
-  font-size: 14px;
+  font-size:smaller;
 
 
 }
@@ -127,7 +127,7 @@ div.agres_item a{
 .agreservations-calendar th a {
   font-weight: bold;
   color: #fff;
-  font-size: 14px;
+  background-color: #ccc;
 }
 .agreservations-calendar td {
   width: 12%; /* 14% is about 1/7 of total table width */
@@ -156,16 +156,15 @@ div.agres_item a{
   padding:0em;
   background-color: #f2f;
 }
-.agreservations-calendar .month,
+
 .agreservations-calendar .week {
   clear:both;
   font-style: normal;
-  color: #000;
-  font-size: 14px;
+  color: #555;
+  font-size: 0.8em;
 }
-.agreservations-calendar .month a,
 .agreservations-calendar .week a {
-  font-weight:normal;
+  font-weight:lighter;
   padding:0em;
 }
 
@@ -190,7 +189,7 @@ div.agres_item a{
 .agreservations-calendar td div.agres_item{
 /*white-space:nowrap;*/
   white-space:nowrap;
-  font-size:14px;
+  font-size:xx-small;
   overflow:hidden;
 /*  overflow:scroll;*/
 }
@@ -206,7 +205,7 @@ div.agres_item a{
 /*  overflow:scroll;*/
 }
 .agreservations-calendar td a {
-  color: #000;
+
   text-decoration: none;
 }
 .agreservations-calendar td a:hover {
@@ -226,7 +225,7 @@ div.agres_item a{
   margin:0;
 }
 .agreservations-calendar th.agreservations-calendar-agenda-hour .agreservations-calendar-hour {
-  font-size: 14px;
+  font-size: 1.1em;
   padding: 1px;
   margin:0;
 }
@@ -242,7 +241,7 @@ div.agres_item a{
   background-color: #fff;
   clear:both;
   width:auto;
-  font-size:14px;
+  font-size:xx-small;
 }
 table.agreservations-table tbody tr td div.month  {
   float: right;
@@ -252,9 +251,9 @@ table.agreservations-table tbody tr td div.month  {
   background-color: #fff;
   border: 0px solid #fff;
   border-width: 0 0 0px 0px;
-  clear: none;
-  width:70%;
-  font-size:14px;
+  clear:both;
+  width:auto;
+  font-size:xx-small;
 }
 /*  individual node container  */
 .agreservations-calendar div.calendar {
@@ -275,7 +274,7 @@ table.agreservations-table tbody tr td div.month  {
 }
 
 .agreservations-calendar div.title {
-  font-size: 14px;
+  font-size:.8em;
   text-align:center;
 }
 
@@ -483,7 +482,7 @@ table.agreservations-legend tr.even .stripe {
   border-radius : 5px 5px  5px  5px;
 }
 .monthview {
-  width: 98%;
+  width: 100%;
   height: 100%;
 }
 .agreservations-inner-black{
@@ -503,11 +502,11 @@ table.agreservations-legend tr.even .stripe {
   margin:auto;
   padding:0px 2px;
   font-size:7px;
-  -moz-border-radius: 5px 5px  5px  5px;
+  -moz-border-radius : 5px 5px  5px  5px;
   border-radius : 5px 5px  5px  5px;
 }
 .agreservations-inner{
-  background-color:#453490;
+  background-color:#44f;
   text-align: center;
   color:#fff;
   margin:auto;
@@ -515,8 +514,6 @@ table.agreservations-legend tr.even .stripe {
   font-size:7px;
   -moz-border-radius : 5px 5px  5px  5px;
   border-radius : 5px 5px  5px  5px;
-  margin-bottom: 2px;
-  vertical-align: middle !important;
 }
 .itemwithorder a{
   color:#fff;
@@ -527,7 +524,7 @@ table.agreservations-legend tr.even .stripe {
 }
 .itemwithorder {
   
-  background-color:#453490  ;
+  background-color:#44f;
   -moz-border-radius : 5px 5px  5px  5px;
   border-radius : 5px 5px  5px  5px;
   color:#fff;
@@ -555,7 +552,7 @@ table.agreservations-legend tr.even .stripe {
   color:#fff;
   margin:auto;
   padding:0px 2px;
-  font-size:14px;
+  font-size:7px;
   -moz-border-radius : 5px 5px  5px  5px;
   border-radius : 5px 5px  5px  5px;
 }
@@ -632,25 +629,4 @@ border-right-style: solid;
 border-right-color: #944;*/
 /*border-right-width:15px;*/
 
-}
-table.agreservations-table .weekend table tr,
-table.agreservations-table tbody .weekend .month,
-table.agreservations-table tbody .weekend{
-    background-color: #E4E4E4;
-}
-
-table.agreservations-table tbody .weekend{
-
-  border-bottom: 1px solid #fff;
-}
-.view-agres-view .date-nav-wrapper .date-prev {
-  left: 0;
-  width: 80px;
-
-}
-.view-agres-view .date-nav-wrapper .date-prev a {
-  margin-left: 0px;
-}
-.passed {
-  background-color: rgb(155, 135, 135);
 }
