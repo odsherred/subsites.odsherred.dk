@@ -65,6 +65,15 @@ function agres_categories_views_data() {
       'click sortable' => FALSE,
     ),
   );
+  $data['node']['actions'] = array(
+    'title' => t('AGR Action Unit type Selection for daily booking mode'),
+    'help' => t('Select Unit Type for per daily booking'),
+    'field' => array(
+      'handler' => 'agres_categories_views_handler_field_select_utype_rate_daily',
+      'group' => 'AGR',
+      'click sortable' => FALSE,
+    ),
+  );  
 //  $data['node']['select_unit'] = array(
 //    'title' => t('AGR Select Unit Package Booking'),
 //    'help' => t('select a unit - button for Package Booking'),

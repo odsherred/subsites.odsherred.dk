@@ -11,8 +11,6 @@
  *
  * Notes:
  * This module needs to run after taxonomy, i18n, translation. Check module weight.
- *
- * @ TODO Test with CCK when possible, api may have changed.
  */
 
 /**
@@ -35,17 +33,17 @@ function i18n_sync($status = NULL) {
 function i18n_sync_help($path, $arg) {
   switch ($path) {
     case 'admin/help#i18n_sync' :
-      $output = '<p>'. t('This module synchronizes content taxonomy and fields accross translations:') .'</p>';
-      $output .= '<p>'. t('First you need to select which fields should be synchronized. Then, after a node has been updated, all enabled vocabularies and fields will be synchronized as follows:') .'</p>';
+      $output = '<p>' . t('This module synchronizes content taxonomy and fields across translations:') . '</p>';
+      $output .= '<p>' . t('First you need to select which fields should be synchronized. Then, after a node has been updated, all enabled vocabularies and fields will be synchronized as follows:') . '</p>';
       $output .= '<ul>';
-      $output .= '<li>'. t('All the node fields selected for synchronization will be set to the same value for all translations.') .'</li>';
-      $output .= '<li>'. t('For multilingual vocabularies, the terms for all translations will be replaced by the translations of the original node terms.') .'</li>';
-      $output .= '<li>'. t('For other vocabularies, the terms will be just copied over to all the translations.') .'</li>';
+      $output .= '<li>' . t('All the node fields selected for synchronization will be set to the same value for all translations.') . '</li>';
+      $output .= '<li>' . t('For multilingual vocabularies, the terms for all translations will be replaced by the translations of the original node terms.') . '</li>';
+      $output .= '<li>' . t('For other vocabularies, the terms will be just copied over to all the translations.') . '</li>';
       $output .= '</ul>';
-      $output .= '<p><strong>'. t('Note that permissions are not checked for each node. So if someone can edit a node and it is set to synchronize, all the translations will be synchronized anyway.') .'</strong></p>';
-      $output .= '<p>'. t('To enable synchronization check content type options to select which fields to synchronize for each node type.') .'</p>';
-      $output .= '<p>'. t('The list of available fields for synchronization will include some standard node fields and all CCK fields. You can add more fields to the list in a configuration variable. See README.txt for how to do it.') .'</p>';
-      $output .= '<p>'. t('For more information, see the online handbook entry for <a href="@i18n">Internationalization module</a>.', array('@i18n' => 'http://drupal.org/node/133977')) .'</p>';
+      $output .= '<p><strong>' . t('Note that permissions are not checked for each node. So if someone can edit a node and it is set to synchronize, all the translations will be synchronized anyway.') . '</strong></p>';
+      $output .= '<p>' . t('To enable synchronization check content type options to select which fields to synchronize for each node type.') . '</p>';
+      $output .= '<p>' . t('The list of available fields for synchronization will include some standard node fields and all CCK fields. You can add more fields to the list in a configuration variable. See README.txt for how to do it.') . '</p>';
+      $output .= '<p>' . t('For more information, see the online handbook entry for <a href="@i18n">Internationalization module</a>.', array('@i18n' => 'http://drupal.org/node/133977')) . '</p>';
       return $output;
   }
 }
@@ -74,25 +72,6 @@ function i18n_sync_field_info_alter(&$fields) {
 /**
  * Implements hook_form_FORM_ID_alter().
  */
-function i18n_sync_form_node_admin_content_alter(&$form, &$form_state) {
-  if (!empty($form['operation']) && $form['operation']['#value'] == 'delete') {
-    $form['#submit'] = array_merge(array('i18n_sync_node_delete_submit'), $form['#submit']);
-  }
-}
-
-/**
- * Implements hook_form_FORM_ID_alter().
- */
-function i18n_sync_form_node_delete_confirm_alter(&$form, &$form_state) {
-  // Intercept form submission so we can handle uploads, replace callback
-  $form['#submit'] = array_merge(array('i18n_sync_node_delete_submit'), $form['#submit']);
-}
-
-
-
-/**
- * Implements hook_form_FORM_ID_alter().
- */
 function i18n_sync_form_node_type_form_alter(&$form, &$form_state) {
   if (isset($form['type'])) {
     $type = $form['#node_type']->type;
@@ -112,6 +91,7 @@ function i18n_sync_form_node_type_form_alter(&$form, &$form_state) {
 
     $form['i18n_sync']['i18n_sync_node_type'] = array(
       '#tree' => TRUE,
+      '#weight' => 1,
     );
 
     // Each set provides title and options. We build a big checkboxes control for it to be
@@ -142,42 +122,21 @@ function i18n_sync_form_node_type_form_alter(&$form, &$form_state) {
         );
       }
     }
-  }
-}
 
-/**
- * Submit callback for
- * - node delete confirm
- * - node multiple delete confirm
- */
-function i18n_sync_node_delete_submit($form, $form_state) {
-  if ($form_state['values']['confirm']) {
-    if (!empty($form_state['values']['nid'])) {
-      // Single node
-      i18n_sync_node_delete_prepare($form_state['values']['nid']);
-    }
-    elseif (!empty($form_state['values']['nodes'])) {
-      // Multiple nodes
-      foreach ($form_state['values']['nodes'] as $nid => $value) {
-        i18n_sync_node_delete_prepare($nid);
-      }
-    }
-  }
-  // Then it will go through normal form submission
-}
-
-/**
- * Prepare node for deletion, work out synchronization issues
- */
-function i18n_sync_node_delete_prepare($nid) {
-  $node = node_load($nid);
-  // Delete file associations when files are shared with existing translations
-  // so they are not removed by upload module
-  if (!empty($node->tnid) && module_exists('upload')) {
-    $result = db_query('SELECT u.* FROM {upload} u WHERE u.nid = %d AND u.fid IN (SELECT t.fid FROM {upload} t WHERE t.fid = u.fid AND t.nid <> u.nid)', $nid);
-    while ($up = db_fetch_object($result)) {
-      db_query("DELETE FROM {upload} WHERE fid = %d AND vid = %d", $up->fid, $up->vid);
-    }
+    // Add option to restrict syncing only when editing the translation source.
+    $form['i18n_sync']['i18n_sync_source_description'] = array(
+      '#prefix' => '<div>', '#suffix' => '</div>',
+      '#markup' => t('Restrict synchronization to the translation source.'),
+      '#weight' => 2,
+    );
+    $form['i18n_sync']['i18n_sync_source'] = array(
+      '#type' => 'checkbox',
+      '#title' => t('Synchronize translations only when saving the translation source'),
+      '#default_value' => variable_get('i18n_sync_source_' . $type, FALSE),
+      '#disabled' => $disabled,
+      '#weight' => 3,
+      '#description' => t('If not checked each node will trigger the synchronization, whether it\'s the source or not.'),
+    );
   }
 }
 
@@ -224,9 +183,17 @@ function i18n_sync_node_insert($node) {
  */
 function i18n_sync_node_update($node) {
   // Let's go with field synchronization.
-  if (i18n_sync_node_check($node) && !empty($node->tnid) && ($fields = i18n_sync_node_fields($node->type)) && ($translations = i18n_sync_node_get_translations($node, TRUE))) {
-    module_load_include('node.inc', 'i18n_sync');
-    i18n_sync_node_translation($node, $translations, $fields, 'update');
+  if (i18n_sync_node_check($node) && !empty($node->tnid) && (!variable_get('i18n_sync_source_' . $node->type, TRUE) || $node->tnid == $node->nid) && ($fields = i18n_sync_node_fields($node->type)) && ($translations = i18n_sync_node_get_translations($node, TRUE))) {
+    $do_sync = TRUE;
+    if (module_exists('entity_translation')) {
+      if (entity_translation_enabled_bundle('node', $node->type)) {
+        $do_sync = FALSE;
+      }
+    }
+    if ($do_sync) {
+      module_load_include('node.inc', 'i18n_sync');
+      i18n_sync_node_translation($node, $translations, $fields, 'update');
+    }
   }
 }
 
@@ -264,7 +231,7 @@ function i18n_sync_node_prepare($node) {
  *   Optional field name to check whether it is in the list
  */
 function i18n_sync_node_fields($type, $field = NULL) {
-  $fields = variable_get('i18n_sync_node_type_'. $type, array());
+  $fields = variable_get('i18n_sync_node_type_' . $type, array());
   return $field ? in_array($field, $fields) : $fields;
 }
 

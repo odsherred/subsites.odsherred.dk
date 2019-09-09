@@ -212,7 +212,7 @@ function template_preprocess_agres_views_month(&$vars) {
             else {
               $continuation = 0;
             }
-            $itemclass = 'itemwithoutorder';
+            $itemclass = 'itemwithoutorder';            
             if (!isset($resob->node->field_agres_orderid[$resob->node->language])||($resob->node->field_agres_orderid[$resob->node->language][0]['value'])==0) {
               // Treat as receptionist manual reservation defaultcolor orange
               $itemclass = 'itemwithoutorder';
@@ -923,7 +923,7 @@ function template_preprocess_agres_views_day_old(&$vars) {
 function template_preprocess_agres_views_week(&$vars) {
   // Add in all the $vars added by the main calendar preprocessor.
   if ($vars['view']->name == 'agres_view') {
-    $vars['view']->style_with_weekno = TRUE;
+    $vars['view']->style_with_weekno = FALSE;
     $view = $vars['view'];
     $rows = $vars['rows'];
     $agrrows = $vars['rows'];
@@ -1000,20 +1000,18 @@ function template_preprocess_agres_views_week(&$vars) {
     $ff = 0;
     // Initialize vars teststring
     $vars['rinfo'] = array();
-
     foreach ($rows[0] as $weekno => $row) {
       $vars['rows'][$weekno] = $row['data'];
       foreach ($row['data']['items'] as $ikey => $item) {
         ksort($item);
-
         foreach ($item as $skey => $singlereservation) {
 
           $date = new DateObject($singlereservation->field['value'], $singlereservation->field['timezone_db'], NULL);
           $date->setTimezone(timezone_open(date_default_timezone()));
+
           $tmpunititems = array();
           // Rooms per reservation pick
           $tmpunititems = _agreservations_get_unitn_for_reservation_node($singlereservation->nid);
-
           foreach ($units as $unit) {
 
             // Checks if unit is a booked item:
@@ -1033,20 +1031,29 @@ function template_preprocess_agres_views_week(&$vars) {
               }
 
               if (( ($pos2 === FALSE)) || (($pos !== FALSE) && ($pos2 !== FALSE))) {
-
-                $row['data']['all_day'][$unit->title][$singlereservation->nid] = $singlereservation;
-
+                $row['data']['all_day'][$unit->title] = $singlereservation;
               }
             }
           }
         }
       }
-
       reset($row['data']['all_day']);
       ksort($row['data']['all_day']);
 
-      $rowcopy = $row['data']['all_day'];
 
+      $rowcopy = $row['data']['all_day'];
+      $row['data']['all_day'] = array();
+      foreach ($rowcopy as $ikey => $singlereservation) {
+        $tmpunititems = array();
+        // Rooms per reservation pick
+        $tmpunititems = _agreservations_get_unitn_for_reservation_node($singlereservation->nid);
+
+        foreach ($units as $unit) {
+          if (in_array($unit->nid, $tmpunititems)) {
+            $row['data']['all_day'][$unit->title] = $singlereservation;
+          }
+        }
+      }
       $columns[] = $weekno;
       foreach ($units as $unit) {
         // Initialize $grouped_items
@@ -1055,8 +1062,7 @@ function template_preprocess_agres_views_week(&$vars) {
         $start_time = array_shift($start_times);
         $next_start_time = count($start_times) ? array_shift($start_times) : $end_start_time;
         ksort($row['data']['all_day']);
-        foreach ($row['data']['all_day'] as $key => $items) {
-          foreach ($items as $item){
+        foreach ($row['data']['all_day'] as $key => $item) {
           $temp_end = date_create($item->row->field_field_agres_rdate[0]['raw']['value2']);
           $temp_granularity_end = date_create(date_format($view->date_info->max_date, DATE_FORMAT_DATETIME));
           if ($temp_end > $temp_granularity_end) {
@@ -1093,7 +1099,6 @@ function template_preprocess_agres_views_week(&$vars) {
           );
           // Units per reservation
           $tmpunititems = _agreservations_get_unitn_for_reservation_node($item->nid);
-
           // Unit is in booked item
           if ($unit->title === $key) {
             if ((!isset($vars['rinfo'][$unit->title][$item->nid]))) {
@@ -1107,7 +1112,6 @@ function template_preprocess_agres_views_week(&$vars) {
             }
           }
           $item_count++;
-        }
         }
 
         foreach ($row['data']['items'] as $time => $items) {
@@ -1178,8 +1182,7 @@ function template_preprocess_agres_views_week(&$vars) {
     $vars['unittypes'] = $unittypes;
     $vars['calendarname'] = $view->name;
     $vars['currentselectedweek'] = $view->args[0]; // year.'-W'.$week;
-    $vars['template_file'] = 'agres-views-week--page-2';
-    //$vars['template_file'] = 'agreservations-calendar-week-2';
+    $vars['template_file'] = 'agreservations-calendar-week-2';
     if (module_exists('agres_categories')) {
       $vars['template_file'] = 'agreservations-calendar-week-c';
       $vars['categories'] = $categories;
@@ -1197,7 +1200,6 @@ function template_preprocess_agres_views_week(&$vars) {
  * Create the agres_views date box.
  */
 function template_preprocess_agres_views_datebox(&$vars) {
-  global $base_url;
   $date = $vars['date'];
   $view = $vars['view'];
   $vars['day'] = intval(drupal_substr($date, 8, 2));
@@ -1209,7 +1211,7 @@ function template_preprocess_agres_views_datebox(&$vars) {
   $xtempurl = date_pager_url($view, NULL, $date, $force_view_url);
   $vars['url'] = str_replace(array($month_path, $year_path, $week_path), $day_path, $xtempurl);
 //  $vars['link'] = !empty($day_path) ? l($vars['day'], $vars['url']) : $vars['day'];
-  $vars['link'] = l(t(date('D',strtotime($vars['date']))) . " " . date('d.m.Y',strtotime($vars['date'])), $base_url.'/agres_view/day/'.$date);
+  $vars['link'] = l($vars['day'], $vars['url']);
 //drupal_set_message('<pre>cssssssutemplate_preprocess_agres_views_datebox '.print_r($vars['link'],true).'</pre>');
   $vars['granularity'] = $view->date_info->granularity;
   $vars['mini'] = !empty($view->date_info->mini);
@@ -1222,8 +1224,7 @@ function template_preprocess_agres_views_datebox(&$vars) {
     }
   }
   else {
-    $vars['class'] = "";
-    //$vars['class'] = 'day';
+    $vars['class'] = 'day';
   }
 }
 
@@ -1284,8 +1285,8 @@ function theme_agres_views_time_row_heading($vars) {
   $curday_date = $vars['curday_date'];
   static $format_hour, $format_ampm;
   if (empty($format_hour)) {
-    $format = 'm/d/Y - H:i:s';
-    $format_hour = str_replace(array('a', 'A'), '', date_limit_format($format, array('hour', 'minute','second')));
+    $format = 'm/d/Y - H:i';
+    $format_hour = str_replace(array('a', 'A'), '', date_limit_format($format, array('hour', 'minute')));
     $format_ampm = strstr($format, 'a') ? 'a' : (strstr($format, 'A') ? 'A' : '');
   }
   if ($start_time == '00:00:00' && $next_start_time == '23:59:59') {
@@ -1293,7 +1294,7 @@ function theme_agres_views_time_row_heading($vars) {
   }
   elseif ($start_time == '00:00:00') {
     $date = date_create($curday_date . ' ' . $next_start_time);
-    $hour = t(' @time', array('@time' => date_format($date, $format_hour)));
+    $hour = t('< @time', array('@time' => date_format($date, $format_hour)));
   }
   else {
     $date = date_create($curday_date . ' ' . $start_time);

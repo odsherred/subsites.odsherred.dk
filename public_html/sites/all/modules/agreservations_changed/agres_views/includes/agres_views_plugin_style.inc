@@ -316,7 +316,11 @@ class agres_views_plugin_style extends calendar_plugin_style {
         }
         $item->rendered_fields = $rendered_fields;
         $items[$item_start][$time_start][] = $item;
-        $this->view->row_index++;
+        //A.G.:
+        if(isset($this->view->row_index)){
+             $this->view->row_index++;
+        }
+       
       }
     }
 

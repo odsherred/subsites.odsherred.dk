@@ -24,19 +24,51 @@
  *
  */
 //dsm('Display: '. $display_type .': '. $min_date_formatted .' to '. $max_date_formatted);
-//dpm($rows);
+//dsm($rows);
 //dsm($items);//currentunittype calendarname
 ?>
 <div class="agreservations-calendar"><div class="week-view">
-    <div>
-      <div class="passed"></div>
-    </div>
+    <table class="agreservations-table">
+      <thead>
+        <tr class="agreservations-calendar">
+          <th class="agreservations-calendar th categories">
+            <?php if (!isset($currentcategory)): ?>
+                <?php  print(l(t('show all categories'), $agrescurrentpath . "/" . $currentselectedweek, array('attributes' => array('class' => array('agreservations-calendar a categorysel')))) )?> 
+            <?php else: ?>
+                <?php  print(l(t('show all categories'), $agrescurrentpath . "/" . $currentselectedweek, array('attributes' => array('class' => array('agreservations-calendar a categories')))) )?> 
+            <?php endif; ?>
+
+          </th>
+          <?php foreach ($categories as $category): ?>
+            <th class="agreservations-calendar th categories">
+              <?php if (isset($currentcategory) && $currentcategory == $category->nid): ?>
+                  <?php  print(l(t($category->title), $agrescurrentpath . "/" . $currentselectedweek . "/" . $category->nid, array('attributes' => array('class' => array('agreservations-calendar a categorysel')))) )?> 
+              <?php else: ?>
+                  <?php  print(l(t($category->title), $agrescurrentpath . "/" . $currentselectedweek . "/" . $category->nid, array('attributes' => array('class' => array('agreservations-calendar a categories')))) )?> 
+              <?php endif; ?>
+
+            </th>
+          <?php endforeach; ?>
+        </tr>        
+    </table>
+    <table class="agreservations-table">
+      <tr class="agreservations-calendar">
+        <th class="agreservations-calendar th unittypes">
+          <a class="<?php print (!isset($currentunittype)) ? "agreservations-calendar a unittypessel" : "agreservations-calendar a unittypes"; ?>" href="<?php print(base_path() . $agrescurrentpath . "/" . $currentselectedweek . "/" . $currentcategory); ?>"><?php print (t('show all units')); ?></a>
+        </th>
+        <?php foreach ($unittypes as $unittype): ?>
+          <th class="agreservations-calendar th unittypes">
+            <a class="<?php print (isset($currentunittype) && $currentunittype == $unittype->nid) ? "agreservations-calendar a unittypessel" : "agreservations-calendar a unittypes"; ?>" href="<?php print(base_path() . $agrescurrentpath . "/" . $currentselectedweek . "/" . $currentcategory . "/" . $unittype->nid); ?>"><?php print ($unittype->title); ?></a>
+          </th>
+        <?php endforeach; ?>
+      </tr>
+    </table>
     <table class="agreservations-table">
       <tr>
-        <th class="agreservations-calendar"><?php print "Uge " . date('W',strtotime($rows[0]['date'])) . '</span>'; ?></th>
-        <?php foreach ($rows as $diw => $day): ?>
+        <th class="agreservations-calendar"><?php print $by_hour_count > 0 ? t('units') : ''; ?></th>
+        <?php foreach ($day_names as $cell): ?>
           <th class="agreservations-calendar">
-            <?php print '<a href ="/agres_view/day/'.$day['date'] . '">'.t(date('D',strtotime($day['date']))). " ". date('d.m.Y',strtotime($day['date'])). '</a>'; ?>
+            <?php print $cell['data']; ?>
           </th>
         <?php endforeach; ?>
       </tr>
@@ -44,138 +76,31 @@
       <tbody>
         <?php foreach ($units as $unit): ?>
           <tr>
-            <td class="agreservations-calendar" style="vertical-align: middle">
+            <td class="agreservations-calendar">
               <a href="<?php print(base_path()); ?>node/<?php print $unit->nid ?>"><?php print $unit->title ?></a>
               <span class="agreservations-calendar-hour"></span>
             </td>
+            <?php foreach ($rows as $diw => $day): ?>
+              <?php if (isset($day['night'][$unit->title])) : ?>
+                <?php foreach ($day['night'][$unit->title] as $itemnid => $unitbookings): ?>
 
-          <?php
-            foreach ($rows as $diw => $day) {
-              $weekend = "";
-              $sat = (date('D',strtotime($day['date'])) == 'Sat');
-              $sun = (date('D',strtotime($day['date'])) == 'Sun');
-
-              // Sat and sun start at 10 to 21 (22 included), other weekend days start 16 to 21 (22 included)
-              if ($sat || $sun) {
-                $weekend = "weekend";
-                $start = 10;
-                $h = 12;
-              }
-              else {
-                $start = 16;
-                $h = 6;
-              }
-
-              $i = 0;
-
-              // If there are booking for the day
-              if (count($day['items']) > 0) {
-                print "<td class='agreservations-calendar-agenda-items ". $weekend . "'>";
-                print "<div>";
-
-                // loop in the hours.
-                while ($i < $h) {
-                  $rowspan = 1;
-                  if(strlen($start) == 1) {
-                    $time_str = '0'.$start.".00";
-                  }
-                  else {
-                    $time_str = $start . ".00";
-                  }
-
-                  $booking = array();
-
-                  foreach ($day['night'][$unit->title] as $itemnid => $unitbookings) {
-
-                    if (isset($day['night'][$unit->title][$itemnid])) {
-
-                      $node = node_load($itemnid);
-                      $field_start = field_get_items('node',$node,'field_agres_rdate');
-                      $tmp_start = new DateTime($field_start[0]['value'], new DateTimeZone($field_start[0]['timezone_db']));
-                      $tmp_start->setTimezone(new DateTimeZone('Europe/Copenhagen'));
-                      $tmp_end = new DateTime($field_start[0]['value2'], new DateTimeZone($field_start[0]['timezone_db']));
-                      $tmp_end->setTimezone(new DateTimeZone('Europe/Copenhagen'));
-                      $field_start_h = date('H',strtotime($tmp_start->format('Y-m-d H.i.s')));
-                      $field_end_h = date('H',strtotime($tmp_end->format('Y-m-d H.i.s')));
-                      $field_end_m = date('i',strtotime($field_start[0]['value2']));
-
-                      $rowspan = $field_end_h - $field_start_h;
-
-                      if ((integer)$field_end_m > 0) {
-                        $rowspan += 1;
-                        $field_end_h += 1;
-                      }
-
-                      if ($field_start_h == $start) {
-                        $booking = array(
-                          'nid' => $itemnid,
-                          'start_h' => $field_start_h,
-                          'end_h' => $field_end_h,
-                          'rowspan' => $rowspan,
-                        );
-                        }
-                    }
-                  } // end foreach
-
-                  if (empty($booking)) {
-                    print '<div style="border-top: 1px solid #ccc;border-collapse: collapse; border-spacing: 0;">';
-                    print '<a class="agrcelllink" style = "text-align:center;" href="' . base_path() . 'node/add/agreservation?&agres_sel_unit=' . $unit->nid .
-                    '&default_agres_title=&Oslash;vetid&default_agres_date=' . $day['date'] . $time_str . ' ">' . $time_str . '</a>';
-                    print '</div>';
-                    $rpan = 1;
-                  }
-                  else {
-                    print '<div class="agreservations-calendar-agenda-items"';
-                    $rows_pan = isset($spaninfo[$unit->title][$itemnid]) ? $spaninfo[$unit->title][$booking['nid']] : '';
-                    print 'rowspan="' . $rows_pan . '">';
-                    print $day['night'][$unit->title][$booking['nid']];
-                    print '</div>';
-                    $rpan = $booking['rowspan'];
-                  }
-                  $start += $rpan;
-                  $i += $rpan;
-                } // end while.
-                print "
-                  </div>
-              </td>";
-            } // end if count($day['items']) > 0
-
-            else {
-              print '<td class="agreservations-calendar-agenda-items ' . $weekend . '">';
-              print  '<table>';
-
-              // Sat and sun start at 10 to 21 (22 included), other weekend days start 16 to 21 (22 included)
-              if ($sat || $sun) {
-                $weekend = "weekend";
-                $start = 10;
-                $h = 12;
-              }
-              else {
-                $start = 16;
-                $h = 6;
-              }
-              $i = 0;
-              // Empty days.
-              while($i < $h) {
-
-                $time_str = $start . ".00";
-
-                print '<tr>
-                      <td>';
-                print '<a class="agrcelllink" style = "text-align:center;" href="' . base_path() . 'node/add/agreservation?&agres_sel_unit=' . $unit->nid .
-                '&default_agres_title=&Oslash;vetid&default_agres_date=' . $day['date'] . $time_str . '">' . $time_str . '</a>';
-                print '</td>
-                    </tr>';
-                $start += 1;
-                $i += 1;
-              } // end while
-            print '</table>
-                </td>';
-            }
-          } // end foreach
-          ?>
-        </tr>
-      <?php endforeach; ?>
+                  <?php if (isset($day['night'][$unit->title][$itemnid])) : ?>
+                    <?php if (($day['night'][$unit->title][$itemnid]) !== '***busy***') : ?>
+                      <td class="agreservations-calendar-agenda-items" <?php print isset($spaninfo[$unit->title][$itemnid]) ? "colspan=" . $spaninfo[$unit->title][$itemnid] : ""; ?> >
+                        <?php print ($day['night'][$unit->title][$itemnid]); ?>
+                      </td>
+                    <?php endif; ?>
+                  <?php endif; ?>
+                <?php endforeach; ?>
+              <?php else: ?>
+                <td class="agreservations-calendar-agenda-items">
+                  <?php print ($day['datebox']); ?>
+                  <a href="<?php print(base_path()); ?>node/add/agreservation?&agres_sel_unit=<?php print $unit->nid ?>&default_agres_title=Reservation&default_agres_date=<?php print$day['date'] ?> 14:00 ">+</a>
+                </td>
+              <?php endif; ?>
+            <?php endforeach; ?>
+          </tr>
+        <?php endforeach; ?>
       </tbody>
     </table>
   </div>
