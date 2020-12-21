@@ -1,4 +1,4 @@
-<?php 
+<?php
 
 function cmstheme_alpha_preprocess_html(&$vars) {
   // Setup IE meta tag to force IE rendering mode
@@ -11,7 +11,7 @@ function cmstheme_alpha_preprocess_html(&$vars) {
     ),
     '#weight' => '-99999',
   );
-  
+
   // Add header meta tag for IE to head
   drupal_add_html_head($meta_ie_render_engine, 'meta_ie_render_engine');
 
@@ -20,8 +20,9 @@ function cmstheme_alpha_preprocess_html(&$vars) {
   $inline_script = <<<EOL
   <script type="text/javascript" src="https://ajax.googleapis.com/ajax/libs/jquery/1.7.2/jquery.min.js"></script>
   <script type="text/javascript">
-    var \$j = jQuery.noConflict(true);
-  </script>  
+    window.jQuery = window.\$j = jQuery;
+    var \$j = jQuery
+  </script>
 EOL;
 
   $script_new_jquery = array (

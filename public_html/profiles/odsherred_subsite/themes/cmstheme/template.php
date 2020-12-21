@@ -116,3 +116,7 @@ function cmstheme_filefield_item($file, $field) {
   }
   return '';
 }
+
+function odsherredweb_js_alter(&$js) {
+  unset($js['misc/jquery.js']);
+}
