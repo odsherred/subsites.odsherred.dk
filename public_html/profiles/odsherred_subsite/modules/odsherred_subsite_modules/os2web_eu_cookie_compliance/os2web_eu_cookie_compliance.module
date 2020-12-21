@@ -520,7 +520,7 @@ EOL;
     'automatic_cookies_removal' => 1,
     'withdraw_enabled' => 1,
     'withdraw_button_on_info_popup' => 1,
-    'popup_link' => 'https://osdherred.dk/din-kommune/cookies-paa-odsherreddk',
+    'popup_link' => 'https://odsherred.dk/din-kommune/cookies-paa-odsherreddk',
     'popup_position' => 'popup',
     'popup_width' => '700',
     'popup_info' => array(
