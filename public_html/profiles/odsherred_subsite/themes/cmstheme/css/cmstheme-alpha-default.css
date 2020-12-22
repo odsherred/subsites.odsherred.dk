@@ -2,7 +2,8 @@
 
 
 body.eu-cookie-compliance-popup-closed .sliding-popup-popup .eu-cookie-withdraw-tab {
-    top: 40%;
+    top: 35%;
     font-size: 15px;
     padding: 5px 10px;
+    font-weight: normal;
 }
