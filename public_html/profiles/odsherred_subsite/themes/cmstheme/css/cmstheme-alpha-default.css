@@ -1,2 +1,8 @@
 /* This file will hold styles for all layouts using the alpha grid (i.e. not the mobile layout). */
 
+
+body.eu-cookie-compliance-popup-closed .sliding-popup-popup .eu-cookie-withdraw-tab {
+    top: 40%;
+    font-size: 15px;
+    padding: 5px 10px;
+}

@@ -4057,9 +4057,3 @@ max-width: 201px;
 .view-os2web-cp-service-cp-case-search .views-submit-button{
     display: none; /* Only the last one */
 }
-
-body.eu-cookie-compliance-popup-closed .sliding-popup-popup .eu-cookie-withdraw-tab {
-	top: 40%;
-	font-size: 15px;
-	padding: 5px 10px;
-}
