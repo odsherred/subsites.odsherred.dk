@@ -362,6 +362,28 @@ function os2web_eu_cookie_compliance_js_alter(&$javascript) {
       variable_set('os2web_eu_cookie_compliance_notification_unhandled_js', array_merge($notification_unhandled_js, $diff));
     }
   }
+
+}
+
+/**
+ * Implements hook_library_alter().
+ *
+ * {@inheritdoc}
+ */
+function os2web_eu_cookie_compliance_library_alter(&$libraries, $module) {
+  // Immediately return if not modifying the system libraries.
+  if ($module !== 'system') {
+    return;
+  }
+
+  // Odsherred subsites is using outdated version of jQuery.
+  // It requires min 1.7.2 for this module.
+  // jQuery updated only for admin pages. Frontend theme has it's own update.
+  // See public_html/profiles/odsherred_subsite/modules/odsherred_subsite_modules/os2web_eu_cookie_compliance/os2web_eu_cookie_compliance.module line 20.
+  global $theme;
+  if ($theme == 'seven') {
+    $libraries['jquery']['js']['misc/jquery.js']['data'] = '//ajax.googleapis.com/ajax/libs/jquery/1.7.2/jquery.min.js';
+  }
 }
 
 /**
