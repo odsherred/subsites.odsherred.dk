@@ -535,7 +535,7 @@ EOL;
   $os2web_eu_cookie_compliance_settings = array(
     'save_preferences_button_label' => 'Gem indstillinger',
     'accept_all_categories_button_label' => 'Accepter alle',
-    'only_required_button_label' => 'Kun nødvenlige',
+    'only_required_button_label' => 'Kun nødvendige',
     'popup_disagree_button_message' => 'Jeg ønsker at vide mere om cookiepolitikken',
     'withdraw_tab_button_label' => 'Indstillinger for privatliv',
     'method' => 'categories',
