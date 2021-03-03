@@ -28,21 +28,21 @@
         else {
           openPopup();
         }
+      });
 
-        $(document).on('click', '.agree-button, .eu-cookie-compliance-save-preferences-button, .decline-button', closePopup);
-        $(document).on('click', '.eu-cookie-withdraw-tab', openPopup);
-        $(document).on('click', '.popup-toggle-group button', function () {
-          $('#popupConsentBannerCategoriesWrapper').slideToggle('hidden');
-          $('.popup-toggle-group button').toggleClass('hidden');
-        });
-        $(document).on('click', '.popup-consent-banner__category-name', function () {
-          var $id = '#' + $(this).attr('for');
-          $($id).toggle();
-        });
+      $(document).on('click', '.agree-button, .eu-cookie-compliance-save-preferences-button, .decline-button', closePopup);
+      $(document).on('click', '.eu-cookie-withdraw-tab', openPopup);
+      $(document).on('click', '.popup-toggle-group button', function () {
+        $('#popupConsentBannerCategoriesWrapper').slideToggle('hidden');
+        $('.popup-toggle-group button').toggleClass('hidden');
+      });
+      $(document).on('click', '.popup-consent-banner__category-name', function () {
+        var $id = '#' + $(this).attr('for');
+        $($id).toggle();
+      });
 
-        $(document).on('eu_cookie_compliance_popup_open', 'body', function () {
-          $('body').removeClass('eu-cookie-compliance-popup-closed');
-        });
+      $(document).on('eu_cookie_compliance_popup_open', 'body', function () {
+        $('body').removeClass('eu-cookie-compliance-popup-closed');
       });
 
       if (Drupal.settings.eu_cookie_compliance.method === 'categories') {
@@ -68,7 +68,7 @@
         requiredCategories.push(cat);
       }
     }
-    var nextStatus = 1;
+    var nextStatus = 2;
     Drupal.eu_cookie_compliance.setAcceptedCategories(requiredCategories);
     // Load scripts for all categories. If no categories selected, none
     // will be loaded.
@@ -77,7 +77,7 @@
       // No categories selected is the same as declining all cookies.
       nextStatus = 0;
     }
-    Drupal.eu_cookie_compliance.changeStatus(nextStatus);
+    Drupal.eu_cookie_compliance.setStatus(nextStatus);
     closePopup();
   }
 

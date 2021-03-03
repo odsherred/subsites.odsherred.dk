@@ -193,6 +193,7 @@ body.eu-cookie-compliance-popup-open {
     bottom: 0;
     z-index: 99999;
 }
+
 .popup-button-group{
     display: flex;
     justify-content: space-between;
@@ -575,5 +576,3 @@ body.eu-cookie-compliance-popup-open {
         flex-flow:column;
     }
 }
-
-

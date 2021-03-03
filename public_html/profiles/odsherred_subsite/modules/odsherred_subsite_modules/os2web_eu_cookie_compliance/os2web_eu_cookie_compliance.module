@@ -8,6 +8,8 @@
 define('EUCC_POPUP_THEME', 'design1');
 define('EUCC_ONLY_REQUIRED_LABEL', t('Only required'));
 
+include_once 'os2web_eu_cookie_compliance.features.inc';
+
 /**
  * Implements hook_init().
  *
@@ -489,6 +491,14 @@ function os2web_eu_cookie_compliance_mail($key, &$message, $params) {
 }
 
 /**
+ * Implements hook_views_data_alter.
+ */
+function os2web_eu_cookie_compliance_views_data_alter(&$data) {
+  $data[EU_COOKIE_COMPLIANCE_BASE_TABLE]['consent_type']['title'] = t('OS2Web Consent Type');
+  $data[EU_COOKIE_COMPLIANCE_BASE_TABLE]['consent_type']['field']['handler'] = 'os2web_eu_cookie_consent_type_field';
+}
+
+/**
  * Helper function to remove category from disabled script or cookie line.
  *
  * @param $script
@@ -533,6 +543,7 @@ læse vores erklæring om indsamling og behandling af personoplysninger ved at
 klikke på linket herunder.</p>
 EOL;
   $os2web_eu_cookie_compliance_settings = array(
+    'consent_storage_method' => 'basic',
     'save_preferences_button_label' => 'Gem indstillinger',
     'accept_all_categories_button_label' => 'Accepter alle',
     'only_required_button_label' => 'Kun nødvendige',
@@ -545,6 +556,7 @@ EOL;
     'popup_link' => 'https://odsherred.dk/din-kommune/cookies-paa-odsherreddk',
     'popup_position' => 'popup',
     'popup_width' => '700',
+    'reload_page' => 1,
     'popup_info' => array(
       'value' => $popup_text,
       'format' => 'full_html'
