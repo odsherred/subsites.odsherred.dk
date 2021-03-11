@@ -1,4 +1,5 @@
 <?php
+
 /**
  * @file
  * subsite_grundindstillinger.features.user_permission.inc
@@ -14,7 +15,6 @@ function subsite_grundindstillinger_user_default_permissions() {
   $permissions['access site map'] = array(
     'name' => 'access site map',
     'roles' => array(
-      'administrator' => 'administrator',
       'anonymous user' => 'anonymous user',
       'authenticated user' => 'authenticated user',
     ),
@@ -25,7 +25,7 @@ function subsite_grundindstillinger_user_default_permissions() {
   $permissions['administer files'] = array(
     'name' => 'administer files',
     'roles' => array(
-      'administrator' => 'administrator',
+      'super bruger' => 'super bruger',
     ),
     'module' => 'file_entity',
   );
@@ -33,9 +33,7 @@ function subsite_grundindstillinger_user_default_permissions() {
   // Exported permission: 'administer linkit'.
   $permissions['administer linkit'] = array(
     'name' => 'administer linkit',
-    'roles' => array(
-      'administrator' => 'administrator',
-    ),
+    'roles' => array(),
     'module' => 'linkit',
   );
 
@@ -43,7 +41,6 @@ function subsite_grundindstillinger_user_default_permissions() {
   $permissions['create files'] = array(
     'name' => 'create files',
     'roles' => array(
-      'administrator' => 'administrator',
       'authenticated user' => 'authenticated user',
     ),
     'module' => 'file_entity',
@@ -53,7 +50,6 @@ function subsite_grundindstillinger_user_default_permissions() {
   $permissions['use text format filtered_html'] = array(
     'name' => 'use text format filtered_html',
     'roles' => array(
-      'administrator' => 'administrator',
       'anonymous user' => 'anonymous user',
       'authenticated user' => 'authenticated user',
       'let bruger' => 'let bruger',
@@ -65,7 +61,6 @@ function subsite_grundindstillinger_user_default_permissions() {
   $permissions['use text format full_html'] = array(
     'name' => 'use text format full_html',
     'roles' => array(
-      'administrator' => 'administrator',
       'authenticated user' => 'authenticated user',
       'super bruger' => 'super bruger',
     ),
@@ -76,7 +71,6 @@ function subsite_grundindstillinger_user_default_permissions() {
   $permissions['use text format kun_tekst'] = array(
     'name' => 'use text format kun_tekst',
     'roles' => array(
-      'administrator' => 'administrator',
       'authenticated user' => 'authenticated user',
     ),
     'module' => 'filter',

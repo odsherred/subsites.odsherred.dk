@@ -1,4 +1,5 @@
 <?php
+
 /**
  * @file
  * subsite_grundindstillinger.features.field_base.inc
@@ -10,7 +11,7 @@
 function subsite_grundindstillinger_field_default_field_bases() {
   $field_bases = array();
 
-  // Exported field_base: 'body'
+  // Exported field_base: 'body'.
   $field_bases['body'] = array(
     'active' => 1,
     'cardinality' => 1,
@@ -19,14 +20,6 @@ function subsite_grundindstillinger_field_default_field_bases() {
       0 => 'node',
     ),
     'field_name' => 'body',
-    'foreign keys' => array(
-      'format' => array(
-        'columns' => array(
-          'format' => 'format',
-        ),
-        'table' => 'filter_format',
-      ),
-    ),
     'indexes' => array(
       'format' => array(
         0 => 'format',
@@ -39,21 +32,13 @@ function subsite_grundindstillinger_field_default_field_bases() {
     'type' => 'text_with_summary',
   );
 
-  // Exported field_base: 'field_alternativt_billede'
+  // Exported field_base: 'field_alternativt_billede'.
   $field_bases['field_alternativt_billede'] = array(
     'active' => 1,
     'cardinality' => 1,
     'deleted' => 0,
     'entity_types' => array(),
     'field_name' => 'field_alternativt_billede',
-    'foreign keys' => array(
-      'fid' => array(
-        'columns' => array(
-          'fid' => 'fid',
-        ),
-        'table' => 'file_managed',
-      ),
-    ),
     'indexes' => array(
       'fid' => array(
         0 => 'fid',
@@ -69,21 +54,13 @@ function subsite_grundindstillinger_field_default_field_bases() {
     'type' => 'image',
   );
 
-  // Exported field_base: 'field_banner'
+  // Exported field_base: 'field_banner'.
   $field_bases['field_banner'] = array(
     'active' => 1,
     'cardinality' => 1,
     'deleted' => 0,
     'entity_types' => array(),
     'field_name' => 'field_banner',
-    'foreign keys' => array(
-      'fid' => array(
-        'columns' => array(
-          'fid' => 'fid',
-        ),
-        'table' => 'file_managed',
-      ),
-    ),
     'indexes' => array(
       'fid' => array(
         0 => 'fid',
@@ -99,21 +76,13 @@ function subsite_grundindstillinger_field_default_field_bases() {
     'type' => 'image',
   );
 
-  // Exported field_base: 'field_bannerlink'
+  // Exported field_base: 'field_bannerlink'.
   $field_bases['field_bannerlink'] = array(
     'active' => 1,
     'cardinality' => 1,
     'deleted' => 0,
     'entity_types' => array(),
     'field_name' => 'field_bannerlink',
-    'foreign keys' => array(
-      'format' => array(
-        'columns' => array(
-          'format' => 'format',
-        ),
-        'table' => 'filter_format',
-      ),
-    ),
     'indexes' => array(
       'format' => array(
         0 => 'format',
@@ -128,21 +97,13 @@ function subsite_grundindstillinger_field_default_field_bases() {
     'type' => 'text',
   );
 
-  // Exported field_base: 'field_bannertekst'
+  // Exported field_base: 'field_bannertekst'.
   $field_bases['field_bannertekst'] = array(
     'active' => 1,
     'cardinality' => 1,
     'deleted' => 0,
     'entity_types' => array(),
     'field_name' => 'field_bannertekst',
-    'foreign keys' => array(
-      'format' => array(
-        'columns' => array(
-          'format' => 'format',
-        ),
-        'table' => 'filter_format',
-      ),
-    ),
     'indexes' => array(
       'format' => array(
         0 => 'format',
@@ -155,21 +116,13 @@ function subsite_grundindstillinger_field_default_field_bases() {
     'type' => 'text_long',
   );
 
-  // Exported field_base: 'field_billede'
+  // Exported field_base: 'field_billede'.
   $field_bases['field_billede'] = array(
     'active' => 1,
     'cardinality' => -1,
     'deleted' => 0,
     'entity_types' => array(),
     'field_name' => 'field_billede',
-    'foreign keys' => array(
-      'fid' => array(
-        'columns' => array(
-          'fid' => 'fid',
-        ),
-        'table' => 'file_managed',
-      ),
-    ),
     'indexes' => array(
       'fid' => array(
         0 => 'fid',
@@ -185,21 +138,13 @@ function subsite_grundindstillinger_field_default_field_bases() {
     'type' => 'image',
   );
 
-  // Exported field_base: 'field_field_resume_long'
+  // Exported field_base: 'field_field_resume_long'.
   $field_bases['field_field_resume_long'] = array(
     'active' => 1,
     'cardinality' => 1,
     'deleted' => 0,
     'entity_types' => array(),
     'field_name' => 'field_field_resume_long',
-    'foreign keys' => array(
-      'format' => array(
-        'columns' => array(
-          'format' => 'format',
-        ),
-        'table' => 'filter_format',
-      ),
-    ),
     'indexes' => array(
       'format' => array(
         0 => 'format',
@@ -212,21 +157,13 @@ function subsite_grundindstillinger_field_default_field_bases() {
     'type' => 'text_long',
   );
 
-  // Exported field_base: 'field_filer'
+  // Exported field_base: 'field_filer'.
   $field_bases['field_filer'] = array(
     'active' => 1,
     'cardinality' => -1,
     'deleted' => 0,
     'entity_types' => array(),
     'field_name' => 'field_filer',
-    'foreign keys' => array(
-      'fid' => array(
-        'columns' => array(
-          'fid' => 'fid',
-        ),
-        'table' => 'file_managed',
-      ),
-    ),
     'indexes' => array(
       'fid' => array(
         0 => 'fid',
@@ -242,14 +179,13 @@ function subsite_grundindstillinger_field_default_field_bases() {
     'type' => 'image',
   );
 
-  // Exported field_base: 'field_selvbetjeninger'
+  // Exported field_base: 'field_selvbetjeninger'.
   $field_bases['field_selvbetjeninger'] = array(
     'active' => 1,
     'cardinality' => -1,
     'deleted' => 0,
     'entity_types' => array(),
     'field_name' => 'field_selvbetjeninger',
-    'foreign keys' => array(),
     'indexes' => array(
       'target_id' => array(
         0 => 'target_id',
@@ -280,14 +216,13 @@ function subsite_grundindstillinger_field_default_field_bases() {
     'type' => 'entityreference',
   );
 
-  // Exported field_base: 'field_spotbokse'
+  // Exported field_base: 'field_spotbokse'.
   $field_bases['field_spotbokse'] = array(
     'active' => 1,
     'cardinality' => -1,
     'deleted' => 0,
     'entity_types' => array(),
     'field_name' => 'field_spotbokse',
-    'foreign keys' => array(),
     'indexes' => array(
       'target_id' => array(
         0 => 'target_id',

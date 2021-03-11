@@ -1,4 +1,5 @@
 <?php
+
 /**
  * @file
  * subsite_grundindstillinger.features.language.inc
