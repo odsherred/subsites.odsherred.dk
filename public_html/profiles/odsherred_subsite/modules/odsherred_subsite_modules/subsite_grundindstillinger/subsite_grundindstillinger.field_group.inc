@@ -1,4 +1,5 @@
 <?php
+
 /**
  * @file
  * subsite_grundindstillinger.field_group.inc
@@ -8,7 +9,7 @@
  * Implements hook_field_group_info().
  */
 function subsite_grundindstillinger_field_group_info() {
-  $export = array();
+  $field_groups = array();
 
   $field_group = new stdClass();
   $field_group->disabled = FALSE; /* Edit this to true to make a default field_group disabled initially */
@@ -32,12 +33,12 @@ function subsite_grundindstillinger_field_group_info() {
       'formatter' => 'closed',
       'instance_settings' => array(
         'description' => '',
-        'classes' => '',
+        'classes' => ' group-billeder field-group-htab',
         'required_fields' => 1,
       ),
     ),
   );
-  $export['group_billeder|node|page|form'] = $field_group;
+  $field_groups['group_billeder|node|page|form'] = $field_group;
 
   $field_group = new stdClass();
   $field_group->disabled = FALSE; /* Edit this to true to make a default field_group disabled initially */
@@ -59,12 +60,12 @@ function subsite_grundindstillinger_field_group_info() {
       'formatter' => 'closed',
       'instance_settings' => array(
         'description' => '',
-        'classes' => '',
+        'classes' => ' group-extras field-group-htab',
         'required_fields' => 1,
       ),
     ),
   );
-  $export['group_extras|node|page|form'] = $field_group;
+  $field_groups['group_extras|node|page|form'] = $field_group;
 
   $field_group = new stdClass();
   $field_group->disabled = FALSE; /* Edit this to true to make a default field_group disabled initially */
@@ -87,12 +88,12 @@ function subsite_grundindstillinger_field_group_info() {
       'formatter' => 'closed',
       'instance_settings' => array(
         'description' => '',
-        'classes' => '',
+        'classes' => ' group-general field-group-htab',
         'required_fields' => 1,
       ),
     ),
   );
-  $export['group_general|node|page|form'] = $field_group;
+  $field_groups['group_general|node|page|form'] = $field_group;
 
   $field_group = new stdClass();
   $field_group->disabled = FALSE; /* Edit this to true to make a default field_group disabled initially */
@@ -115,12 +116,12 @@ function subsite_grundindstillinger_field_group_info() {
       'formatter' => 'closed',
       'instance_settings' => array(
         'description' => '',
-        'classes' => '',
+        'classes' => ' group-gruppe3 field-group-htab',
         'required_fields' => 1,
       ),
     ),
   );
-  $export['group_gruppe3|node|page|form'] = $field_group;
+  $field_groups['group_gruppe3|node|page|form'] = $field_group;
 
   $field_group = new stdClass();
   $field_group->disabled = FALSE; /* Edit this to true to make a default field_group disabled initially */
@@ -144,11 +145,20 @@ function subsite_grundindstillinger_field_group_info() {
     'format_settings' => array(
       'formatter' => '',
       'instance_settings' => array(
-        'classes' => '',
+        'classes' => ' group-indholdsside field-group-htabs',
+        'id' => 'node_page_form_group_indholdsside',
       ),
     ),
   );
-  $export['group_indholdsside|node|page|form'] = $field_group;
+  $field_groups['group_indholdsside|node|page|form'] = $field_group;
 
-  return $export;
+  // Translatables
+  // Included for use with string extractors like potx.
+  t('Billeder og filer');
+  t('Emneord');
+  t('Generelt');
+  t('Indholdsside');
+  t('Indstillinger');
+
+  return $field_groups;
 }

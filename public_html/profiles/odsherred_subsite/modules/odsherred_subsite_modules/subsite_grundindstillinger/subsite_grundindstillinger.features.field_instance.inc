@@ -1,4 +1,5 @@
 <?php
+
 /**
  * @file
  * subsite_grundindstillinger.features.field_instance.inc
@@ -10,7 +11,7 @@
 function subsite_grundindstillinger_field_default_field_instances() {
   $field_instances = array();
 
-  // Exported field_instance: 'node-banner-field_banner'
+  // Exported field_instance: 'node-banner-field_banner'.
   $field_instances['node-banner-field_banner'] = array(
     'bundle' => 'banner',
     'deleted' => 0,
@@ -45,7 +46,7 @@ function subsite_grundindstillinger_field_default_field_instances() {
       'file_extensions' => 'png gif jpg jpeg',
       'max_filesize' => '',
       'max_resolution' => '',
-      'min_resolution' => '',
+      'min_resolution' => '930x280',
       'title_field' => 1,
       'title_field_required' => 0,
       'user_register_form' => FALSE,
@@ -67,7 +68,7 @@ function subsite_grundindstillinger_field_default_field_instances() {
     ),
   );
 
-  // Exported field_instance: 'node-banner-field_bannerlink'
+  // Exported field_instance: 'node-banner-field_bannerlink'.
   $field_instances['node-banner-field_bannerlink'] = array(
     'bundle' => 'banner',
     'default_value' => NULL,
@@ -107,7 +108,7 @@ function subsite_grundindstillinger_field_default_field_instances() {
     ),
   );
 
-  // Exported field_instance: 'node-banner-field_bannertekst'
+  // Exported field_instance: 'node-banner-field_bannertekst'.
   $field_instances['node-banner-field_bannertekst'] = array(
     'bundle' => 'banner',
     'default_value' => NULL,
@@ -151,7 +152,7 @@ function subsite_grundindstillinger_field_default_field_instances() {
     ),
   );
 
-  // Exported field_instance: 'node-page-body'
+  // Exported field_instance: 'node-page-body'.
   $field_instances['node-page-body'] = array(
     'bundle' => 'page',
     'default_value' => NULL,
@@ -196,7 +197,7 @@ function subsite_grundindstillinger_field_default_field_instances() {
     ),
   );
 
-  // Exported field_instance: 'node-page-field_alternativt_billede'
+  // Exported field_instance: 'node-page-field_alternativt_billede'.
   $field_instances['node-page-field_alternativt_billede'] = array(
     'bundle' => 'page',
     'deleted' => 0,
@@ -253,7 +254,7 @@ function subsite_grundindstillinger_field_default_field_instances() {
     ),
   );
 
-  // Exported field_instance: 'node-page-field_billede'
+  // Exported field_instance: 'node-page-field_billede'.
   $field_instances['node-page-field_billede'] = array(
     'bundle' => 'page',
     'deleted' => 0,
@@ -324,7 +325,7 @@ function subsite_grundindstillinger_field_default_field_instances() {
     ),
   );
 
-  // Exported field_instance: 'node-page-field_field_resume_long'
+  // Exported field_instance: 'node-page-field_field_resume_long'.
   $field_instances['node-page-field_field_resume_long'] = array(
     'bundle' => 'page',
     'default_value' => NULL,
@@ -368,7 +369,7 @@ function subsite_grundindstillinger_field_default_field_instances() {
     ),
   );
 
-  // Exported field_instance: 'node-page-field_filer'
+  // Exported field_instance: 'node-page-field_filer'.
   $field_instances['node-page-field_filer'] = array(
     'bundle' => 'page',
     'deleted' => 0,
@@ -434,7 +435,7 @@ function subsite_grundindstillinger_field_default_field_instances() {
     ),
   );
 
-  // Exported field_instance: 'node-page-field_selvbetjeninger'
+  // Exported field_instance: 'node-page-field_selvbetjeninger'.
   $field_instances['node-page-field_selvbetjeninger'] = array(
     'bundle' => 'page',
     'default_value' => NULL,
@@ -445,6 +446,7 @@ function subsite_grundindstillinger_field_default_field_instances() {
         'label' => 'above',
         'module' => 'entityreference',
         'settings' => array(
+          'bypass_access' => FALSE,
           'link' => FALSE,
         ),
         'type' => 'entityreference_label',
@@ -477,7 +479,7 @@ function subsite_grundindstillinger_field_default_field_instances() {
     ),
   );
 
-  // Exported field_instance: 'node-page-field_spotbokse'
+  // Exported field_instance: 'node-page-field_spotbokse'.
   $field_instances['node-page-field_spotbokse'] = array(
     'bundle' => 'page',
     'default_value' => NULL,
@@ -488,6 +490,7 @@ function subsite_grundindstillinger_field_default_field_instances() {
         'label' => 'above',
         'module' => 'entityreference',
         'settings' => array(
+          'bypass_access' => FALSE,
           'link' => FALSE,
         ),
         'type' => 'entityreference_label',
@@ -520,7 +523,7 @@ function subsite_grundindstillinger_field_default_field_instances() {
     ),
   );
 
-  // Exported field_instance: 'node-subsite_nyhed-body'
+  // Exported field_instance: 'node-subsite_nyhed-body'.
   $field_instances['node-subsite_nyhed-body'] = array(
     'bundle' => 'subsite_nyhed',
     'default_value' => NULL,
@@ -565,7 +568,7 @@ function subsite_grundindstillinger_field_default_field_instances() {
     ),
   );
 
-  // Exported field_instance: 'node-subsite_nyhed-field_billede'
+  // Exported field_instance: 'node-subsite_nyhed-field_billede'.
   $field_instances['node-subsite_nyhed-field_billede'] = array(
     'bundle' => 'subsite_nyhed',
     'deleted' => 0,
@@ -590,6 +593,7 @@ function subsite_grundindstillinger_field_default_field_instances() {
           'slideshow_colorbox_slideshow_speed' => 4000,
           'slideshow_colorbox_speed' => 350,
           'slideshow_colorbox_transition' => 'elastic',
+          'slideshow_content_type' => 'image',
           'slideshow_controls' => 0,
           'slideshow_controls_pause' => 0,
           'slideshow_controls_position' => 'after',
@@ -605,6 +609,7 @@ function subsite_grundindstillinger_field_default_field_instances() {
           'slideshow_speed' => 1000,
           'slideshow_start_on_hover' => 0,
           'slideshow_timeout' => 4000,
+          'slideshow_view_mode' => 'full',
         ),
         'type' => 'slideshow',
         'weight' => 0,
@@ -663,7 +668,7 @@ function subsite_grundindstillinger_field_default_field_instances() {
     ),
   );
 
-  // Exported field_instance: 'node-velkomst-body'
+  // Exported field_instance: 'node-velkomst-body'.
   $field_instances['node-velkomst-body'] = array(
     'bundle' => 'velkomst',
     'default_value' => NULL,

@@ -149,7 +149,6 @@ features[variable][] = comment_subject_field_subsite_nyhed
 features[variable][] = comment_subject_field_velkomst
 features[variable][] = comment_subsite_nyhed
 features[variable][] = comment_velkomst
-features[variable][] = date_format_short
 features[variable][] = error_level
 features[variable][] = extlink_alert
 features[variable][] = extlink_alert_text
