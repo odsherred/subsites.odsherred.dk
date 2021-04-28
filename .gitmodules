@@ -1,0 +1,3 @@
+[submodule "os2web_eu_cookie_compliance"]
+	path = public_html/profiles/odsherred_subsite/modules/odsherred_subsite_modules/os2web_eu_cookie_compliance
+	url = git@github.com:bellcom/os2web_eu_cookie_compliance.git
