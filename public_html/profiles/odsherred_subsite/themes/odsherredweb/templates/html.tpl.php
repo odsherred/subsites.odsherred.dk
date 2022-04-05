@@ -5,6 +5,7 @@
   <title><?php print $head_title; ?></title>  
   <?php print $styles; ?>
   <?php print $scripts; ?>
+  <script type="text/javascript" src=https://netkort.odsherred.dk/clientapi/minimap2/mmloader.js></script>
   <!--[if lt IE 9]><script src="http://html5shiv.googlecode.com/svn/trunk/html5.js"></script><![endif]-->
 </head>
 <body<?php print $attributes;?>>
